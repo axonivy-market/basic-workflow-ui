@@ -1,4 +1,4 @@
-CaseListData #class
-htmlwfui.CaseList #namespace
+CasesListData #class
+htmlwfui.CasesList #namespace
 data htmlwfui.Data #field
 data PERSISTENT #fieldModifier

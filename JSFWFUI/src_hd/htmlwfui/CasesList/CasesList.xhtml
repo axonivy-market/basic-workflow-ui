@@ -28,7 +28,7 @@
         			</p:selectOneMenu>
         			<h:outputLabel value="#{ivy.cms.co('/labels/process')}:"/>
  					<p:selectOneMenu value="#{data.data.temp.procFilter}" >
-           				<f:selectItems value="#{data.data.temp.processesCombo}" var="processe" itemLabel="#{processe}" itemValue="#{processe}"/>  
+           				<f:selectItems value="#{data.data.temp.processesList}" var="processe" itemLabel="#{processe}" itemValue="#{processe}"/>  
         			</p:selectOneMenu>
         			<h:outputLabel value="#{ivy.cms.co('/labels/taskState')}:"/>
  					<p:selectOneMenu value="#{data.data.temp.statFilter}" >
@@ -50,7 +50,7 @@
             			</f:facet>
             			
                       <h:commandLink actionListener="#{logic.caseDetail(row)}" title="Details Case" align="center" ajax="false">
-							<h:graphicImage library="ivy-cms" name="images/task" alt="#{task.id}" style="border:0pt"/>
+							<h:graphicImage library="ivy-cms" name="images/case" alt="#{task.id}" style="border:0pt"/>
 						</h:commandLink>
          			</p:column>
          			
