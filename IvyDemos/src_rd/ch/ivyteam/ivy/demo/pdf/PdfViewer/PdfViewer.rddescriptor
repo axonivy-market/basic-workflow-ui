@@ -3,17 +3,11 @@
     <autoScreenshot>true</autoScreenshot>
     <startMethod>
         <name>start</name>
-        <description></description>
-        <inputParameter>
-            <name>demoRichDialogIds</name>
-            <description>List of RichDialogs that are Demos</description>
-            <parameterType>List&lt;String&gt;</parameterType>
-            <nullPermitted>false</nullPermitted>
-        </inputParameter>
+        <description>Default dialog start method.</description>
     </startMethod>
     <property>
         <name>guid</name>
-        <value>12159193B1CD968B</value>
+        <value>13F9FE2E4E84A2F7</value>
         <readOnly>true</readOnly>
     </property>
     <property>
@@ -24,6 +18,11 @@
     <property>
         <name>binary</name>
         <value>false</value>
+        <readOnly>true</readOnly>
+    </property>
+    <property>
+        <name>viewTechnology</name>
+        <value>ULC</value>
         <readOnly>true</readOnly>
     </property>
 </richDialogDescriptor>
