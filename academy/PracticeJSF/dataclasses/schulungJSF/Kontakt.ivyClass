@@ -1,0 +1,12 @@
+Kontakt #class
+schulungJSF #namespace
+name String #field
+name PERSISTENT #fieldModifier
+ort String #field
+ort PERSISTENT #fieldModifier
+aktiv Boolean #field
+aktiv PERSISTENT #fieldModifier
+anmeldeDatum Date #field
+anmeldeDatum PERSISTENT #fieldModifier
+vorname String #field
+vorname PERSISTENT #fieldModifier

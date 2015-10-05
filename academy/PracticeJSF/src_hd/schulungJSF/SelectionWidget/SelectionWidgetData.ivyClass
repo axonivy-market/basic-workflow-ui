@@ -1,0 +1,6 @@
+SelectionWidgetData #class
+schulungJSF.SelectionWidget #namespace
+colorOrder schulungJSF.ColorOrder #field
+colorOrder PERSISTENT #fieldModifier
+color List<String> #field
+color PERSISTENT #fieldModifier

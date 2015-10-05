@@ -1,0 +1,12 @@
+DatenAusgebenData #class
+schulungJSF.DatenAusgeben #namespace
+message String #field
+message PERSISTENT #fieldModifier
+bold String #field
+bold PERSISTENT #fieldModifier
+moneyAmount Number #field
+moneyAmount PERSISTENT #fieldModifier
+currentDate Date #field
+currentDate PERSISTENT #fieldModifier
+currentDateTime DateTime #field
+currentDateTime PERSISTENT #fieldModifier

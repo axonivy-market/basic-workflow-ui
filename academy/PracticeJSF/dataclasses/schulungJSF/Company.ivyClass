@@ -1,0 +1,4 @@
+Company #class
+schulungJSF #namespace
+firma String #field
+firma PERSISTENT #fieldModifier
