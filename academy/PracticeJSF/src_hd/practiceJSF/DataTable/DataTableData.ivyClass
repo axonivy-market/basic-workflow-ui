@@ -1,0 +1,6 @@
+DataTableData #class
+practiceJSF.DataTable #namespace
+contacts Recordset #field
+contacts PERSISTENT #fieldModifier
+names List<javax.faces.model.SelectItem> #field
+names PERSISTENT #fieldModifier

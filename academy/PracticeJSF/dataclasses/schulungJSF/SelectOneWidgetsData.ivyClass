@@ -1,4 +1,0 @@
-SelectOneWidgetsData #class
-schulungJSF #namespace
-colorOrder schulungJSF.ColorOrder #field
-colorOrder PERSISTENT #fieldModifier

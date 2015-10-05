@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 02 11:28:10 CEST 2015]
+[>Created: Mon Oct 05 13:45:25 CEST 2015]
 15023C7F4FB3D031 3.17 #module
 >Proto >Proto Collection #zClass
 De0 DataTable Big #zClass
@@ -22,9 +22,9 @@ De0 @PushWFArc f6 '' #zField
 De0 @PushWFArc f2 '' #zField
 >Proto De0 De0 DataTable #zField
 De0 f0 outLink start.ivp #txt
-De0 f0 type schulungJSF.DataTableData #txt
+De0 f0 type practiceJSF.DataTableData #txt
 De0 f0 inParamDecl '<> param;' #txt
-De0 f0 actionDecl 'schulungJSF.DataTableData out;
+De0 f0 actionDecl 'practiceJSF.DataTableData out;
 ' #txt
 De0 f0 guid 15023C7F50556723 #txt
 De0 f0 requestEnabled true #txt
@@ -59,10 +59,10 @@ De0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 De0 f0 @C|.responsibility Everybody #txt
 De0 f0 81 49 30 30 -21 17 #rect
 De0 f0 @|StartRequestIcon #fIcon
-De0 f1 type schulungJSF.DataTableData #txt
+De0 f1 type practiceJSF.DataTableData #txt
 De0 f1 497 49 30 30 0 15 #rect
 De0 f1 @|EndIcon #fIcon
-De0 f3 actionDecl 'schulungJSF.DataTableData out;
+De0 f3 actionDecl 'practiceJSF.DataTableData out;
 ' #txt
 De0 f3 actionTable 'out=in;
 ' #txt
@@ -74,29 +74,29 @@ out.contacts.addColumn("adress",["Lettenstrasse 7", "Alpenring 1", "Bahnhofstras
 out.contacts.addColumn("zip",["6303", "6310", "6000"]);
 out.contacts.addColumn("city",["Zug", "Cham", "Luzern"]);
 ' #txt
-De0 f3 type schulungJSF.DataTableData #txt
+De0 f3 type practiceJSF.DataTableData #txt
 De0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>Initialisierung</name>
-        <nameStyle>15,7
+        <name>Inscription</name>
+        <nameStyle>11,7
 </nameStyle>
     </language>
 </elementInfo>
 ' #txt
-De0 f3 168 42 112 44 -37 -8 #rect
+De0 f3 168 42 112 44 -28 -8 #rect
 De0 f3 @|StepIcon #fIcon
 De0 f4 expr out #txt
 De0 f4 111 64 168 64 #arcP
 De0 f5 targetWindow NEW:card: #txt
 De0 f5 targetDisplay TOP #txt
-De0 f5 richDialogId schulungJSF.DataTable #txt
+De0 f5 richDialogId practiceJSF.DataTable #txt
 De0 f5 startMethod start(Recordset) #txt
-De0 f5 type schulungJSF.DataTableData #txt
+De0 f5 type practiceJSF.DataTableData #txt
 De0 f5 requestActionDecl '<Recordset contacts> param;' #txt
 De0 f5 requestMappingAction 'param.contacts=in.contacts;
 ' #txt
-De0 f5 responseActionDecl 'schulungJSF.DataTableData out;
+De0 f5 responseActionDecl 'practiceJSF.DataTableData out;
 ' #txt
 De0 f5 windowConfiguration '* ' #txt
 De0 f5 isAsynch false #txt
@@ -117,7 +117,7 @@ De0 f6 expr out #txt
 De0 f6 280 64 328 64 #arcP
 De0 f2 expr out #txt
 De0 f2 440 64 497 64 #arcP
->Proto De0 .type schulungJSF.DataTableData #txt
+>Proto De0 .type practiceJSF.DataTableData #txt
 >Proto De0 .processKind NORMAL #txt
 >Proto De0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>

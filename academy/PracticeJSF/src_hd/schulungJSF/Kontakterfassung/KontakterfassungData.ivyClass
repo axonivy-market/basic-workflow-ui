@@ -1,6 +1,0 @@
-KontakterfassungData #class
-schulungJSF.Kontakterfassung #namespace
-kontakt schulungJSF.Kontakt #field
-kontakt PERSISTENT #fieldModifier
-company schulungJSF.Company #field
-company PERSISTENT #fieldModifier

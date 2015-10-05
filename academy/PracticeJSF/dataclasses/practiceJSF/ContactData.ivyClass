@@ -1,0 +1,6 @@
+ContactData #class
+practiceJSF #namespace
+contact practiceJSF.Contact #field
+contact PERSISTENT #fieldModifier
+company practiceJSF.Company #field
+company PERSISTENT #fieldModifier

@@ -1,0 +1,16 @@
+ColorOrder #class
+practiceJSF #namespace
+name String #field
+name PERSISTENT #fieldModifier
+firstName String #field
+firstName PERSISTENT #fieldModifier
+location String #field
+location PERSISTENT #fieldModifier
+active Boolean #field
+active PERSISTENT #fieldModifier
+registrationDate Date #field
+registrationDate PERSISTENT #fieldModifier
+gender String #field
+gender PERSISTENT #fieldModifier
+color String #field
+color PERSISTENT #fieldModifier

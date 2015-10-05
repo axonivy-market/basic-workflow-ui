@@ -1,0 +1,6 @@
+RegistrationFormData #class
+practiceJSF.RegistrationForm #namespace
+colorOrder practiceJSF.ColorOrder #field
+colorOrder PERSISTENT #fieldModifier
+color List<String> #field
+color PERSISTENT #fieldModifier
