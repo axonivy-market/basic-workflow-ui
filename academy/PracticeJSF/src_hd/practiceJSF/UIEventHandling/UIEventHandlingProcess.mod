@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Oct 05 16:39:23 CEST 2015]
+[>Created: Tue Oct 06 14:03:46 CEST 2015]
 15037E64D6B19F81 3.17 #module
 >Proto >Proto Collection #zClass
 Us0 UIEventHandlingProcess Big #zClass
@@ -23,7 +23,6 @@ Us0 @PushWFArc f5 '' #zField
 Us0 @GridStep f6 '' #zField
 Us0 @PushWFArc f7 '' #zField
 Us0 @PushWFArc f2 '' #zField
-Us0 @RichDialogProcessStart f8 '' #zField
 Us0 @RichDialogProcessEnd f9 '' #zField
 Us0 @GridStep f11 '' #zField
 Us0 @PushWFArc f10 '' #zField
@@ -40,9 +39,8 @@ Us0 @PushWFArc f25 '' #zField
 Us0 @GridStep f26 '' #zField
 Us0 @PushWFArc f27 '' #zField
 Us0 @PushWFArc f20 '' #zField
-Us0 @PushWFArc f12 '' #zField
-Us0 @PushWFArc f14 '' #zField
-Us0 @GridStep f13 '' #zField
+Us0 @RichDialogProcessStart f28 '' #zField
+Us0 @PushWFArc f8 '' #zField
 >Proto Us0 Us0 UIEventHandlingProcess #zField
 Us0 f0 guid 15037E64D87E95C3 #txt
 Us0 f0 type practiceJSF.UIEventHandling.UIEventHandlingData #txt
@@ -113,30 +111,17 @@ Us0 f7 expr out #txt
 Us0 f7 109 64 168 64 #arcP
 Us0 f2 expr out #txt
 Us0 f2 280 64 339 64 #arcP
-Us0 f8 guid 150381E2829A3D89 #txt
-Us0 f8 type practiceJSF.UIEventHandling.UIEventHandlingData #txt
-Us0 f8 actionDecl 'practiceJSF.UIEventHandling.UIEventHandlingData out;
-' #txt
-Us0 f8 actionTable 'out=in;
-' #txt
-Us0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>handleChange</name>
-    </language>
-</elementInfo>
-' #txt
-Us0 f8 83 243 26 26 -41 12 #rect
-Us0 f8 @|RichDialogProcessStartIcon #fIcon
 Us0 f9 type practiceJSF.UIEventHandling.UIEventHandlingData #txt
-Us0 f9 499 243 26 26 0 12 #rect
+Us0 f9 339 243 26 26 0 12 #rect
 Us0 f9 @|RichDialogProcessEndIcon #fIcon
 Us0 f11 actionDecl 'practiceJSF.UIEventHandling.UIEventHandlingData out;
 ' #txt
 Us0 f11 actionTable 'out=in;
-out.eventListenerData.customMessage=in.eventListenerData.hello + " " + in.eventListenerData.gender + " " + in.eventListenerData.name;
 ' #txt
-Us0 f11 actionCode 'in.popUp="Submit pressed! Data: ";' #txt
+Us0 f11 actionCode 'import javax.faces.context.FacesContext;
+import javax.faces.application.FacesMessage;
+
+FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Submit pressed!", "Data: "+in.eventListenerData.customMessage+" "+in.eventListenerData.gender+" "+in.eventListenerData.name));' #txt
 Us0 f11 type practiceJSF.UIEventHandling.UIEventHandlingData #txt
 Us0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -147,10 +132,10 @@ Us0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Us0 f11 328 234 112 44 -50 -8 #rect
+Us0 f11 168 234 112 44 -50 -8 #rect
 Us0 f11 @|StepIcon #fIcon
 Us0 f10 expr out #txt
-Us0 f10 440 256 499 256 #arcP
+Us0 f10 280 256 339 256 #arcP
 Us0 f15 guid 150382F63A17989C #txt
 Us0 f15 type practiceJSF.UIEventHandling.UIEventHandlingData #txt
 Us0 f15 actionDecl 'practiceJSF.UIEventHandling.UIEventHandlingData out;
@@ -262,27 +247,23 @@ Us0 f27 expr out #txt
 Us0 f27 109 384 168 384 #arcP
 Us0 f20 expr out #txt
 Us0 f20 280 384 336 384 #arcP
-Us0 f12 expr out #txt
-Us0 f12 280 256 328 256 #arcP
-Us0 f14 expr out #txt
-Us0 f14 109 256 168 256 #arcP
-Us0 f13 actionDecl 'practiceJSF.UIEventHandling.UIEventHandlingData out;
+Us0 f28 guid 1503D00676328D96 #txt
+Us0 f28 type practiceJSF.UIEventHandling.UIEventHandlingData #txt
+Us0 f28 actionDecl 'practiceJSF.UIEventHandling.UIEventHandlingData out;
 ' #txt
-Us0 f13 actionTable 'out=in;
+Us0 f28 actionTable 'out=in;
 ' #txt
-Us0 f13 actionCode in.eventListenerData.customMessage=""; #txt
-Us0 f13 type practiceJSF.UIEventHandling.UIEventHandlingData #txt
-Us0 f13 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+Us0 f28 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>Clear last Message</name>
-        <nameStyle>18,7
-</nameStyle>
+        <name>submit</name>
     </language>
 </elementInfo>
 ' #txt
-Us0 f13 168 234 112 44 -53 -8 #rect
-Us0 f13 @|StepIcon #fIcon
+Us0 f28 83 243 26 26 -19 12 #rect
+Us0 f28 @|RichDialogProcessStartIcon #fIcon
+Us0 f8 expr out #txt
+Us0 f8 109 256 168 256 #arcP
 >Proto Us0 .type practiceJSF.UIEventHandling.UIEventHandlingData #txt
 >Proto Us0 .processKind HTML_DIALOG #txt
 >Proto Us0 -8 -8 16 16 16 26 #rect
@@ -295,10 +276,6 @@ Us0 f6 mainOut f2 tail #connect
 Us0 f2 head f1 mainIn #connect
 Us0 f11 mainOut f10 tail #connect
 Us0 f10 head f9 mainIn #connect
-Us0 f8 mainOut f14 tail #connect
-Us0 f14 head f13 mainIn #connect
-Us0 f13 mainOut f12 tail #connect
-Us0 f12 head f11 mainIn #connect
 Us0 f18 mainOut f17 tail #connect
 Us0 f17 head f16 mainIn #connect
 Us0 f19 out f21 tail #connect
@@ -311,3 +288,5 @@ Us0 f15 mainOut f27 tail #connect
 Us0 f27 head f26 mainIn #connect
 Us0 f26 mainOut f20 tail #connect
 Us0 f20 head f19 in #connect
+Us0 f28 mainOut f8 tail #connect
+Us0 f8 head f11 mainIn #connect
