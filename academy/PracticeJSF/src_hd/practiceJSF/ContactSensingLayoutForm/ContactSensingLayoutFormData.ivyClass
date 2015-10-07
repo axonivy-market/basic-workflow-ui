@@ -1,0 +1,6 @@
+ContactSensingLayoutFormData #class
+practiceJSF.ContactSensingLayoutForm #namespace
+colorOrder practiceJSF.ColorOrder #field
+colorOrder PERSISTENT #fieldModifier
+color List<String> #field
+color PERSISTENT #fieldModifier
