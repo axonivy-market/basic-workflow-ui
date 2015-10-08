@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:body>
+	<ui:composition template="/layouts/basic.xhtml">
+		<ui:define name="title">AvancedInputForm</ui:define>
+		<ui:define name="content">
+			<h3>
+				A advanced input formular
+			</h3>
+
+			<h:form id="form" enctype="multipart/form-data">
+				<h:panelGrid columns="2">
+					<f:facet name="header">
+						<p:messages></p:messages>
+					</f:facet>
+
+					<p:outputLabel for="Name" value="Name" />
+					<p:inputText id="Name" value="#{data.name}" required="true">
+						<p:focus />
+					</p:inputText>
+
+					<p:outputLabel for="FirstName" value="First Name" />
+					<p:inputText id="FirstName" value="#{data.firstName}"
+						required="true" />
+
+					<p:outputLabel for="Birthdate" value="Birthdate" />
+					<p:calendar id="Birthdate" value="#{data.birthdate}"
+						pattern="dd.MM.yyyy" size="10">
+						<f:convertDateTime pattern="dd.MM.yyyy" />
+					</p:calendar>
+
+					<p:outputLabel for="PhoneNumber" value="Telephone" />
+					<p:inputMask value="#{data.telephone}" id="PhoneNumber"
+						mask="+99 99 999 99 99" />
+
+					<br />
+
+					<p:fileUpload id="pic" value="#{data.picture}" mode="simple"
+						sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpeg|png)}/"
+						style="width=300px" />
+
+					<p:outputLabel for="Road" value="Road" />
+					<p:inputText id="Road" value="#{data.road}"></p:inputText>
+
+					<p:outputLabel for="ZipCode" value="Zip Code" />
+					<p:inputText id="ZipCode" value="#{data.zipCode}"></p:inputText>
+
+					<p:outputLabel for="Location" value="Location" />
+					<p:inputText id="Location" value="#{data.location}"></p:inputText>
+
+					<p:outputLabel for="Country" value="Country" />
+					<p:autoComplete value="#{data.country}" id="Country"
+						completeMethod="#{logic.completeCountry}" queryDelay="500"/>
+
+					<p:commandButton value="Send" actionListener="#{logic.send}"
+						update="panel" id="SendButton" ajax="false" />
+					<p:commandButton actionListener="#{logic.close}" value="Proceed"
+						update="form" icon="ui-icon-check" />
+				</h:panelGrid>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
