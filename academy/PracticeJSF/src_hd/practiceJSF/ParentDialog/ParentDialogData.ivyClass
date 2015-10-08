@@ -1,0 +1,10 @@
+ParentDialogData #class
+practiceJSF.ParentDialog #namespace
+contacts java.util.List<practiceJSF.Contact> #field
+contacts PERSISTENT #fieldModifier
+contact practiceJSF.Contact #field
+contact PERSISTENT #fieldModifier
+dialogInDialog practiceJSF.DialogInDialogData #field
+dialogInDialog PERSISTENT #fieldModifier
+chosenContact String #field
+chosenContact PERSISTENT #fieldModifier

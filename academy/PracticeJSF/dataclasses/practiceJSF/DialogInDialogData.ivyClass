@@ -1,0 +1,4 @@
+DialogInDialogData #class
+practiceJSF #namespace
+chosenContact String #field
+chosenContact PERSISTENT #fieldModifier
