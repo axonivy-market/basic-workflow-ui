@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:body>
+	<ui:composition template="/layouts/basic.xhtml">
+		<ui:define name="title">DragAndDropDialog</ui:define>
+		<ui:define name="content">
+			<h3>
+				Drag and Drop
+			</h3>
+
+			<h:form id="form">
+				<h:panelGrid columns="1">
+					<p:panel id="dragPanel" header="Our Colors" style="width: 440px;">
+
+						<p:dataGrid id="availableColors" value="#{data.colors}"
+							var="color" columns="20">
+							<p:column>
+								<p:graphicImage id="colorImage" library="ivy-dialog"
+									name="#{color}.png" height="40px;" />
+								<p:draggable for="colorImage" revert="true" />
+							</p:column>
+						</p:dataGrid>
+
+					</p:panel>
+
+
+					<p:panel id="targetPanel" header="Your Tip" style="width: 440px;">
+						<p:outputPanel id="dropPanel" layout="inline">
+							<h:outputText value="Drop here!"
+								rendered="#{empty data.selectedColors}" />
+							<p:dataGrid id="selectedGrid" value="#{data.selectedColors}"
+								var="selcolor" columns="20"
+								rendered="#{not empty data.selectedColors}">
+								<p:column>
+									<p:graphicImage id="selcolor" library="ivy-dialog"
+										name="#{selcolor}.png" height="40px;" />
+								</p:column>
+							</p:dataGrid>
+						</p:outputPanel>
+					</p:panel>
+					<p:droppable for="targetPanel" tolerance="pointer"
+						activeStyleClass="ui-state-highlight" datasource="availableColors">
+						<p:ajax listener="#{logic.myDrop}" update="dropPanel dragPanel" />
+					</p:droppable>
+
+					<p:commandButton actionListener="#{logic.close}" value="Proceed"
+						update="form" icon="ui-icon-check" />
+				</h:panelGrid>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
