@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 09 14:54:43 CEST 2015]
+[>Created: Fri Oct 09 16:35:45 CEST 2015]
 1504CA72D287699E 3.17 #module
 >Proto >Proto Collection #zClass
 Dp0 DragAndDrop Big #zClass
@@ -28,10 +28,30 @@ Dp0 f0 guid 1504CA72D2827C6C #txt
 Dp0 f0 requestEnabled true #txt
 Dp0 f0 triggerEnabled false #txt
 Dp0 f0 callSignature start() #txt
+Dp0 f0 persist false #txt
+Dp0 f0 startName '14. Drag and Drop' #txt
+Dp0 f0 taskData 'TaskTriggered.ROL=Everybody
+TaskTriggered.EXTYPE=0
+TaskTriggered.EXPRI=2
+TaskTriggered.TYPE=0
+TaskTriggered.PRI=2
+TaskTriggered.EXROL=Everybody' #txt
+Dp0 f0 showInStartList 1 #txt
+Dp0 f0 taskAndCaseSetupAction 'import ch.ivyteam.ivy.workflow.TaskUpdateDefinition;
+ch.ivyteam.ivy.workflow.TaskUpdateDefinition taskUpdDef = new ch.ivyteam.ivy.workflow.TaskUpdateDefinition();
+import ch.ivyteam.ivy.request.impl.DefaultCalendarProxy;
+DefaultCalendarProxy calendarProxy = ivy.cal as DefaultCalendarProxy;
+taskUpdDef.setPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+taskUpdDef.setExpiryActivator("Everybody");
+taskUpdDef.setExpiryPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+engine.updateCurrentTask(taskUpdDef);
+' #txt
 Dp0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start.ivp</name>
+        <nameStyle>9,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt
