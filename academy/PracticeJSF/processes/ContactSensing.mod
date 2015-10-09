@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 09 13:51:08 CEST 2015]
+[>Created: Fri Oct 09 14:13:50 CEST 2015]
 1501D82D3237D168 3.17 #module
 >Proto >Proto Collection #zClass
 Kg0 ContactSensing Big #zClass
@@ -29,7 +29,7 @@ Kg0 f0 requestEnabled true #txt
 Kg0 f0 triggerEnabled false #txt
 Kg0 f0 callSignature start() #txt
 Kg0 f0 persist false #txt
-Kg0 f0 startName '1. Contact sensing' #txt
+Kg0 f0 startName '01. Contact sensing' #txt
 Kg0 f0 taskData 'TaskTriggered.ROL=Everybody
 TaskTriggered.EXTYPE=0
 TaskTriggered.EXPRI=2
@@ -50,6 +50,8 @@ Kg0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start.ivp</name>
+        <nameStyle>9,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt

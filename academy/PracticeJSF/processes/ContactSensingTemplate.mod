@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 09 14:06:49 CEST 2015]
+[>Created: Fri Oct 09 14:13:50 CEST 2015]
 1504277D2E48A3F7 3.17 #module
 >Proto >Proto Collection #zClass
 Kg0 ContactSensingTemplate Big #zClass
@@ -29,7 +29,7 @@ Kg0 f0 requestEnabled true #txt
 Kg0 f0 triggerEnabled false #txt
 Kg0 f0 callSignature start() #txt
 Kg0 f0 persist false #txt
-Kg0 f0 startName '9. Contact sensing with modified template' #txt
+Kg0 f0 startName '09. Contact sensing with modified template' #txt
 Kg0 f0 taskData 'TaskTriggered.ROL=Everybody
 TaskTriggered.EXTYPE=0
 TaskTriggered.EXPRI=2

@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 09 14:03:29 CEST 2015]
+[>Created: Fri Oct 09 14:13:50 CEST 2015]
 1504C78D4F7B9173 3.17 #module
 >Proto >Proto Collection #zClass
 Ts0 TextsAndImages Big #zClass
@@ -29,7 +29,7 @@ Ts0 f0 requestEnabled true #txt
 Ts0 f0 triggerEnabled false #txt
 Ts0 f0 callSignature start() #txt
 Ts0 f0 persist false #txt
-Ts0 f0 startName '2. Output texts and images' #txt
+Ts0 f0 startName '02. Output texts and images' #txt
 Ts0 f0 taskData 'TaskTriggered.ROL=Everybody
 TaskTriggered.EXTYPE=0
 TaskTriggered.EXPRI=2
