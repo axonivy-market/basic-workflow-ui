@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Tue Oct 06 17:00:24 CEST 2015]
+[>Created: Fri Oct 09 14:05:43 CEST 2015]
 1503D99612EE10F2 3.17 #module
 >Proto >Proto Collection #zClass
 Vm0 ValidationForm Big #zClass
@@ -28,10 +28,30 @@ Vm0 f0 guid 1503D99622274B04 #txt
 Vm0 f0 requestEnabled true #txt
 Vm0 f0 triggerEnabled false #txt
 Vm0 f0 callSignature start() #txt
+Vm0 f0 persist false #txt
+Vm0 f0 startName '3.7. Formular with inputvalidation' #txt
+Vm0 f0 taskData 'TaskTriggered.ROL=Everybody
+TaskTriggered.EXTYPE=0
+TaskTriggered.EXPRI=2
+TaskTriggered.TYPE=0
+TaskTriggered.PRI=2
+TaskTriggered.EXROL=Everybody' #txt
+Vm0 f0 showInStartList 1 #txt
+Vm0 f0 taskAndCaseSetupAction 'import ch.ivyteam.ivy.workflow.TaskUpdateDefinition;
+ch.ivyteam.ivy.workflow.TaskUpdateDefinition taskUpdDef = new ch.ivyteam.ivy.workflow.TaskUpdateDefinition();
+import ch.ivyteam.ivy.request.impl.DefaultCalendarProxy;
+DefaultCalendarProxy calendarProxy = ivy.cal as DefaultCalendarProxy;
+taskUpdDef.setPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+taskUpdDef.setExpiryActivator("Everybody");
+taskUpdDef.setExpiryPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+engine.updateCurrentTask(taskUpdDef);
+' #txt
 Vm0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start.ivp</name>
+        <nameStyle>9,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt

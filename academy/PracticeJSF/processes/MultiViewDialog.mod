@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Wed Oct 07 15:38:10 CEST 2015]
+[>Created: Fri Oct 09 14:08:08 CEST 2015]
 1504284B0DCDB546 3.17 #module
 >Proto >Proto Collection #zClass
 Mg0 MultiViewDialog Big #zClass
@@ -28,10 +28,30 @@ Mg0 f0 guid 1504284B0E38CD0A #txt
 Mg0 f0 requestEnabled true #txt
 Mg0 f0 triggerEnabled false #txt
 Mg0 f0 callSignature start() #txt
+Mg0 f0 persist false #txt
+Mg0 f0 startName '10. Multiview dialog' #txt
+Mg0 f0 taskData 'TaskTriggered.ROL=Everybody
+TaskTriggered.EXTYPE=0
+TaskTriggered.EXPRI=2
+TaskTriggered.TYPE=0
+TaskTriggered.PRI=2
+TaskTriggered.EXROL=Everybody' #txt
+Mg0 f0 showInStartList 1 #txt
+Mg0 f0 taskAndCaseSetupAction 'import ch.ivyteam.ivy.workflow.TaskUpdateDefinition;
+ch.ivyteam.ivy.workflow.TaskUpdateDefinition taskUpdDef = new ch.ivyteam.ivy.workflow.TaskUpdateDefinition();
+import ch.ivyteam.ivy.request.impl.DefaultCalendarProxy;
+DefaultCalendarProxy calendarProxy = ivy.cal as DefaultCalendarProxy;
+taskUpdDef.setPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+taskUpdDef.setExpiryActivator("Everybody");
+taskUpdDef.setExpiryPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+engine.updateCurrentTask(taskUpdDef);
+' #txt
 Mg0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start.ivp</name>
+        <nameStyle>9,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt

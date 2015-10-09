@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Wed Oct 07 15:24:03 CEST 2015]
+[>Created: Fri Oct 09 14:06:49 CEST 2015]
 1504277D2E48A3F7 3.17 #module
 >Proto >Proto Collection #zClass
 Kg0 ContactSensingTemplate Big #zClass
@@ -28,10 +28,30 @@ Kg0 f0 guid 1501D82D41D411C3 #txt
 Kg0 f0 requestEnabled true #txt
 Kg0 f0 triggerEnabled false #txt
 Kg0 f0 callSignature start() #txt
+Kg0 f0 persist false #txt
+Kg0 f0 startName '9. Contact sensing with modified template' #txt
+Kg0 f0 taskData 'TaskTriggered.ROL=Everybody
+TaskTriggered.EXTYPE=0
+TaskTriggered.EXPRI=2
+TaskTriggered.TYPE=0
+TaskTriggered.PRI=2
+TaskTriggered.EXROL=Everybody' #txt
+Kg0 f0 showInStartList 1 #txt
+Kg0 f0 taskAndCaseSetupAction 'import ch.ivyteam.ivy.workflow.TaskUpdateDefinition;
+ch.ivyteam.ivy.workflow.TaskUpdateDefinition taskUpdDef = new ch.ivyteam.ivy.workflow.TaskUpdateDefinition();
+import ch.ivyteam.ivy.request.impl.DefaultCalendarProxy;
+DefaultCalendarProxy calendarProxy = ivy.cal as DefaultCalendarProxy;
+taskUpdDef.setPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+taskUpdDef.setExpiryActivator("Everybody");
+taskUpdDef.setExpiryPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+engine.updateCurrentTask(taskUpdDef);
+' #txt
 Kg0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start.ivp</name>
+        <nameStyle>9,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt

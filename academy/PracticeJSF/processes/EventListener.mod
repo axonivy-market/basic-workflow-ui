@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Oct 05 16:36:08 CEST 2015]
+[>Created: Fri Oct 09 14:05:08 CEST 2015]
 15037D0942CC5A94 3.17 #module
 >Proto >Proto Collection #zClass
 Er0 EventListener Big #zClass
@@ -28,10 +28,30 @@ Er0 f0 guid 15037D094C2B2A8F #txt
 Er0 f0 requestEnabled true #txt
 Er0 f0 triggerEnabled false #txt
 Er0 f0 callSignature start() #txt
+Er0 f0 persist false #txt
+Er0 f0 startName '6. Listener for UI Events' #txt
+Er0 f0 taskData 'TaskTriggered.ROL=Everybody
+TaskTriggered.EXTYPE=0
+TaskTriggered.EXPRI=2
+TaskTriggered.TYPE=0
+TaskTriggered.PRI=2
+TaskTriggered.EXROL=Everybody' #txt
+Er0 f0 showInStartList 1 #txt
+Er0 f0 taskAndCaseSetupAction 'import ch.ivyteam.ivy.workflow.TaskUpdateDefinition;
+ch.ivyteam.ivy.workflow.TaskUpdateDefinition taskUpdDef = new ch.ivyteam.ivy.workflow.TaskUpdateDefinition();
+import ch.ivyteam.ivy.request.impl.DefaultCalendarProxy;
+DefaultCalendarProxy calendarProxy = ivy.cal as DefaultCalendarProxy;
+taskUpdDef.setPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+taskUpdDef.setExpiryActivator("Everybody");
+taskUpdDef.setExpiryPriority(ch.ivyteam.ivy.workflow.WorkflowPriority.valueOf(2));
+engine.updateCurrentTask(taskUpdDef);
+' #txt
 Er0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>start.ivp</name>
+        <nameStyle>9,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt
