@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 09 14:13:50 CEST 2015]
+[>Created: Mon Oct 12 09:06:46 CEST 2015]
 1501D82D3237D168 3.17 #module
 >Proto >Proto Collection #zClass
 Kg0 ContactSensing Big #zClass
@@ -75,9 +75,8 @@ Kg0 f3 targetDisplay TOP #txt
 Kg0 f3 richDialogId practiceJSF.ContactSensing #txt
 Kg0 f3 startMethod start(practiceJSF.Contact,practiceJSF.Company) #txt
 Kg0 f3 type practiceJSF.ContactData #txt
-Kg0 f3 requestActionDecl '<practiceJSF.Contact kontakt, practiceJSF.Company company> param;' #txt
-Kg0 f3 requestMappingAction 'param.kontakt=in.contact;
-param.company=in.company;
+Kg0 f3 requestActionDecl '<practiceJSF.Contact contact, practiceJSF.Company company> param;' #txt
+Kg0 f3 requestMappingAction 'param.company=in.company;
 ' #txt
 Kg0 f3 responseActionDecl 'practiceJSF.ContactData out;
 ' #txt
@@ -91,13 +90,13 @@ Kg0 f3 userContext '* ' #txt
 Kg0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>Kontakterfassung</name>
-        <nameStyle>16,7
+        <name>Contact sensing</name>
+        <nameStyle>15,7
 </nameStyle>
     </language>
 </elementInfo>
 ' #txt
-Kg0 f3 168 42 112 44 -48 -8 #rect
+Kg0 f3 168 42 112 44 -45 -8 #rect
 Kg0 f3 @|RichDialogIcon #fIcon
 Kg0 f4 expr out #txt
 Kg0 f4 111 64 168 64 #arcP

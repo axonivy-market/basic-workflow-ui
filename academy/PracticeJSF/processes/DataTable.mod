@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 09 14:13:50 CEST 2015]
+[>Created: Mon Oct 12 09:42:45 CEST 2015]
 15023C7F4FB3D031 3.17 #module
 >Proto >Proto Collection #zClass
 De0 DataTable Big #zClass
@@ -17,9 +17,9 @@ De0 @StartRequest f0 '' #zField
 De0 @EndTask f1 '' #zField
 De0 @GridStep f3 '' #zField
 De0 @PushWFArc f4 '' #zField
-De0 @RichDialog f5 '' #zField
-De0 @PushWFArc f6 '' #zField
 De0 @PushWFArc f2 '' #zField
+De0 @PushWFArc f6 '' #zField
+De0 @RichDialog f5 '' #zField
 >Proto De0 De0 DataTable #zField
 De0 f0 outLink start.ivp #txt
 De0 f0 type practiceJSF.DataTableData #txt
@@ -89,6 +89,10 @@ De0 f3 168 42 112 44 -28 -8 #rect
 De0 f3 @|StepIcon #fIcon
 De0 f4 expr out #txt
 De0 f4 111 64 168 64 #arcP
+De0 f2 expr out #txt
+De0 f2 440 64 497 64 #arcP
+De0 f6 expr out #txt
+De0 f6 280 64 328 64 #arcP
 De0 f5 targetWindow NEW:card: #txt
 De0 f5 targetDisplay TOP #txt
 De0 f5 richDialogId practiceJSF.DataTable #txt
@@ -114,10 +118,6 @@ De0 f5 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 De0 f5 328 42 112 44 -28 -8 #rect
 De0 f5 @|RichDialogIcon #fIcon
-De0 f6 expr out #txt
-De0 f6 280 64 328 64 #arcP
-De0 f2 expr out #txt
-De0 f2 440 64 497 64 #arcP
 >Proto De0 .type practiceJSF.DataTableData #txt
 >Proto De0 .processKind NORMAL #txt
 >Proto De0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
