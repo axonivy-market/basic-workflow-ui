@@ -10,7 +10,7 @@ birthdate Date #field
 birthdate PERSISTENT #fieldModifier
 telephone String #field
 telephone PERSISTENT #fieldModifier
-picture com.sun.prism.Image #field
+picture File #field
 picture PERSISTENT #fieldModifier
 road String #field
 road PERSISTENT #fieldModifier

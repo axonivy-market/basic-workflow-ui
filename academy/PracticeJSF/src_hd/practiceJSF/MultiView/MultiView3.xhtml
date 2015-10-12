@@ -10,7 +10,7 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">MultiView</ui:define>
 		<ui:define name="content">
-			<h3>Wizard Page 2</h3>
+			<h3>Wizard Page 3</h3>
 
 			<h:form id="myForm">
 				<h:panelGrid columns="2" cellpadding="5">
@@ -25,7 +25,7 @@
 					<h:outputText value="#{data.firstName}" />
 
 					<h:outputLabel value="Your birthdate: " />
-					<p:calendar value="#{data.birthday}">
+					<p:calendar value="#{data.birthday}" pattern="dd.MM.yyyy">
 					<f:convertDateTime pattern="dd.MM.yyyy"/>
 					</p:calendar>
 

@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Oct 12 09:42:45 CEST 2015]
+[>Created: Mon Oct 12 17:38:27 CEST 2015]
 15023C7F4FB3D031 3.17 #module
 >Proto >Proto Collection #zClass
 De0 DataTable Big #zClass
@@ -74,6 +74,8 @@ out.contacts.addColumn("first name",["Yvonne", "Lara", "Felix"]);
 out.contacts.addColumn("adress",["Lettenstrasse 7", "Alpenring 1", "Bahnhofstrasse 24"]);
 out.contacts.addColumn("zip",["6303", "6310", "6000"]);
 out.contacts.addColumn("city",["Zug", "Cham", "Luzern"]);
+
+
 ' #txt
 De0 f3 type practiceJSF.DataTableData #txt
 De0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
