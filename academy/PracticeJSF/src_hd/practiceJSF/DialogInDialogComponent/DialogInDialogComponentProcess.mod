@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Tue Oct 13 09:59:06 CEST 2015]
+[>Created: Tue Oct 13 15:20:49 CEST 2015]
 15042C3E2237F4B3 3.17 #module
 >Proto >Proto Collection #zClass
 Ds0 DialogInDialogComponentProcess Big #zClass
@@ -75,12 +75,12 @@ Ds0 f6 actionTable 'out=in;
 ' #txt
 Ds0 f6 actionCode 'import practiceJSF.Contact;
 Contact denis;
-denis.name="huelin";
-denis.firstName="denis";
+denis.name="Huelin";
+denis.firstName="Denis";
 
 Contact reguel;
-reguel.name="wermelinger";
-reguel.firstName="reguel";
+reguel.name="Wermelinger";
+reguel.firstName="Reguel";
 
 Contact christian;
 christian.name="Strebel";

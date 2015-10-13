@@ -1,107 +1,114 @@
 html {
-  overflow-y: scroll;
+	overflow-y: scroll;
 }
 
 body {
-  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: small;
-  color: black;
+	font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: small;
+	color: black;
 }
 
 /*! Hack for IE10+11 that the scrollbar not overlays the page */
-@-ms-viewport {
-  width:auto;
+@
+-ms-viewport {
+	width: auto;
 }
 
 .navbar {
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
+	border: 0;
+	border-radius: 0;
+	margin-bottom: 0;
 }
 
 .navbar-inverse {
 	background-color: white;
 	color: black;
+	z-index: -110;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #ffffff;
+	color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav>li>a {
+	
 }
 
-.navbar-inverse .navbar-text,
-.navbar-inverse .navbar-link {
-  font-size: 12px;
+.navbar-inverse .navbar-text, .navbar-inverse .navbar-link {
+	font-size: 12px;
 }
 
 .navbar-collapse {
-  border-top: 0;
+	border-top: 0;
 }
 
 #headerdiv {
-  z-index: -2;
-  height: 400px;
-  background-image: url("#{resource['layouts/images/icon-2.png']}");
-  background-repeat: repeat-y;
+	float: left;
+	top: 10px;
+	height: 500px;
+	z-index: 110;
+	width: 300px;
+	background-image: url("#{resource['layouts/images/icon-2.png']}");
+	background-repeat: repeat-y;
+	background-color: gray;
 }
-.mainText{
 
+.mainText {
 	position: absolute;
+	z-index: 10;
 	top: 20px;
-	z-index: 100;
 }
 
 #navbar-ivy-title {
-  z-index: 110;
-  position: absolute;
-  margin-top: 20px;
-  margin-left: 15px;
-  color: green;
+	z-index: 110;
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 15px;
+	color: green;
 }
 
 #navbar-ivy-links {
-  z-index: 100;
-  position: absolute;
-  margin-top: 50px;
-  width: 600px;
-  font-size: 14px;
+	z-index: 100;
+	position: absolute;
+	margin-top: 50px;
+	width: 600px;
+	font-size: 14px;
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
-  font-weight: bold;
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover,
+	.navbar-inverse .navbar-nav>.active>a:focus {
+	font-weight: bold;
 }
 
 .jumbotron {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 .navbar-toggle {
-  z-index: 120;
+	z-index: 120;
 }
 
 .ivy-subnav {
-  margin-bottom: 0px;
-  font-size: 13px;
+	margin-bottom: 0px;
+	font-size: 13px;
 }
 
 .ivy-subnav .navbar-inner {
+	
 }
 
-.ivy-subnav .nav-pills li.active,
-.ivy-subnav .nav-pills li.active > a,
-.ivy-subnav .nav-pills li.active > a:hover,
-.ivy-subnav .nav-pills li.active > a:focus {
-  background-color: #afca05;
-  color: #ffffff;
+.ivy-subnav .nav-pills li.active, .ivy-subnav .nav-pills li.active>a,
+	.ivy-subnav .nav-pills li.active>a:hover, .ivy-subnav .nav-pills li.active>a:focus
+	{
+	background-color: #afca05;
+	color: #ffffff;
 }
 
 .ivy-subnav .nav-pills li a {
-  border-radius: 0;
+	border-radius: 0;
 }
 
 footer {
-  color: #9d9d9d;
-  margin-bottom: 20px;
+	color: #9d9d9d;
+	margin-bottom: 20px;
 }

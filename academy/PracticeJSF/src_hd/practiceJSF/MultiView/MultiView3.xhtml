@@ -18,19 +18,20 @@
 						<p:messages></p:messages>
 					</f:facet>
 
-					<h:outputLabel value="Your message: " />
-					<h:outputText value="#{data.message}" />
+					<h:outputLabel value="Your message: " for="message" />
+					<h:outputText value="#{data.message}" id="message" />
 
-					<h:outputLabel value="Your first name: " />
-					<h:outputText value="#{data.firstName}" />
+					<h:outputLabel value="Your first name: " for="firstName"/>
+					<h:outputText value="#{data.firstName}" id="firstName"/>
 
-					<h:outputLabel value="Your birthdate: " />
-					<p:calendar value="#{data.birthday}" pattern="dd.MM.yyyy">
-					<f:convertDateTime pattern="dd.MM.yyyy"/>
+					<h:outputLabel value="Your birthdate: " for="birthdate"/>
+					<p:calendar value="#{data.birthday}" pattern="dd.MM.yyyy" id="birthdate">
+						<f:convertDateTime pattern="dd.MM.yyyy" />
 					</p:calendar>
 
 					<p:commandButton action="MultiView2" value="back" update="myForm" />
-					<p:commandButton actionListener="#{logic.close}" value="finish" update="myForm" />
+					<p:commandButton actionListener="#{logic.close}" value="finish"
+						update="myForm" />
 				</h:panelGrid>
 			</h:form>
 

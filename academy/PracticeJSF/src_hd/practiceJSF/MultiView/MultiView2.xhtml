@@ -18,11 +18,11 @@
 						<p:messages></p:messages>
 					</f:facet>
 
-					<h:outputLabel value="Your message: " />
-					<h:outputText value="#{data.message}" />
+					<h:outputLabel value="Your message: " for="message"/>
+					<h:outputText value="#{data.message}" id="message"/>
 
-					<h:outputLabel value="Your first name: " />
-					<h:inputText value="#{data.firstName}" />
+					<h:outputLabel value="Your first name: " for="firstName" />
+					<h:inputText value="#{data.firstName}" id="firstName"/>
 
 					<p:commandButton action="MultiView1" value="back" update="myForm" />
 					<p:commandButton action="MultiView3" value="next" update="myForm" />

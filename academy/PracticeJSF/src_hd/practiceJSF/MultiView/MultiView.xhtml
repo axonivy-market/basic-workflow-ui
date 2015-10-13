@@ -18,8 +18,8 @@
 						<p:messages></p:messages>
 					</f:facet>
 
-					<h:outputLabel value="Your message: " />
-					<h:inputText value="#{data.message}" />
+					<h:outputLabel value="Your message: " for="message" />
+					<h:inputText value="#{data.message}" id="message" />
 
 					<p:commandButton action="MultiView2" value="next" update="myForm" />
 				</h:panelGrid>
