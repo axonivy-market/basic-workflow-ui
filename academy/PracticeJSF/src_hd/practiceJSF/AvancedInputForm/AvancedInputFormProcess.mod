@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Oct 08 16:46:34 CEST 2015]
+[>Created: Tue Oct 13 10:06:22 CEST 2015]
 15047A2F77713FB5 3.17 #module
 >Proto >Proto Collection #zClass
 As0 AvancedInputFormProcess Big #zClass
@@ -149,9 +149,10 @@ As0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 As0 f11 83 339 26 26 -14 12 #rect
 As0 f11 @|RichDialogProcessStartIcon #fIcon
 As0 f12 type practiceJSF.AvancedInputForm.AvancedInputFormData #txt
-As0 f12 211 339 26 26 0 12 #rect
+As0 f12 339 339 26 26 0 12 #rect
 As0 f12 @|RichDialogProcessEndIcon #fIcon
-As0 f13 109 352 211 352 #arcP
+As0 f13 expr out #txt
+As0 f13 109 352 339 352 #arcP
 >Proto As0 .type practiceJSF.AvancedInputForm.AvancedInputFormData #txt
 >Proto As0 .processKind HTML_DIALOG #txt
 >Proto As0 -8 -8 16 16 16 26 #rect

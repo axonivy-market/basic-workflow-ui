@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Oct 08 14:56:03 CEST 2015]
+[>Created: Tue Oct 13 09:59:06 CEST 2015]
 15042C3E2237F4B3 3.17 #module
 >Proto >Proto Collection #zClass
 Ds0 DialogInDialogComponentProcess Big #zClass
@@ -83,24 +83,24 @@ reguel.name="wermelinger";
 reguel.firstName="reguel";
 
 Contact christian;
-reguel.name="Strebel";
-reguel.firstName="Christian";
+christian.name="Strebel";
+christian.firstName="Christian";
 
 Contact bruno;
-reguel.name="Bütler";
-reguel.firstName="Bruno";
+bruno.name="Bütler";
+bruno.firstName="Bruno";
 
 Contact renato;
-reguel.name="Stadler";
-reguel.firstName="Renato";
+renato.name="Stadler";
+renato.firstName="Renato";
 
 Contact barbara;
-reguel.name="Brugger";
-reguel.firstName="Barbara";
+barbara.name="Brugger";
+barbara.firstName="Barbara";
 
 Contact caty;
-reguel.name="Hürlimann";
-reguel.firstName="Caty";
+caty.name="Hürlimann";
+caty.firstName="Caty";
 
 out.contacts=[denis, reguel, christian, bruno, renato, barbara, caty];' #txt
 Ds0 f6 type practiceJSF.DialogInDialogComponent.DialogInDialogComponentData #txt

@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 09 14:13:50 CEST 2015]
+[>Created: Tue Oct 13 09:38:45 CEST 2015]
 1503D99612EE10F2 3.17 #module
 >Proto >Proto Collection #zClass
 Vm0 ValidationForm Big #zClass
@@ -69,6 +69,7 @@ Vm0 f3 type practiceJSF.ValidationFormData #txt
 Vm0 f3 requestActionDecl '<practiceJSF.ValidationFormData validationFormData> param;' #txt
 Vm0 f3 requestMappingAction 'param.validationFormData=in;
 ' #txt
+Vm0 f3 requestActionCode ivy.session.setContentLocale("en","US"); #txt
 Vm0 f3 responseActionDecl 'practiceJSF.ValidationFormData out;
 ' #txt
 Vm0 f3 responseMappingAction 'out=result.validationFormData;

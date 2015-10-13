@@ -21,13 +21,13 @@
 					</f:facet>
 
 					<p:outputLabel for="Name" value="Name" />
-					<p:inputText id="Name" value="#{data.name}" required="true">
+					<p:inputText id="Name" value="#{data.name}" required="true" requiredMessage="A name is required!">
 						<p:focus />
 					</p:inputText>
 
 					<p:outputLabel for="FirstName" value="First Name" />
 					<p:inputText id="FirstName" value="#{data.firstName}"
-						required="true" />
+						required="true" requiredMessage="A firstname is required!" />
 
 					<p:outputLabel for="Birthdate" value="Birthdate" />
 					<p:calendar id="Birthdate" value="#{data.birthdate}"
@@ -39,7 +39,7 @@
 					<p:inputMask value="#{data.telephone}" id="PhoneNumber"
 						mask="+99 99 999 99 99" />
 
-					<br />
+					<br/>
 
 					<p:fileUpload id="pic" value="#{data.picture}" mode="simple"
 						sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpeg|png)}/"

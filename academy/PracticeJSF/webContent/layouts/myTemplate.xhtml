@@ -15,7 +15,7 @@
 	<!-- You can also load bootstrap from an external CDN: //http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css -->
 	<h:outputStylesheet
 		name="layouts/styles/bootstrap-modified-for-jsf.css" />
-	<h:outputStylesheet name="layouts/styles/ivy-common.css" />
+	<h:outputStylesheet name="layouts/styles/ivy-common-modified.css" />
 
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,14 +37,16 @@
 	</ui:insert>
 
 	<div id="content" class="container">
-		<ui:insert name="content">
+		<div class="mainText" style="padding-left: 300px">
+			<ui:insert name="content">
         default content
-      </ui:insert>
+     		 </ui:insert>
+		</div>
 
 		<ui:insert name="footer">
 			<hr />
 			<footer>
-				<p>this is a footer</p>
+				<ui:include src="/layouts/includes/footer.xhtml" />
 			</footer>
 		</ui:insert>
 	</div>
