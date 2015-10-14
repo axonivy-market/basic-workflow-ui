@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Oct 12 09:06:46 CEST 2015]
+[>Created: Wed Oct 14 11:30:19 CEST 2015]
 1504277D2E48A3F7 3.17 #module
 >Proto >Proto Collection #zClass
 Kg0 ContactSensingTemplate Big #zClass
@@ -76,12 +76,14 @@ Kg0 f3 richDialogId practiceJSF.ContactSensingTemplate #txt
 Kg0 f3 startMethod start(practiceJSF.Contact,practiceJSF.Company) #txt
 Kg0 f3 type practiceJSF.ContactData #txt
 Kg0 f3 requestActionDecl '<practiceJSF.Contact contact, practiceJSF.Company company> param;' #txt
-Kg0 f3 requestMappingAction 'param.company=in.company;
+Kg0 f3 requestMappingAction 'param.contact=in.contact;
+param.company=in.company;
 ' #txt
 Kg0 f3 responseActionDecl 'practiceJSF.ContactData out;
 ' #txt
 Kg0 f3 responseMappingAction 'out=in;
 out.company=result.company;
+out.contact=result.contact;
 ' #txt
 Kg0 f3 windowConfiguration '* ' #txt
 Kg0 f3 isAsynch false #txt

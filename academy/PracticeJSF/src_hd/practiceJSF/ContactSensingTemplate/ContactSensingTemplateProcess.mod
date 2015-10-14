@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Mon Oct 05 11:00:01 CEST 2015]
+[>Created: Wed Oct 14 11:29:38 CEST 2015]
 150427832B963B5C 3.17 #module
 >Proto >Proto Collection #zClass
 Ks0 ContactSensingTemplateProcess Big #zClass
@@ -30,10 +30,12 @@ Ks0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodE
 <practiceJSF.Contact contact,practiceJSF.Company company> param = methodEvent.getInputArguments();
 ' #txt
 Ks0 f0 inParameterMapAction 'out.company=param.company;
+out.contact=param.contact;
 ' #txt
 Ks0 f0 outParameterDecl '<practiceJSF.Contact contact,practiceJSF.Company company> result;
 ' #txt
-Ks0 f0 outParameterMapAction 'result.company=in.company;
+Ks0 f0 outParameterMapAction 'result.contact=in.contact;
+result.company=in.company;
 ' #txt
 Ks0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
