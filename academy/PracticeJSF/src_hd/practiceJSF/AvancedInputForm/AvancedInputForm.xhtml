@@ -10,9 +10,7 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">AvancedInputForm</ui:define>
 		<ui:define name="content">
-			<h3>
-				A advanced input formular
-			</h3>
+			<h3>A advanced input formular</h3>
 
 			<h:form id="form" enctype="multipart/form-data">
 				<h:panelGrid columns="2">
@@ -21,7 +19,8 @@
 					</f:facet>
 
 					<p:outputLabel for="Name" value="Name" />
-					<p:inputText id="Name" value="#{data.name}" required="true" requiredMessage="A name is required!">
+					<p:inputText id="Name" value="#{data.name}" required="true"
+						requiredMessage="A name is required!">
 						<p:focus />
 					</p:inputText>
 
@@ -39,11 +38,13 @@
 					<p:inputMask value="#{data.telephone}" id="PhoneNumber"
 						mask="+99 99 999 99 99" />
 
-					<br/>
+					<br />
 
 					<p:fileUpload id="pic" value="#{data.picture}" mode="simple"
 						sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpeg|png)}/"
 						style="width=300px" />
+
+
 
 					<p:outputLabel for="Road" value="Road" />
 					<p:inputText id="Road" value="#{data.road}"></p:inputText>
@@ -56,15 +57,18 @@
 
 					<p:outputLabel for="Country" value="Country" />
 					<p:autoComplete value="#{data.country}" id="Country"
-						completeMethod="#{logic.completeCountry}" queryDelay="500"/>
+						completeMethod="#{logic.completeCountry}" queryDelay="500" />
 
-					<p:commandButton value="Send" actionListener="#{logic.send}"
-						update="panel" id="SendButton" ajax="false" />
+					<p:commandButton value="Show Image" update="image" id="SendButton"
+						ajax="false" />
 					<p:commandButton actionListener="#{logic.close}" value="Proceed"
 						update="form" icon="ui-icon-check" />
+
 				</h:panelGrid>
 			</h:form>
 
+			<img src="#{ivy.html.fileref(data.picture)}" class="image"
+				style="margin-left: 500px; position: absolute; top: 25%;" />
 		</ui:define>
 	</ui:composition>
 </h:body>

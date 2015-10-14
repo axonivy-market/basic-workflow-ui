@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Tue Oct 13 10:06:22 CEST 2015]
+[>Created: Wed Oct 14 14:09:28 CEST 2015]
 15047A2F77713FB5 3.17 #module
 >Proto >Proto Collection #zClass
 As0 AvancedInputFormProcess Big #zClass
@@ -26,9 +26,6 @@ As0 @RichDialogProcessEnd f7 '' #zField
 As0 @GridStep f9 '' #zField
 As0 @PushWFArc f10 '' #zField
 As0 @PushWFArc f8 '' #zField
-As0 @RichDialogProcessStart f11 '' #zField
-As0 @RichDialogProcessEnd f12 '' #zField
-As0 @PushWFArc f13 '' #zField
 >Proto As0 As0 AvancedInputFormProcess #zField
 As0 f0 guid 15047A2F78E117BE #txt
 As0 f0 type practiceJSF.AvancedInputForm.AvancedInputFormData #txt
@@ -133,26 +130,6 @@ As0 f10 expr out #txt
 As0 f10 109 256 168 256 #arcP
 As0 f8 expr out #txt
 As0 f8 280 256 339 256 #arcP
-As0 f11 guid 15047DBFABC4949C #txt
-As0 f11 type practiceJSF.AvancedInputForm.AvancedInputFormData #txt
-As0 f11 actionDecl 'practiceJSF.AvancedInputForm.AvancedInputFormData out;
-' #txt
-As0 f11 actionTable 'out=in;
-' #txt
-As0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>send</name>
-    </language>
-</elementInfo>
-' #txt
-As0 f11 83 339 26 26 -14 12 #rect
-As0 f11 @|RichDialogProcessStartIcon #fIcon
-As0 f12 type practiceJSF.AvancedInputForm.AvancedInputFormData #txt
-As0 f12 339 339 26 26 0 12 #rect
-As0 f12 @|RichDialogProcessEndIcon #fIcon
-As0 f13 expr out #txt
-As0 f13 109 352 339 352 #arcP
 >Proto As0 .type practiceJSF.AvancedInputForm.AvancedInputFormData #txt
 >Proto As0 .processKind HTML_DIALOG #txt
 >Proto As0 -8 -8 16 16 16 26 #rect
@@ -165,5 +142,3 @@ As0 f6 mainOut f10 tail #connect
 As0 f10 head f9 mainIn #connect
 As0 f9 mainOut f8 tail #connect
 As0 f8 head f7 mainIn #connect
-As0 f11 mainOut f13 tail #connect
-As0 f13 head f12 mainIn #connect
