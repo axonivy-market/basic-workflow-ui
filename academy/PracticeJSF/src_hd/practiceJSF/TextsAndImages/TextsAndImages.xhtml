@@ -11,33 +11,33 @@
 		<ui:define name="title">TextsAndImages</ui:define>
 		<ui:define name="content">
 			<h:form id="form">
-				<h1>HeaderText from CMS:</h1>
+				<h2>HeaderText from CMS:</h2>
 
 				<h:outputText escape="false"
-					value="#{ivy.cms.co('/Project/HeaderText')}" />
+					value="#{ivy.cms.co('/Project/HeaderText2')}" />
 
 				<br />
 
-				<h2>Banner Image from CMS:</h2>
+				<h2>Banner image from CMS:</h2>
 
 				<p:graphicImage library="ivy-cms" name="/Project/Banner" />
 
 				<br />
 
-				<h2>A Picture from resource Folder:</h2>
+				<h2>A picture from resource folder:</h2>
 
 				<p:graphicImage library="ivy-dialog" name="Koala.jpg" height="150" />
 
 				<br />
 
-				<h2>A Picture from webContent Folder</h2>
+				<h2>A Picture from webContent folder</h2>
 
 				<p:graphicImage library="ivy-webcontent"
 					name="layouts/images/ivy_favicon_48.png" />
 
-				<br />
 
-				<h2>Text from webContent Folder</h2>
+				<br />
+				<h2>Link to textfile from webContent folder</h2>
 
 				<br />
 

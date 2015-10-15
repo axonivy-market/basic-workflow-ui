@@ -47,13 +47,13 @@
 
 
 					<p:outputLabel for="Road" value="Road" />
-					<p:inputText id="Road" value="#{data.road}"></p:inputText>
+					<p:inputText id="Road" value="#{data.road}" />
 
 					<p:outputLabel for="ZipCode" value="Zip Code" />
-					<p:inputText id="ZipCode" value="#{data.zipCode}"></p:inputText>
+					<p:inputText id="ZipCode" value="#{data.zipCode}" />
 
 					<p:outputLabel for="Location" value="Location" />
-					<p:inputText id="Location" value="#{data.location}"></p:inputText>
+					<p:inputText id="Location" value="#{data.location}" />
 
 					<p:outputLabel for="Country" value="Country" />
 					<p:autoComplete value="#{data.country}" id="Country"
@@ -65,9 +65,10 @@
 						update="form" icon="ui-icon-check" />
 
 				</h:panelGrid>
+
 			</h:form>
 
-			<img src="#{ivy.html.fileref(data.picture)}" class="image"
+			<img src="#{ivy.html.fileref(data.picture)}" id="image"
 				style="margin-left: 500px; position: absolute; top: 25%;" />
 		</ui:define>
 	</ui:composition>

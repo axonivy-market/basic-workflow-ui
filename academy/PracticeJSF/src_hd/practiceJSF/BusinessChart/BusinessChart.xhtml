@@ -12,10 +12,13 @@
 		<ui:define name="content">
 			<br />
 			<h:form id="form">
-
+				<p:growl id="growl" showDetail="true" />
+				<br />
 				<p:chart id="horizontal" type="bar" model="#{data.chart}"
-					style="height:400px" />
-
+					style="height:400px">
+					<p:ajax event="itemSelect" update="growl"
+						listener="#{logic.itemSelected}" />
+				</p:chart>
 				<br />
 
 			</h:form>

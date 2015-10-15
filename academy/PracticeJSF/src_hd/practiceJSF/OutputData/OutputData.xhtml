@@ -13,30 +13,31 @@
 			<h3>OutputText</h3>
 
 			<h:form id="form">
-				<h:panelGrid columns="1" border="1" cellpadding="1">
+				<h:panelGrid columns="2" border="1" cellpadding="1">
 					<f:facet name="header">
 					</f:facet>
-
+					Multilinetext:
 					<h:outputText escape="false">
 					#{data.message}<br />
 					#{data.message}
 					</h:outputText>
-
-					<h:outputText value="#{data.bold}" style="font-weight:bold">
-					</h:outputText>
-
+					Bold text:
+					<h:outputText value="#{data.bold}" style="font-weight:bold" />
+					
+					Currencyconverter:
 					<h:outputText value="#{data.moneyAmount}">
 						<f:convertNumber type="currency" currencyCode="CHF"
 							maxFractionDigits="2" />
 					</h:outputText>
+					Dateconverter:
 					<h:outputText value="#{data.currentDate}">
 						<f:convertDateTime pattern="dd.MM.yyyy" />
 					</h:outputText>
-
+					Date and time converter:
 					<h:outputText value="#{data.currentDateTime}">
 						<f:convertDateTime pattern="dd.MM.yyyy hh:mm" />
 					</h:outputText>
-
+					<br />
 					<p:commandButton actionListener="#{logic.close}" value="Proceed"
 						update="form" icon="ui-icon-check" />
 				</h:panelGrid>
