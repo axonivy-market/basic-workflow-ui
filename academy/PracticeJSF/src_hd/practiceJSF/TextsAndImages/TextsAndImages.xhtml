@@ -10,47 +10,47 @@
 	<ui:composition template="/layouts/basic.xhtml">
 		<ui:define name="title">TextsAndImages</ui:define>
 		<ui:define name="content">
-		<h:form id="form">
-			<h1>HeaderText from CMS:</h1>
+			<h:form id="form">
+				<h1>HeaderText from CMS:</h1>
 
-			<h:outputText escape="false"
-				value="#{ivy.cms.co('/Project/HeaderText')}" />
+				<h:outputText escape="false"
+					value="#{ivy.cms.co('/Project/HeaderText')}" />
 
-			<br />
+				<br />
 
-			<h2>Banner Image from CMS:</h2>
+				<h2>Banner Image from CMS:</h2>
 
-			<p:graphicImage library="ivy-cms" name="/Project/Banner" />
+				<p:graphicImage library="ivy-cms" name="/Project/Banner" />
 
-			<br />
+				<br />
 
-			<h2>A Picture from resource Folder:</h2>
+				<h2>A Picture from resource Folder:</h2>
 
-			<p:graphicImage library="ivy-dialog" name="Koala.jpg" height="150" />
+				<p:graphicImage library="ivy-dialog" name="Koala.jpg" height="150" />
 
-			<br />
+				<br />
 
-			<h2>A Picture from webContent Folder</h2>
+				<h2>A Picture from webContent Folder</h2>
 
-			<p:graphicImage library="ivy-webcontent"
-				name="layouts/images/ivy_favicon_48.png" />
+				<p:graphicImage library="ivy-webcontent"
+					name="layouts/images/ivy_favicon_48.png" />
 
-			<br />
+				<br />
 
-			<h2>FooterText from webContent Folder</h2>
+				<h2>Text from webContent Folder</h2>
 
-			<br />
+				<br />
 
-			<h:outputLink
-				value="#{resource['ivy-webcontent:layouts/includes/helloWorld.xhtml']}"> Link to my Text </h:outputLink>
+				<h:outputLink
+					value="#{resource['ivy-webcontent:layouts/includes/helloWorld.html']}"> Link to my Text </h:outputLink>
 
-			<br />
-			<br />
-			<br />
+
+				<br />
+				<br />
+				<br />
 			</h:form>
 			<p:commandButton actionListener="#{logic.close}" value="Proceed"
 				update="form" icon="ui-icon-check" />
-
 
 		</ui:define>
 	</ui:composition>
