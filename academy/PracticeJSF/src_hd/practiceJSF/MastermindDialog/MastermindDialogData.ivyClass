@@ -1,0 +1,12 @@
+MastermindDialogData #class
+practiceJSF.MastermindDialog #namespace
+selectedColors java.util.List<String> #field
+selectedColors PERSISTENT #fieldModifier
+colors java.util.List<String> #field
+colors PERSISTENT #fieldModifier
+correctColors java.util.List<String> #field
+correctColors PERSISTENT #fieldModifier
+correctAmount Number #field
+correctAmount PERSISTENT #fieldModifier
+correctionMessage String #field
+correctionMessage PERSISTENT #fieldModifier
