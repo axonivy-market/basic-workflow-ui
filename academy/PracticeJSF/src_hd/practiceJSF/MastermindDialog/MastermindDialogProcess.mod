@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 16 14:29:09 CEST 2015]
+[>Created: Fri Oct 16 16:48:02 CEST 2015]
 1506B9148CD67EC6 3.17 #module
 >Proto >Proto Collection #zClass
 Ds0 MastermindDialogProcess Big #zClass
@@ -29,15 +29,17 @@ Ds0 @PushWFArc f2 '' #zField
 Ds0 @RichDialogProcessEnd f12 '' #zField
 Ds0 @GridStep f14 '' #zField
 Ds0 @RichDialogProcessStart f11 '' #zField
-Ds0 @PushWFArc f15 '' #zField
 Ds0 @GridStep f16 '' #zField
 Ds0 @PushWFArc f17 '' #zField
 Ds0 @PushWFArc f13 '' #zField
 Ds0 @RichDialogProcessStart f18 '' #zField
-Ds0 @RichDialogProcessEnd f19 '' #zField
-Ds0 @GridStep f21 '' #zField
-Ds0 @PushWFArc f22 '' #zField
-Ds0 @PushWFArc f20 '' #zField
+Ds0 @PushWFArc f19 '' #zField
+Ds0 @Alternative f23 '' #zField
+Ds0 @PushWFArc f24 '' #zField
+Ds0 @PushWFArc f15 '' #zField
+Ds0 @GridStep f25 '' #zField
+Ds0 @PushWFArc f26 '' #zField
+Ds0 @PushWFArc f27 '' #zField
 >Proto Ds0 Ds0 MastermindDialogProcess #zField
 Ds0 f0 guid 1504CA82FD267531 #txt
 Ds0 f0 type practiceJSF.MastermindDialog.MastermindDialogData #txt
@@ -147,20 +149,24 @@ Ds0 f8 109 64 168 64 #arcP
 Ds0 f2 expr out #txt
 Ds0 f2 280 64 339 64 #arcP
 Ds0 f12 type practiceJSF.MastermindDialog.MastermindDialogData #txt
-Ds0 f12 483 339 26 26 0 12 #rect
+Ds0 f12 483 403 26 26 0 12 #rect
 Ds0 f12 @|RichDialogProcessEndIcon #fIcon
 Ds0 f14 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
 ' #txt
 Ds0 f14 actionTable 'out=in;
 ' #txt
 Ds0 f14 actionCode 'in.correctAmount=0;
-for(int i = 0; i<=4; i++){
-	if(in.correctColors.get(i)==in.selectedColors.get(i)){
+
+for(int i = 0; i<in.correctColors.size(); i++)
+{
+	if(in.correctColors.get(i)==in.selectedColors.get(i))
+	{
 		in.correctAmount++;
-		}
 	}
+}
 	
-if(in.correctAmount==4){
+if(in.correctAmount==in.correctColors.size())
+{
 	in.correctionMessage="You won!";
 }
 else
@@ -171,15 +177,15 @@ else
 	}
 	
 	in.correctionMessage += in.correctAmount.toString();
+
 	if(in.correctAmount<=1)
-		{
-			in.correctionMessage += " is correct (position): " + in.selectedColors + "<br />";
-		}
-		else
-		{
-			in.correctionMessage += " are correct (position): " + in.selectedColors + "<br />";
-		}
-	
+  {
+		in.correctionMessage += " is correct (position): " + in.selectedColors + "<br />";
+	}
+	else
+	{
+		in.correctionMessage += " are correct (position): " + in.selectedColors + "<br />";
+	}
 }' #txt
 Ds0 f14 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -191,7 +197,7 @@ Ds0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ds0 f14 152 330 112 44 -52 -8 #rect
+Ds0 f14 312 330 112 44 -52 -8 #rect
 Ds0 f14 @|StepIcon #fIcon
 Ds0 f11 guid 1506F92A226537B8 #txt
 Ds0 f11 type practiceJSF.MastermindDialog.MastermindDialogData #txt
@@ -208,20 +214,18 @@ Ds0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ds0 f11 83 339 26 26 -31 12 #rect
 Ds0 f11 @|RichDialogProcessStartIcon #fIcon
-Ds0 f15 expr out #txt
-Ds0 f15 109 352 152 352 #arcP
 Ds0 f16 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
 ' #txt
 Ds0 f16 actionTable 'out=in;
 ' #txt
-Ds0 f16 actionCode 'out.colors.add("red");
+Ds0 f16 actionCode 'out.selectedColors.clear();
+out.colors.clear();
+
+out.colors.add("red");
 out.colors.add("green");
 out.colors.add("orange");
 out.colors.add("blue");
-out.colors.add("purple");
-
-out.selectedColors.clear();
-' #txt
+out.colors.add("purple");' #txt
 Ds0 f16 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -232,12 +236,12 @@ Ds0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ds0 f16 312 330 112 44 -51 -8 #rect
+Ds0 f16 312 394 112 44 -51 -8 #rect
 Ds0 f16 @|StepIcon #fIcon
 Ds0 f17 expr out #txt
-Ds0 f17 264 352 312 352 #arcP
+Ds0 f17 368 374 368 394 #arcP
 Ds0 f13 expr out #txt
-Ds0 f13 424 352 483 352 #arcP
+Ds0 f13 424 416 483 416 #arcP
 Ds0 f18 guid 150709EAD8E17143 #txt
 Ds0 f18 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f18 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
@@ -251,40 +255,81 @@ Ds0 f18 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ds0 f18 83 435 26 26 -15 12 #rect
+Ds0 f18 83 443 26 26 -15 12 #rect
 Ds0 f18 @|RichDialogProcessStartIcon #fIcon
-Ds0 f19 type practiceJSF.MastermindDialog.MastermindDialogData #txt
-Ds0 f19 339 435 26 26 0 12 #rect
-Ds0 f19 @|RichDialogProcessEndIcon #fIcon
-Ds0 f21 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
-Ds0 f21 actionTable 'out=in;
-' #txt
-Ds0 f21 actionCode 'out.selectedColors.clear();
-out.colors.clear();
-
-out.colors.add("red");
-out.colors.add("green");
-out.colors.add("orange");
-out.colors.add("blue");
-out.colors.add("purple");
-' #txt
-Ds0 f21 type practiceJSF.MastermindDialog.MastermindDialogData #txt
-Ds0 f21 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+Ds0 f19 expr out #txt
+Ds0 f19 109 456 368 438 #arcP
+Ds0 f19 1 368 456 #addKink
+Ds0 f19 0 0.6240310650853516 0 0 #arcLabel
+Ds0 f23 type practiceJSF.MastermindDialog.MastermindDialogData #txt
+Ds0 f23 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>Put elements back</name>
-        <nameStyle>17,7
+        <name>All colors
+seleted?</name>
+        <nameStyle>11,7
+8,7
 </nameStyle>
     </language>
 </elementInfo>
 ' #txt
-Ds0 f21 168 426 112 44 -51 -8 #rect
-Ds0 f21 @|StepIcon #fIcon
-Ds0 f22 expr out #txt
-Ds0 f22 109 448 168 448 #arcP
-Ds0 f20 expr out #txt
-Ds0 f20 280 448 339 448 #arcP
+Ds0 f23 192 336 32 32 -25 18 #rect
+Ds0 f23 @|AlternativeIcon #fIcon
+Ds0 f24 expr out #txt
+Ds0 f24 109 352 192 352 #arcP
+Ds0 f15 expr in #txt
+Ds0 f15 outCond in.selectedColors.size()==in.correctColors.size() #txt
+Ds0 f15 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>yes</name>
+        <nameStyle>3,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Ds0 f15 224 352 312 352 #arcP
+Ds0 f25 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
+' #txt
+Ds0 f25 actionTable 'out=in;
+' #txt
+Ds0 f25 actionCode 'import javax.faces.context.FacesContext;
+import javax.faces.application.FacesMessage;
+
+FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+"Missing elements", "Please choose " + out.colors.size() + " additional colors!");
+
+FacesContext.getCurrentInstance().addMessage(null, msg);' #txt
+Ds0 f25 type practiceJSF.MastermindDialog.MastermindDialogData #txt
+Ds0 f25 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Show Error</name>
+        <nameStyle>10,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Ds0 f25 312 266 112 44 -30 -8 #rect
+Ds0 f25 @|StepIcon #fIcon
+Ds0 f26 expr in #txt
+Ds0 f26 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>no</name>
+        <nameStyle>2,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Ds0 f26 3 #arcStyle
+Ds0 f26 220 348 320 310 #arcP
+Ds0 f26 0 0.5000000000000001 0 0 #arcLabel
+Ds0 f27 expr out #txt
+Ds0 f27 3 #arcStyle
+Ds0 f27 424 288 496 403 #arcP
+Ds0 f27 1 496 288 #addKink
+Ds0 f27 1 0.4637855157628332 0 0 #arcLabel
 >Proto Ds0 .type practiceJSF.MastermindDialog.MastermindDialogData #txt
 >Proto Ds0 .processKind HTML_DIALOG #txt
 >Proto Ds0 -8 -8 16 16 16 26 #rect
@@ -297,13 +342,17 @@ Ds0 f0 mainOut f8 tail #connect
 Ds0 f8 head f6 mainIn #connect
 Ds0 f6 mainOut f2 tail #connect
 Ds0 f2 head f1 mainIn #connect
-Ds0 f11 mainOut f15 tail #connect
-Ds0 f15 head f14 mainIn #connect
 Ds0 f14 mainOut f17 tail #connect
 Ds0 f17 head f16 mainIn #connect
 Ds0 f16 mainOut f13 tail #connect
 Ds0 f13 head f12 mainIn #connect
-Ds0 f18 mainOut f22 tail #connect
-Ds0 f22 head f21 mainIn #connect
-Ds0 f21 mainOut f20 tail #connect
-Ds0 f20 head f19 mainIn #connect
+Ds0 f18 mainOut f19 tail #connect
+Ds0 f19 head f16 mainIn #connect
+Ds0 f11 mainOut f24 tail #connect
+Ds0 f24 head f23 in #connect
+Ds0 f23 out f15 tail #connect
+Ds0 f15 head f14 mainIn #connect
+Ds0 f23 out f26 tail #connect
+Ds0 f26 head f25 mainIn #connect
+Ds0 f25 mainOut f27 tail #connect
+Ds0 f27 head f12 mainIn #connect
