@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Oct 16 12:11:45 CEST 2015]
+[>Created: Fri Oct 16 14:29:09 CEST 2015]
 1506B9148CD67EC6 3.17 #module
 >Proto >Proto Collection #zClass
 Ds0 MastermindDialogProcess Big #zClass
@@ -33,6 +33,11 @@ Ds0 @PushWFArc f15 '' #zField
 Ds0 @GridStep f16 '' #zField
 Ds0 @PushWFArc f17 '' #zField
 Ds0 @PushWFArc f13 '' #zField
+Ds0 @RichDialogProcessStart f18 '' #zField
+Ds0 @RichDialogProcessEnd f19 '' #zField
+Ds0 @GridStep f21 '' #zField
+Ds0 @PushWFArc f22 '' #zField
+Ds0 @PushWFArc f20 '' #zField
 >Proto Ds0 Ds0 MastermindDialogProcess #zField
 Ds0 f0 guid 1504CA82FD267531 #txt
 Ds0 f0 type practiceJSF.MastermindDialog.MastermindDialogData #txt
@@ -109,7 +114,9 @@ Ds0 f6 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
 ' #txt
 Ds0 f6 actionTable 'out=in;
 ' #txt
-Ds0 f6 actionCode 'out.colors.add("red");
+Ds0 f6 actionCode 'import java.util.Collections;
+
+out.colors.add("red");
 out.colors.add("green");
 out.colors.add("orange");
 out.colors.add("blue");
@@ -119,7 +126,10 @@ out.correctColors.add("purple");
 out.correctColors.add("orange");
 out.correctColors.add("red");
 out.correctColors.add("blue");
-out.correctColors.add("green");' #txt
+out.correctColors.add("green");
+
+
+Collections.shuffle(out.correctColors);' #txt
 Ds0 f6 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -144,49 +154,33 @@ Ds0 f14 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
 Ds0 f14 actionTable 'out=in;
 ' #txt
 Ds0 f14 actionCode 'in.correctAmount=0;
-if(in.correctColors.get(0)==in.selectedColors.get(0)){
-	in.correctAmount=in.correctAmount+1;
-	};
-if(in.correctColors.get(1)==in.selectedColors.get(1)){
-	in.correctAmount=in.correctAmount+1;
-	};
-if(in.correctColors.get(2)==in.selectedColors.get(2)){
-	in.correctAmount=in.correctAmount+1;
-	};
-if(in.correctColors.get(3)==in.selectedColors.get(4)){
-	in.correctAmount=in.correctAmount+1;
-	};
-if(in.correctColors.get(4)==in.selectedColors.get(4)){
-	in.correctAmount=in.correctAmount+1;
-	};
+for(int i = 0; i<=4; i++){
+	if(in.correctColors.get(i)==in.selectedColors.get(i)){
+		in.correctAmount++;
+		}
+	}
 	
 if(in.correctAmount==4){
 	in.correctionMessage="You won!";
+}
+else
+{
+	if(in.correctionMessage=="You won!")
+	{
+	  in.correctionMessage="";
 	}
-	else{
-		if(in.correctionMessage=="You won!"){
-			in.correctionMessage="";
-			in.correctionMessage += in.correctAmount.toString();
-			if(in.correctAmount<=1){
-				in.correctionMessage += in.correctAmount.toString();
-				in.correctionMessage += " is correct (position): " + in.selectedColors;
-				}
-				else{
-				in.correctionMessage += in.correctAmount.toString();
-				in.correctionMessage += " are correct (position): " + in.selectedColors;
-				}
-			}
-			else{
-				if(in.correctAmount<=1){
-				in.correctionMessage += in.correctAmount.toString();
-				in.correctionMessage += " is correct (position): " + in.selectedColors;
-				}
-				else{
-				in.correctionMessage += in.correctAmount.toString();
-				in.correctionMessage += " are correct (position): " + in.selectedColors;
-				}
-			}
-		}' #txt
+	
+	in.correctionMessage += in.correctAmount.toString();
+	if(in.correctAmount<=1)
+		{
+			in.correctionMessage += " is correct (position): " + in.selectedColors + "<br />";
+		}
+		else
+		{
+			in.correctionMessage += " are correct (position): " + in.selectedColors + "<br />";
+		}
+	
+}' #txt
 Ds0 f14 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -244,6 +238,53 @@ Ds0 f17 expr out #txt
 Ds0 f17 264 352 312 352 #arcP
 Ds0 f13 expr out #txt
 Ds0 f13 424 352 483 352 #arcP
+Ds0 f18 guid 150709EAD8E17143 #txt
+Ds0 f18 type practiceJSF.MastermindDialog.MastermindDialogData #txt
+Ds0 f18 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
+' #txt
+Ds0 f18 actionTable 'out=in;
+' #txt
+Ds0 f18 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>revert</name>
+    </language>
+</elementInfo>
+' #txt
+Ds0 f18 83 435 26 26 -15 12 #rect
+Ds0 f18 @|RichDialogProcessStartIcon #fIcon
+Ds0 f19 type practiceJSF.MastermindDialog.MastermindDialogData #txt
+Ds0 f19 339 435 26 26 0 12 #rect
+Ds0 f19 @|RichDialogProcessEndIcon #fIcon
+Ds0 f21 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
+' #txt
+Ds0 f21 actionTable 'out=in;
+' #txt
+Ds0 f21 actionCode 'out.selectedColors.clear();
+out.colors.clear();
+
+out.colors.add("red");
+out.colors.add("green");
+out.colors.add("orange");
+out.colors.add("blue");
+out.colors.add("purple");
+' #txt
+Ds0 f21 type practiceJSF.MastermindDialog.MastermindDialogData #txt
+Ds0 f21 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Put elements back</name>
+        <nameStyle>17,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Ds0 f21 168 426 112 44 -51 -8 #rect
+Ds0 f21 @|StepIcon #fIcon
+Ds0 f22 expr out #txt
+Ds0 f22 109 448 168 448 #arcP
+Ds0 f20 expr out #txt
+Ds0 f20 280 448 339 448 #arcP
 >Proto Ds0 .type practiceJSF.MastermindDialog.MastermindDialogData #txt
 >Proto Ds0 .processKind HTML_DIALOG #txt
 >Proto Ds0 -8 -8 16 16 16 26 #rect
@@ -262,3 +303,7 @@ Ds0 f14 mainOut f17 tail #connect
 Ds0 f17 head f16 mainIn #connect
 Ds0 f16 mainOut f13 tail #connect
 Ds0 f13 head f12 mainIn #connect
+Ds0 f18 mainOut f22 tail #connect
+Ds0 f22 head f21 mainIn #connect
+Ds0 f21 mainOut f20 tail #connect
+Ds0 f20 head f19 mainIn #connect

@@ -51,15 +51,24 @@
 				</h:panelGrid>
 				<p:commandButton actionListener="#{logic.checkColor}" value="Check"
 					update="form" icon="ui-icon-search" />
+				<p:commandButton actionListener="#{logic.revert}"
+					value="Revert" update="form" icon="ui-icon-arrowreturn-1-w" />
 				<p:commandButton actionListener="#{logic.close}"
 					value="Give up / End" update="form" icon="ui-icon-close" />
-
+				
 				<h:panelGrid columns="1"
 					style="margin-left: 500px; position: absolute; top: 100px;">
 					<h:outputText value="#{data.correctionMessage}" escape="false" />
+					<br />
 				</h:panelGrid>
 			</h:form>
-
+			<br />
+			<br />
+			<br />
+			<br />
+			<h3>Game description:</h3>
+			<br />
+			To play the game you must choose your colors and
 		</ui:define>
 	</ui:composition>
 </h:body>
