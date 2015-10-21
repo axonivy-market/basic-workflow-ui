@@ -57,10 +57,11 @@
 					value="Give up / End" update="form" icon="ui-icon-close" />
 
 				<h:panelGrid columns="1"
-					style="margin-left: 550px; position: absolute; top: 225px; background-color: gray; "
-					rendered="#{data.correctionMessage.length() gt 0}" width="500">
+					style="margin-left: 550px; position: absolute; top: 200px;  "
+					rendered="#{data.correctionMessage.length() gt 0}" width="400"
+					border="2">
 					<h:outputText value="#{data.correctionMessage}" escape="false"
-						style="color: white;" />
+						style="color: black;" />
 
 				</h:panelGrid>
 			</h:form>
@@ -70,10 +71,10 @@
 			<br />
 			<h3>Game description:</h3>
 			<br />
-			To play the game you must choose your colors and drag and drop them in the dataGrid. <br />
-			You habe to find out which combination is the correct one. When choosing the colors, <br />
-			there will be a message telling you how many colors are at the correct position.<br />
-			<br />
+			To play the game you must choose your colors and drag and drop them in<br />
+			the dataGrid. You have to find out which combination is the correct one. <br />
+			When choosing the colors, there will be a message telling you how many<br />
+			colors are at the correct position.<br />
 			<h4>Good Luck!</h4>
 		</ui:define>
 	</ui:composition>

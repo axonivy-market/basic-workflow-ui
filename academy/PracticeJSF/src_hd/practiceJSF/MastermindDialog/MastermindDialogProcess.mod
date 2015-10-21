@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Wed Oct 21 13:46:50 CEST 2015]
+[>Created: Wed Oct 21 16:03:02 CEST 2015]
 1506B9148CD67EC6 3.17 #module
 >Proto >Proto Collection #zClass
 Ds0 MastermindDialogProcess Big #zClass
@@ -178,15 +178,23 @@ else
 	
 	in.correctionMessage += in.correctAmount.toString();
 
+  String colorHtml = "";
+  for(String color : in.selectedColors)
+  {
+		colorHtml += "<img src=\"/ivy/faces/javax.faces.resource/" + color + ".png?ln=xpertivy-2-htmlDialog-practiceJSF.MastermindDialog\" height=\"40px;\">";
+	}
+
 	if(in.correctAmount<=1)
   {
-		in.correctionMessage += " is correct (position): " + in.selectedColors + "<br />";
+	  in.correctionMessage += " is correct (position): " + colorHtml + "<br />";
 	}
+	
 	else
 	{
-		in.correctionMessage += " are correct (position): " + in.selectedColors + "<br />";
+		in.correctionMessage += " are correct (position): " + colorHtml + "<br />";
 	}
 }' #txt
+Ds0 f14 security system #txt
 Ds0 f14 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -332,6 +340,13 @@ Ds0 f27 1 496 288 #addKink
 Ds0 f27 1 0.4637855157628332 0 0 #arcLabel
 >Proto Ds0 .type practiceJSF.MastermindDialog.MastermindDialogData #txt
 >Proto Ds0 .processKind HTML_DIALOG #txt
+>Proto Ds0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name></name>
+    </language>
+</elementInfo>
+' #txt
 >Proto Ds0 -8 -8 16 16 16 26 #rect
 >Proto Ds0 '' #fIcon
 Ds0 f3 mainOut f5 tail #connect
