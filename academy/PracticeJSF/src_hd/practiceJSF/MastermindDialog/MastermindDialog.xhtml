@@ -25,7 +25,6 @@
 								<p:draggable for="colorImage" revert="true" />
 							</p:column>
 						</p:dataGrid>
-
 					</p:panel>
 
 					<br />
@@ -58,8 +57,10 @@
 					value="Give up / End" update="form" icon="ui-icon-close" />
 
 				<h:panelGrid columns="1"
-					style="margin-left: 550px; position: absolute; top: 225px; background-color: gray; " rendered="#{data.correctionMessage.length() gt 0}" width="500">
-					<h:outputText value="#{data.correctionMessage}" escape="false" style="color: white;"/>
+					style="margin-left: 550px; position: absolute; top: 225px; background-color: gray; "
+					rendered="#{data.correctionMessage.length() gt 0}" width="500">
+					<h:outputText value="#{data.correctionMessage}" escape="false"
+						style="color: white;" />
 					<br />
 				</h:panelGrid>
 			</h:form>
