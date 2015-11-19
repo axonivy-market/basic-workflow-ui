@@ -15,7 +15,7 @@
 			<h:form id="form">
 				<h:panelGrid columns="2" cellspacing="300">
 					<f:facet name="header">
-						<p:messages></p:messages>
+						<p:messages id="validationMsg"/>
 					</f:facet>
 					<p:outputLabel for="name"
 						value="#{ivy.cms.co('/Dialogs/practiceJSF/ValidationFormular/Name')}" />
@@ -54,7 +54,7 @@
 					</p:calendar>
 
 					<br />
-					<p:commandButton actionListener="#{logic.close}" value="Proceed"
+					<p:commandButton id="proceed" actionListener="#{logic.close}" value="Proceed"
 						update="form" icon="ui-icon-check" />
 				</h:panelGrid>
 			</h:form>

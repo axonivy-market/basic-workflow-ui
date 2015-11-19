@@ -44,16 +44,16 @@
 
 
 					<br />
-					<p:commandButton value="Submit" update="messages"
-						actionListener="#{logic.submit}" />
+					<p:commandButton value="Submit" update="submittedMessage"
+						actionListener="#{logic.submit}" id="buttonSubmit"/>
 					<p:commandButton value="End" update="form"
-						actionListener="#{logic.close}" />
+						actionListener="#{logic.close}" id="buttonEnd"/>
 					<br />
 
 
 
 				</h:panelGrid>
-				<p:messages id="messages" showDetail="true" />
+				<p:messages id="submittedMessage" showDetail="true" />
 			</h:form>
 
 		</ui:define>
