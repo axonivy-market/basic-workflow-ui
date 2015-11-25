@@ -9,7 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestPracticeJSF
 {
@@ -35,22 +37,29 @@ public class TestPracticeJSF
   @Test
   public void testValidationForm() throws Exception
   {
-    driver.get(baseUrl + "pro/" + ivyApplication
-            + "/PracticeJSF/1503D99612EE10F2/start.ivp");
+      driver.get(baseUrl + "pro/" + ivyApplication
+              + "/PracticeJSF/1503D99612EE10F2/start.ivp");
 
-    driver.findElement(By.id("form:proceed")).click();
+      driver.findElement(By.id("form:proceed")).click();
 
-    assertEquals("A name is required!", getErrorMessage(1));
-    assertEquals("A first name is required!", getErrorMessage(2));
-    assertEquals("A registrationdate is required!", getErrorMessage(3));
+      assertEquals("A name is required!", getErrorMessage(1));
+      assertEquals("A first name is required!", getErrorMessage(2));
+      assertEquals("A registrationdate is required!", getErrorMessage(3));
 
-    driver.findElement(By.id("form:name")).sendKeys("Hans");
-    driver.findElement(By.id("form:firstName")).sendKeys("Meier");
-    driver.findElement(By.id("form:registrationDate_input")).sendKeys("12.12.2015");
-    driver.findElement(By.id("form:location")).sendKeys("Zug");
-    driver.findElement(By.id("form:proceed")).click();
+      driver.findElement(By.id("form:name")).sendKeys("Hans");
+      driver.findElement(By.id("form:firstName")).sendKeys("Meier");
+      driver.findElement(By.id("form:location")).sendKeys("Zug");
+      driver.findElement(By.id("form:registrationDate_input")).click();
+      driver.findElement(By.linkText("11")).click();
+      await(ExpectedConditions.invisibilityOfElementLocated(By.id("ui-datepicker-div")));
 
-    ExpectedConditions.urlContains("/ivy/wf/index.jsp");
+      driver.findElement(By.id("form:proceed")).click();
+      await(ExpectedConditions.urlContains("/ivy/wf/index.jsp"));
+  }
+
+  private void await(ExpectedCondition<?> condition)
+  {
+    new WebDriverWait(driver, 5).until(condition);
   }
 
   private String getErrorMessage(int number)
