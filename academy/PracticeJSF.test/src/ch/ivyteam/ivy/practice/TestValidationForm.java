@@ -2,38 +2,12 @@ package ch.ivyteam.ivy.practice;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.concurrent.TimeUnit;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TestPracticeJSF
+public class TestValidationForm extends BaseSeleniumTest
 {
-  private WebDriver driver;
-  private String baseUrl;
-  private String ivyApplication;
-
-  @Before
-  public void setUp() throws Exception
-  {
-    driver = new org.openqa.selenium.firefox.FirefoxDriver();
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    baseUrl = "http://localhost:8081/ivy/";
-    ivyApplication = "designer";
-  }
-
-  @After
-  public void tearDown() throws Exception
-  {
-    driver.quit();
-  }
-
   @Test
   public void testValidationForm() throws Exception
   {
@@ -55,11 +29,6 @@ public class TestPracticeJSF
 
       driver.findElement(By.id("form:proceed")).click();
       await(ExpectedConditions.urlContains("/ivy/wf/index.jsp"));
-  }
-
-  private void await(ExpectedCondition<?> condition)
-  {
-    new WebDriverWait(driver, 5).until(condition);
   }
 
   private String getErrorMessage(int number)
