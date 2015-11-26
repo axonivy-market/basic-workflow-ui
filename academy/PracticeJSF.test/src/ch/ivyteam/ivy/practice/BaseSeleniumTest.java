@@ -13,14 +13,16 @@ public class BaseSeleniumTest
   protected WebDriver driver;
   protected String baseUrl;
   protected String ivyApplication;
+  protected String baseUrlPracticeJSF;
 
   @Before
   public void setUp() throws Exception
   {
     driver = new org.openqa.selenium.firefox.FirefoxDriver();
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    baseUrl = "http://localhost:8081/ivy/";
+    driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+    baseUrl = "http://localhost:8081/ivy/pro/";
     ivyApplication = "designer";
+    baseUrlPracticeJSF = baseUrl + ivyApplication + "/PracticeJSF/";
   }
 
   @After

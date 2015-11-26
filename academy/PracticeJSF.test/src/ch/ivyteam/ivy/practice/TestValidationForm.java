@@ -11,8 +11,7 @@ public class TestValidationForm extends BaseSeleniumTest
   @Test
   public void testValidationForm() throws Exception
   {
-      driver.get(baseUrl + "pro/" + ivyApplication
-              + "/PracticeJSF/1503D99612EE10F2/start.ivp");
+      driver.get(baseUrlPracticeJSF + "1503D99612EE10F2/start.ivp");
 
       driver.findElement(By.id("form:proceed")).click();
 
