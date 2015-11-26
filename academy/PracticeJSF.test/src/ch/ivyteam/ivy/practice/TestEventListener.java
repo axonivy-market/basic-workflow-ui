@@ -21,10 +21,10 @@ public class TestEventListener extends BaseSeleniumTest
     await(ExpectedConditions.textToBePresentInElementLocated(
             By.id("form:echo"), "testing"));
 
-    clickFromSelection("form:gender", 3);
+    clickFromSelection("form:gender", "Boy");
     selectOneContains("form:name", "Bruno");
 
-    clickFromSelection("form:name", 2);
+    clickFromSelection("form:name", "Bruno");
 
     driver.findElement(By.id("form:buttonSubmit")).click();
     await(ExpectedConditions.visibilityOfElementLocated(By.id("form:submittedMessage")));
@@ -47,9 +47,9 @@ public class TestEventListener extends BaseSeleniumTest
     }
   }
 
-  private void clickFromSelection(String menuId, int number)
+  private void clickFromSelection(String menuId, String label)
   {
     driver.findElement(By.id(menuId + "_label")).click();
-    driver.findElement(By.xpath("//div[@id='" + menuId + "_panel']/div/ul/li[" + number + "]")).click();
+    driver.findElement(By.xpath("//div[@id='" + menuId + "_panel']/div/ul/li[@data-label=\"" + label + "\"]")).click();
   }
 }
