@@ -22,9 +22,7 @@ public class TestValidationForm extends BaseSeleniumTest
       driver.findElement(By.id("form:name")).sendKeys("Hans");
       driver.findElement(By.id("form:firstName")).sendKeys("Meier");
       driver.findElement(By.id("form:location")).sendKeys("Zug");
-      driver.findElement(By.id("form:registrationDate_input")).click();
-      driver.findElement(By.linkText("11")).click();
-      await(ExpectedConditions.invisibilityOfElementLocated(By.id("ui-datepicker-div")));
+      selectFromCalendar("form:registrationDate_input", 11);
 
       driver.findElement(By.id("form:proceed")).click();
       await(ExpectedConditions.urlContains("/ivy/wf/index.jsp"));

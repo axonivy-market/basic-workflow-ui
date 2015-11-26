@@ -46,10 +46,4 @@ public class TestEventListener extends BaseSeleniumTest
               "Could not find label '" + label + "' in select one menu with id '" + menuId + "'", ex);
     }
   }
-
-  private void clickFromSelection(String menuId, String label)
-  {
-    driver.findElement(By.id(menuId + "_label")).click();
-    driver.findElement(By.xpath("//div[@id='" + menuId + "_panel']/div/ul/li[@data-label=\"" + label + "\"]")).click();
-  }
 }
