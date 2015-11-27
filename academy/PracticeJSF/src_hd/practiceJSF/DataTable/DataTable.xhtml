@@ -17,29 +17,29 @@
 					<f:facet name="header">
 						<p:messages></p:messages>
 					</f:facet>
-					<p:dataTable var="contact" value="#{data.contacts}">
-						<p:column headerText="Name" sortBy="#{contact['name']}">
+					<p:dataTable var="contact" value="#{data.contacts}" id="dataTable">
+						<p:column headerText="Name" sortBy="#{contact['name']}" id="nameColumn">
 							<h:outputText value="#{contact['name']}" />
 						</p:column>
 						<p:column headerText="First Name"
-							sortBy="#{contact['first name']}">
+							sortBy="#{contact['first name']}" id="firstNameColumn">
 							<h:outputText value="#{contact['first name']}" />
 						</p:column>
-						<p:column headerText="Adress" sortBy="#{contact['adress']}">
+						<p:column headerText="Adress" sortBy="#{contact['adress']}" id="adressColumn">
 							<h:outputText value="#{contact['adress']}" />
 						</p:column>
-						<p:column filterBy="#{contact['zip']}">
+						<p:column filterBy="#{contact['zip']}" id="zipColumn">
 							<h:outputText value="#{contact['zip']}" />
 						</p:column>
 						<p:column filterBy="#{contact['city']}"
-							filterOptions="#{data.names}">
+							filterOptions="#{data.names}" id="cityColumn">
 							<h:outputText value="#{contact['city']}" />
 						</p:column>
 					</p:dataTable>
 
 					<br />
 					<p:commandButton actionListener="#{logic.close}" value="Proceed"
-						update="form" icon="ui-icon-check" />
+						update="form" icon="ui-icon-check" id="buttonProceed"/>
 				</h:panelGrid>
 			</h:form>
 
