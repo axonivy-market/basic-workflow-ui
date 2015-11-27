@@ -15,34 +15,34 @@
 			<h:form id="form">
 				<h:panelGrid columns="2">
 					<f:facet name="header">
-						<p:messages></p:messages>
+						<p:messages/>
 					</f:facet>
 					<p:outputLabel value="Name" />
-					<p:inputText label="Name" value="#{data.colorOrder.name}" />
+					<p:inputText label="Name" value="#{data.colorOrder.name}" id="name"/>
 					<p:outputLabel value="First Name" />
-					<p:inputText label="Name" value="#{data.colorOrder.firstName}" />
+					<p:inputText label="FirstName" value="#{data.colorOrder.firstName}" id="firstName"/>
 					<p:outputLabel value="Gender" />
-					<p:selectOneRadio value="#{data.colorOrder.gender}">
-						<f:selectItem itemLabel="Male" itemValue="M" />
-						<f:selectItem itemLabel="Female" itemValue="F" />
+					<p:selectOneRadio value="#{data.colorOrder.gender}" id="gender">
+						<f:selectItem itemLabel="Male" itemValue="M" id="male"/>
+						<f:selectItem itemLabel="Female" itemValue="F" id="female"/>
 					</p:selectOneRadio>
 					<p:outputLabel value="Location" />
-					<p:inputText label="Location" value="#{data.colorOrder.location}" />
+					<p:inputText label="Location" value="#{data.colorOrder.location}" id="location"/>
 					<p:outputLabel value="Active" />
-					<p:selectBooleanCheckbox value="#{data.colorOrder.active}" />
+					<p:selectBooleanCheckbox value="#{data.colorOrder.active}" id="active"/>
 					<p:outputLabel value="Registration Date" />
 					<p:calendar value="#{data.colorOrder.registrationDate}"
-						pattern="dd.MM.yyyy">
+						pattern="dd.MM.yyyy" id="registrationDate">
 						<f:convertDateTime pattern="dd.MM.yyyy" />
 					</p:calendar>
 					<p:outputLabel value="Color" />
-					<p:selectOneMenu value="#{data.colorOrder.color}">
-						<f:selectItem itemLabel="Select one" itemValue="" />
-						<f:selectItems value="#{data.color}" />
+					<p:selectOneMenu value="#{data.colorOrder.color}" id="colorMenu">
+						<f:selectItem itemLabel="Select one" itemValue="" id="itemNULL"/>
+						<f:selectItems value="#{data.color}" id="colorsItem"/>
 					</p:selectOneMenu>
 					<br />
 					<p:commandButton actionListener="#{logic.close}" value="Proceed"
-						update="form" icon="ui-icon-check" />
+						update="form" icon="ui-icon-check" id="proceed"/>
 				</h:panelGrid>
 			</h:form>
 
