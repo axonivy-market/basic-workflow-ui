@@ -1,8 +1,8 @@
 [Ivy]
-[>Created: Mon Jan 18 15:10:07 CET 2016]
+[>Created: Wed Feb 17 10:11:56 CET 2016]
 152551002ABB8DFE 3.18 #module
 >Proto >Proto Collection #zClass
-To0 ToDo Big #zClass
+To0 FlowPatterns Big #zClass
 To0 B #cInfo
 To0 #process
 Bk4 BpmnUserTask Big #zClass
@@ -61,7 +61,8 @@ To0 @Alternative f24 '' #zField
 To0 @PushWFArc f25 '' #zField
 To0 @PushWFArc f10 '' #zField
 To0 @PushWFArc f26 '' #zField
->Proto To0 To0 ToDo #zField
+To0 @InfoButton f27 '' #zField
+>Proto To0 To0 FlowPatterns #zField
 Bk4 @TextInP .resExport .resExport #zField
 Bk4 @TextInP .type .type #zField
 Bk4 @TextInP .processKind .processKind #zField
@@ -147,7 +148,7 @@ Bk6 @PushTrueWFInG-01 g0 '' #zField
 Bk6 @PushTrueWFOutG-01 g1 '' #zField
 Bk6 @PushWFArc f0 '' #zField
 >Proto Bk6 Bk6 BpmnUserTask #zField
-To0 f2 408 88 457 88 #arcP
+To0 f2 408 208 457 208 #arcP
 To0 U31 .resExport export #txt
 To0 U31 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -158,7 +159,7 @@ To0 U31 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-To0 U31 304 74 112 44 -18 -8 #rect
+To0 U31 304 194 112 44 -18 -8 #rect
 To0 U31 @|BpmnUserTaskIcon #fIcon
 To0 U31 -1|-1|-13016147 #nodeStyle
 To0 f0 outLink start.ivp #txt
@@ -196,10 +197,10 @@ start.ivp</name>
 </elementInfo>
 ' #txt
 To0 f0 @C|.responsibility Everybody #txt
-To0 f0 81 73 30 30 -21 17 #rect
+To0 f0 81 193 30 30 -21 17 #rect
 To0 f0 @|StartRequestIcon #fIcon
 To0 f1 type workflow.agileBPM.Data #txt
-To0 f1 457 73 30 30 0 15 #rect
+To0 f1 457 193 30 30 0 15 #rect
 To0 f1 @|EndIcon #fIcon
 To0 U10 .resExport export #txt
 To0 U10 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -212,7 +213,7 @@ ToDo task</name>
     </language>
 </elementInfo>
 ' #txt
-To0 U10 296 66 112 44 -28 -16 #rect
+To0 U10 296 186 112 44 -28 -16 #rect
 To0 U10 @|BpmnUserTaskIcon #fIcon
 To0 U10 -1|-1|-13016147 #nodeStyle
 To0 f5 targetWindow NEW:card: #txt
@@ -239,12 +240,12 @@ Request Form</name>
     </language>
 </elementInfo>
 ' #txt
-To0 f5 152 66 112 44 -39 -16 #rect
+To0 f5 152 186 112 44 -39 -16 #rect
 To0 f5 @|RichDialogIcon #fIcon
 To0 f6 expr out #txt
-To0 f6 111 88 152 88 #arcP
+To0 f6 111 208 152 208 #arcP
 To0 f3 expr out #txt
-To0 f3 264 88 296 88 #arcP
+To0 f3 264 208 296 208 #arcP
 To0 U20 .resExport export #txt
 To0 U20 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -256,7 +257,7 @@ answer Question</name>
     </language>
 </elementInfo>
 ' #txt
-To0 U20 320 306 128 44 -43 -16 #rect
+To0 U20 320 426 128 44 -43 -16 #rect
 To0 U20 @|BpmnUserTaskIcon #fIcon
 To0 U20 g0 -9 -22 #fFoot
 To0 U20 -1|-1|-13016147 #nodeStyle
@@ -327,7 +328,7 @@ To0 f4 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 To0 f4 @C|.responsibility Everybody #txt
-To0 f4 81 305 30 30 -3 17 #rect
+To0 f4 81 425 30 30 -3 17 #rect
 To0 f4 @|StartRequestIcon #fIcon
 To0 U11 .resExport export #txt
 To0 U11 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -340,7 +341,7 @@ get response</name>
     </language>
 </elementInfo>
 ' #txt
-To0 U11 496 298 112 44 -36 -16 #rect
+To0 U11 496 418 112 44 -36 -16 #rect
 To0 U11 @|BpmnUserTaskIcon #fIcon
 To0 f7 targetWindow NEW:card: #txt
 To0 f7 targetDisplay TOP #txt
@@ -366,7 +367,7 @@ Question Form</name>
     </language>
 </elementInfo>
 ' #txt
-To0 f7 152 298 128 44 -40 -16 #rect
+To0 f7 152 418 128 44 -40 -16 #rect
 To0 f7 @|RichDialogIcon #fIcon
 To0 U21 .resExport export #txt
 To0 U21 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -379,7 +380,7 @@ answer question</name>
     </language>
 </elementInfo>
 ' #txt
-To0 U21 312 298 128 44 -43 -16 #rect
+To0 U21 312 418 128 44 -43 -16 #rect
 To0 U21 @|BpmnUserTaskIcon #fIcon
 To0 U21 -1|-1|-13016147 #nodeStyle
 To0 f8 type workflow.agileBPM.Data #txt
@@ -392,13 +393,13 @@ To0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-To0 f8 721 305 30 30 -1 17 #rect
+To0 f8 721 425 30 30 -1 17 #rect
 To0 f8 @|EndIcon #fIcon
-To0 f9 440 320 496 320 #arcP
+To0 f9 440 440 496 440 #arcP
 To0 f11 expr out #txt
-To0 f11 111 320 152 320 #arcP
+To0 f11 111 440 152 440 #arcP
 To0 f12 expr out #txt
-To0 f12 280 320 312 320 #arcP
+To0 f12 280 440 312 440 #arcP
 To0 f13 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -408,7 +409,7 @@ To0 f13 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-To0 f13 16 33 48 30 -14 -8 #rect
+To0 f13 16 153 48 30 -14 -8 #rect
 To0 f13 @|IBIcon #fIcon
 To0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -419,7 +420,7 @@ To0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-To0 f14 16 265 112 30 -49 -8 #rect
+To0 f14 16 385 112 30 -49 -8 #rect
 To0 f14 @|IBIcon #fIcon
 To0 U12 .resExport export #txt
 To0 U12 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -432,7 +433,7 @@ approve Thing</name>
     </language>
 </elementInfo>
 ' #txt
-To0 U12 320 186 112 44 -39 -16 #rect
+To0 U12 320 306 112 44 -39 -16 #rect
 To0 U12 @|BpmnUserTaskIcon #fIcon
 To0 U12 -1|-1|-13016147 #nodeStyle
 To0 U13 .resExport export #txt
@@ -446,7 +447,7 @@ approve request</name>
     </language>
 </elementInfo>
 ' #txt
-To0 U13 304 178 128 44 -42 -16 #rect
+To0 U13 304 298 128 44 -42 -16 #rect
 To0 U13 @|BpmnUserTaskIcon #fIcon
 To0 U13 -1|-1|-13016147 #nodeStyle
 To0 f15 outLink start22.ivp #txt
@@ -516,7 +517,7 @@ To0 f15 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 To0 f15 @C|.responsibility Everybody #txt
-To0 f15 81 185 30 30 -3 17 #rect
+To0 f15 81 305 30 30 -3 17 #rect
 To0 f15 @|StartRequestIcon #fIcon
 To0 f16 targetWindow NEW:card: #txt
 To0 f16 targetDisplay TOP #txt
@@ -542,7 +543,7 @@ Request Form</name>
     </language>
 </elementInfo>
 ' #txt
-To0 f16 152 178 112 44 -39 -16 #rect
+To0 f16 152 298 112 44 -39 -16 #rect
 To0 f16 @|RichDialogIcon #fIcon
 To0 f17 type workflow.agileBPM.Data #txt
 To0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -554,7 +555,7 @@ To0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-To0 f17 641 185 30 30 -1 17 #rect
+To0 f17 641 305 30 30 -1 17 #rect
 To0 f17 @|EndIcon #fIcon
 To0 f18 beanConfig '"{/emailSubject """"/emailFrom """"/emailReplyTo """"/emailTo """"/emailCC """"/emailBCC """"/exceptionMissingEmailAttachments ""false""/emailMessage """"/emailAttachments * }"' #txt
 To0 f18 type workflow.agileBPM.Data #txt
@@ -569,15 +570,15 @@ Notification Mail</name>
     </language>
 </elementInfo>
 ' #txt
-To0 f18 472 178 128 44 -41 -16 #rect
+To0 f18 472 298 128 44 -41 -16 #rect
 To0 f18 @|EMailIcon #fIcon
-To0 f19 432 200 472 200 #arcP
+To0 f19 432 320 472 320 #arcP
 To0 f20 expr out #txt
-To0 f20 600 200 641 200 #arcP
+To0 f20 600 320 641 320 #arcP
 To0 f21 expr out #txt
-To0 f21 111 200 152 200 #arcP
+To0 f21 111 320 152 320 #arcP
 To0 f22 expr out #txt
-To0 f22 264 200 304 200 #arcP
+To0 f22 264 320 304 320 #arcP
 To0 f23 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -587,7 +588,7 @@ To0 f23 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-To0 f23 16 145 64 30 -25 -8 #rect
+To0 f23 16 265 64 30 -25 -8 #rect
 To0 f23 @|IBIcon #fIcon
 To0 f24 type workflow.agileBPM.Data #txt
 To0 f24 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -599,19 +600,32 @@ To0 f24 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-To0 f24 640 304 32 32 -30 17 #rect
+To0 f24 640 424 32 32 -30 17 #rect
 To0 f24 @|AlternativeIcon #fIcon
-To0 f25 608 320 640 320 #arcP
+To0 f25 608 440 640 440 #arcP
 To0 f25 0 0.5347498877662558 0 0 #arcLabel
 To0 f10 expr in #txt
 To0 f10 outCond true #txt
-To0 f10 672 320 721 320 #arcP
+To0 f10 672 440 721 440 #arcP
 To0 f10 0 0.46677099804277034 0 0 #arcLabel
 To0 f26 expr in #txt
-To0 f26 656 304 376 298 #arcP
-To0 f26 1 656 272 #addKink
-To0 f26 2 376 272 #addKink
+To0 f26 656 424 376 418 #arcP
+To0 f26 1 656 376 #addKink
+To0 f26 2 376 376 #addKink
 To0 f26 1 0.48928571428571427 0 0 #arcLabel
+To0 f27 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>These are the predefined Flow Patterns which can be selected in the Self Service Process.
+In Addition you can also create an Ad-Hoc Workflow from scratch.</name>
+        <nameStyle>90,7
+64,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+To0 f27 24 26 512 44 -246 -16 #rect
+To0 f27 @|IBIcon #fIcon
 >Proto To0 .type workflow.agileBPM.Data #txt
 >Proto To0 .processKind NORMAL #txt
 >Proto To0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

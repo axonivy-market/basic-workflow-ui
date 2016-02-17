@@ -1,8 +1,8 @@
 [Ivy]
-[>Created: Wed Jan 20 11:42:37 CET 2016]
+[>Created: Wed Feb 17 15:05:25 CET 2016]
 1523FF963044280C 3.18 #module
 >Proto >Proto Collection #zClass
-ft0 FacilityManagement Big #zClass
+ft0 KeyCardDelivery Big #zClass
 ft0 B #cInfo
 ft0 #process
 ft0 @TextInP .resExport .resExport #zField
@@ -26,7 +26,7 @@ ft0 @SignalBoundaryEvent St0 SignalBoundaryEvent #zField
 ft0 @InfoButton f0 '' #zField
 ft0 @AnnotationArc f1 '' #zField
 ft0 @InfoButton f2 '' #zField
->Proto ft0 ft0 FacilityManagement #zField
+>Proto ft0 ft0 KeyCardDelivery #zField
 ft0 f19 actionDecl 'workflow.signal.FacilityManagementData out;
 ' #txt
 ft0 f19 actionTable 'out=in;
@@ -42,10 +42,10 @@ ft0 f19 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-ft0 f19 312 298 112 44 -38 -8 #rect
+ft0 f19 336 234 112 44 -38 -8 #rect
 ft0 f19 @|StepIcon #fIcon
 ft0 f6 type workflow.signal.FacilityManagementData #txt
-ft0 f6 337 209 30 30 0 15 #rect
+ft0 f6 361 145 30 30 0 15 #rect
 ft0 f6 @|EndIcon #fIcon
 ft0 f28 actionDecl 'workflow.signal.FacilityManagementData out;
 ' #txt
@@ -64,7 +64,7 @@ ft0 f28 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-ft0 f28 81 209 30 30 -34 17 #rect
+ft0 f28 105 145 30 30 -34 17 #rect
 ft0 f28 @|SignalStartEventIcon #fIcon
 ft0 f8 richDialogId workflow.signal.TaskForm #txt
 ft0 f8 startMethod start(workflow.signal.User) #txt
@@ -76,7 +76,8 @@ ft0 f8 responseActionDecl 'workflow.signal.FacilityManagementData out;
 ft0 f8 responseMappingAction 'out=in;
 ' #txt
 ft0 f8 outLinks "TaskA.ivp" #txt
-ft0 f8 taskData 'TaskA.EXPRI=2
+ft0 f8 taskData 'TaskA.DESC=<%\=ivy.cms.co("/TaskDescriptions/deliverKeyCardDesc")%><%\=in.user.name%> [<%\=in.user.userKey%>]
+TaskA.EXPRI=2
 TaskA.EXROL=Everybody
 TaskA.EXTYPE=0
 TaskA.NAM=<%\=ivy.cms.co("/TaskDescriptions/deliverKeyCardFor")%> <%\=in.user.name%> [<%\=in.user.userKey%>]
@@ -88,31 +89,30 @@ ft0 f8 type workflow.signal.FacilityManagementData #txt
 ft0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>Task for
-Facility Management</name>
-        <nameStyle>28,7
+        <name>Deliver Key Card</name>
+        <nameStyle>16,7
 </nameStyle>
     </language>
 </elementInfo>
 ' #txt
-ft0 f8 152 202 144 44 -53 -15 #rect
+ft0 f8 192 138 112 44 -45 -8 #rect
 ft0 f8 @|UserTaskIcon #fIcon
 ft0 f23 type workflow.signal.FacilityManagementData #txt
-ft0 f23 465 305 30 30 0 15 #rect
+ft0 f23 489 241 30 30 0 15 #rect
 ft0 f23 @|EndIcon #fIcon
 ft0 f7 expr data #txt
 ft0 f7 outCond ivp=="TaskA.ivp" #txt
-ft0 f7 296 224 337 224 #arcP
+ft0 f7 304 160 361 160 #arcP
 ft0 f20 expr out #txt
-ft0 f20 272 271 312 320 #arcP
-ft0 f20 1 272 320 #addKink
+ft0 f20 280 207 336 256 #arcP
+ft0 f20 1 280 256 #addKink
 ft0 f20 1 0.7005862508301713 0 0 #arcLabel
 ft0 f24 expr out #txt
-ft0 f24 424 320 465 320 #arcP
+ft0 f24 448 256 489 256 #arcP
 ft0 f29 expr out #txt
 ft0 f29 type workflow.signal.FacilityManagementData #txt
 ft0 f29 var in2 #txt
-ft0 f29 111 224 152 224 #arcP
+ft0 f29 135 160 192 160 #arcP
 ft0 St0 actionDecl 'workflow.signal.FacilityManagementData out;
 ' #txt
 ft0 St0 actionTable 'out=in;
@@ -131,7 +131,7 @@ ft0 St0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-ft0 St0 257 241 30 30 15 6 #rect
+ft0 St0 265 177 30 30 15 6 #rect
 ft0 St0 @|SignalBoundaryEventIcon #fIcon
 ft0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -145,22 +145,39 @@ As long as the the projects are deployed into the same application.</name>
     </language>
 </elementInfo>
 ' #txt
-ft0 f0 120 130 496 44 -238 -16 #rect
+ft0 f0 144 74 496 44 -238 -16 #rect
 ft0 f0 @|IBIcon #fIcon
-ft0 f1 120 152 100 209 #arcP
+ft0 f1 144 96 125 145 #arcP
 ft0 f2 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>This process is part of the signal demo process. It is stared by a signal sent from the CreateUser process. </name>
-        <nameStyle>108,7
+        <name>This process is part of the signal demo process. It is started by a signal sent from the CreateUser process. </name>
+        <nameStyle>109,7
 </nameStyle>
     </language>
 </elementInfo>
 ' #txt
-ft0 f2 72 49 592 30 -291 -8 #rect
+ft0 f2 4 9 592 30 -293 -8 #rect
 ft0 f2 @|IBIcon #fIcon
 >Proto ft0 .type workflow.signal.FacilityManagementData #txt
 >Proto ft0 .processKind NORMAL #txt
+>Proto ft0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <swimlaneLabel>Parking lot reservation</swimlaneLabel>
+        <swimlaneLabel>Facility Manager</swimlaneLabel>
+    </language>
+    <swimlaneOrientation>false</swimlaneOrientation>
+    <swimlaneSize>240</swimlaneSize>
+    <swimlaneSize>240</swimlaneSize>
+    <swimlaneColor gradient="false">1694498764</swimlaneColor>
+    <swimlaneColor gradient="false">1694498764</swimlaneColor>
+    <swimlaneType>POOL</swimlaneType>
+    <swimlaneType>LANE_IN_POOL</swimlaneType>
+    <swimlaneSpaceBefore>56</swimlaneSpaceBefore>
+    <swimlaneSpaceBefore>0</swimlaneSpaceBefore>
+</elementInfo>
+' #txt
 >Proto ft0 0 0 32 24 18 0 #rect
 >Proto ft0 @|BIcon #fIcon
 ft0 f8 out f7 tail #connect

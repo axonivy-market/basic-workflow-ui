@@ -1,12 +1,10 @@
 [Ivy]
-[>Created: Wed Jan 20 11:43:13 CET 2016]
+[>Created: Wed Feb 17 15:18:24 CET 2016]
 151CA1EFC1542D87 3.18 #module
 >Proto >Proto Collection #zClass
-qr0 QuitUser Big #zClass
+qr0 QuitEmployee Big #zClass
 qr0 B #cInfo
 qr0 #process
-Ct0 Component Big #zClass
-Ct0 B #cInfo
 qr0 @TextInP .resExport .resExport #zField
 qr0 @TextInP .type .type #zField
 qr0 @TextInP .processKind .processKind #zField
@@ -18,26 +16,14 @@ qr0 @TextInP .responsibility .responsibility #zField
 qr0 @StartRequest f0 '' #zField
 qr0 @EndTask f1 '' #zField
 qr0 @GridStep f3 '' #zField
-qr0 @PushWFArc f2 '' #zField
 qr0 @RichDialog f5 '' #zField
 qr0 @PushWFArc f6 '' #zField
-qr0 Ct0 S10 'Sub 1' #zField
-qr0 @PushWFArc f7 '' #zField
-qr0 @PushWFArc f4 '' #zField
 qr0 @InfoButton f8 '' #zField
->Proto qr0 qr0 QuitUser #zField
-Ct0 @TextInP .resExport .resExport #zField
-Ct0 @TextInP .type .type #zField
-Ct0 @TextInP .processKind .processKind #zField
-Ct0 @AnnotationInP-0n ai ai #zField
-Ct0 @MessageFlowInP-0n messageIn messageIn #zField
-Ct0 @MessageFlowOutP-0n messageOut messageOut #zField
-Ct0 @TextInP .xml .xml #zField
-Ct0 @TextInP .responsibility .responsibility #zField
-Ct0 @PushTrueWFInG-01 g0 '' #zField
-Ct0 @PushTrueWFOutG-01 g1 '' #zField
-Ct0 @PushWFArc f0 '' #zField
->Proto Ct0 Ct0 Component #zField
+qr0 @PushWFArc f4 '' #zField
+qr0 @RichDialog f7 '' #zField
+qr0 @PushWFArc f9 '' #zField
+qr0 @PushWFArc f2 '' #zField
+>Proto qr0 qr0 QuitEmployee #zField
 qr0 f0 outLink start.ivp #txt
 qr0 f0 type workflow.signal.QuitUserProcess #txt
 qr0 f0 inParamDecl '<> param;' #txt
@@ -48,7 +34,8 @@ qr0 f0 requestEnabled true #txt
 qr0 f0 triggerEnabled false #txt
 qr0 f0 callSignature start() #txt
 qr0 f0 persist false #txt
-qr0 f0 startName '<%=ivy.cms.co("/ProcessDescriptions/quitUserProcess")%> (<%=ivy.cms.co("/ProcessDescriptions/signalExample")%>)' #txt
+qr0 f0 startName '<%=ivy.cms.co("/ProcessDescriptions/signalExample")%>: <%=ivy.cms.co("/ProcessDescriptions/quitUserProcess")%>' #txt
+qr0 f0 startDescription <%=ivy.cms.co("/ProcessDescriptions/SignalQuitUserDescription")%> #txt
 qr0 f0 taskData 'TaskTriggered.ROL=Everybody
 TaskTriggered.EXTYPE=0
 TaskTriggered.EXPRI=2
@@ -75,10 +62,10 @@ qr0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 qr0 f0 @C|.responsibility 'HR Manager' #txt
-qr0 f0 81 145 30 30 -21 17 #rect
+qr0 f0 81 193 30 30 -21 17 #rect
 qr0 f0 @|StartRequestIcon #fIcon
 qr0 f1 type workflow.signal.QuitUserProcess #txt
-qr0 f1 657 145 30 30 0 15 #rect
+qr0 f1 657 193 30 30 0 15 #rect
 qr0 f1 @|EndIcon #fIcon
 qr0 f3 actionDecl 'workflow.signal.QuitUserProcess out;
 ' #txt
@@ -95,16 +82,14 @@ qr0 f3 type workflow.signal.QuitUserProcess #txt
 qr0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>send quit signal</name>
+        <name>Send Quit Signal</name>
         <nameStyle>16,7
 </nameStyle>
     </language>
 </elementInfo>
 ' #txt
-qr0 f3 488 138 112 44 -44 -8 #rect
+qr0 f3 328 186 112 44 -46 -8 #rect
 qr0 f3 @|StepIcon #fIcon
-qr0 f2 expr out #txt
-qr0 f2 600 160 657 160 #arcP
 qr0 f5 targetWindow NEW:card: #txt
 qr0 f5 targetDisplay TOP #txt
 qr0 f5 richDialogId workflow.signal.QuitUser #txt
@@ -123,31 +108,16 @@ qr0 f5 userContext '* ' #txt
 qr0 f5 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>select user</name>
+        <name>Select User</name>
         <nameStyle>11,7
 </nameStyle>
     </language>
 </elementInfo>
 ' #txt
-qr0 f5 168 138 112 44 -30 -8 #rect
+qr0 f5 168 186 112 44 -32 -8 #rect
 qr0 f5 @|RichDialogIcon #fIcon
 qr0 f6 expr out #txt
-qr0 f6 111 160 168 160 #arcP
-qr0 S10 .resExport export #txt
-qr0 S10 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language lang="en">
-        <name>do other stuff</name>
-        <nameStyle>14,5,7
-</nameStyle>
-    </language>
-</elementInfo>
-' #txt
-qr0 S10 328 138 112 44 -35 -8 #rect
-qr0 S10 @|BIcon #fIcon
-qr0 f7 expr out #txt
-qr0 f7 280 160 328 160 #arcP
-qr0 f4 440 160 488 160 #arcP
+qr0 f6 111 208 168 208 #arcP
 qr0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -158,32 +128,66 @@ QuitUser sends a signal that will cancel User Tasks from a previously started Cr
     </language>
 </elementInfo>
 ' #txt
-qr0 f8 72 42 592 44 -288 -16 #rect
+qr0 f8 8 18 592 44 -288 -16 #rect
 qr0 f8 @|IBIcon #fIcon
+qr0 f4 expr out #txt
+qr0 f4 280 208 328 208 #arcP
+qr0 f7 targetWindow NEW:card: #txt
+qr0 f7 targetDisplay TOP #txt
+qr0 f7 richDialogId workflow.signal.QuitSignalSent #txt
+qr0 f7 startMethod start() #txt
+qr0 f7 type workflow.signal.QuitUserProcess #txt
+qr0 f7 requestActionDecl '<> param;' #txt
+qr0 f7 responseActionDecl 'workflow.signal.QuitUserProcess out;
+' #txt
+qr0 f7 responseMappingAction 'out=in;
+' #txt
+qr0 f7 windowConfiguration '* ' #txt
+qr0 f7 isAsynch false #txt
+qr0 f7 isInnerRd false #txt
+qr0 f7 userContext '* ' #txt
+qr0 f7 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Information about
+Signal Sent</name>
+        <nameStyle>29,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+qr0 f7 480 186 128 44 -44 -16 #rect
+qr0 f7 @|RichDialogIcon #fIcon
+qr0 f9 expr out #txt
+qr0 f9 440 208 480 208 #arcP
+qr0 f2 expr out #txt
+qr0 f2 608 208 657 208 #arcP
 >Proto qr0 .type workflow.signal.QuitUserProcess #txt
 >Proto qr0 .processKind NORMAL #txt
 >Proto qr0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
-    <language/>
+    <language>
+        <swimlaneLabel>Quit Employee</swimlaneLabel>
+        <swimlaneLabel>HR Manager</swimlaneLabel>
+    </language>
+    <swimlaneOrientation>false</swimlaneOrientation>
+    <swimlaneSize>192</swimlaneSize>
+    <swimlaneSize>192</swimlaneSize>
+    <swimlaneColor gradient="false">1694498764</swimlaneColor>
+    <swimlaneColor gradient="false">1694498764</swimlaneColor>
+    <swimlaneType>POOL</swimlaneType>
+    <swimlaneType>LANE_IN_POOL</swimlaneType>
+    <swimlaneSpaceBefore>80</swimlaneSpaceBefore>
+    <swimlaneSpaceBefore>0</swimlaneSpaceBefore>
 </elementInfo>
 ' #txt
 >Proto qr0 0 0 32 24 18 0 #rect
 >Proto qr0 @|BIcon #fIcon
-Ct0 g0 51 243 26 26 0 5 #rect
-Ct0 g0 @|MIGIcon #fIcon
-Ct0 g1 563 243 26 26 0 5 #rect
-Ct0 g1 @|MOGIcon #fIcon
-Ct0 f0 77 256 563 256 #arcP
->Proto Ct0 0 0 32 24 18 0 #rect
->Proto Ct0 @|BIcon #fIcon
-qr0 f3 mainOut f2 tail #connect
-qr0 f2 head f1 mainIn #connect
 qr0 f0 mainOut f6 tail #connect
 qr0 f6 head f5 mainIn #connect
-qr0 f5 mainOut f7 tail #connect
-qr0 f7 head S10 g0 #connect
-qr0 S10 g1 f4 tail #connect
+qr0 f5 mainOut f4 tail #connect
 qr0 f4 head f3 mainIn #connect
-Ct0 g0 m f0 tail #connect
-Ct0 f0 head g1 m #connect
-Ct0 0 0 640 512 0 #ivRect
+qr0 f3 mainOut f9 tail #connect
+qr0 f9 head f7 mainIn #connect
+qr0 f7 mainOut f2 tail #connect
+qr0 f2 head f1 mainIn #connect
