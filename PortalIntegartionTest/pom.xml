@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ch.ivyteam.ivy.project</groupId>
+		<artifactId>build.maven.iar.web.test</artifactId>
+		<version>7.1.0-SNAPSHOT</version>
+		<relativePath>../build.maven/iar/web.test</relativePath>
+	</parent>
+	<groupId>ch.ivyteam.ivy</groupId>
+	<artifactId>portal-integartion-test</artifactId>
+	<version>7.1.0-SNAPSHOT</version>
+	<packaging>iar</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>ch.ivyteam.ivy.project.portal</groupId>
+			<artifactId>portalKit</artifactId>
+			<version>[7.0.145.0,)</version>
+			<type>iar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<testSourceDirectory>src_test</testSourceDirectory>
+		
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>selenium.web.tests</id>
+							<configuration>
+								 <argLine combine.children="append">-Djunit.repeat=5
+                                -Dfirefox.close.skip=true</argLine>
+
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
