@@ -11,7 +11,7 @@
       <plugin>
         <groupId>ch.ivyteam.ivy</groupId>
         <artifactId>project-build-plugin</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>7.4.0-SNAPSHOT</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>
