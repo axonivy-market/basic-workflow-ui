@@ -1,13 +1,9 @@
 [Ivy]
-[>Created: Wed Oct 21 16:03:02 CEST 2015]
-1506B9148CD67EC6 3.17 #module
+1506B9148CD67EC6 3.28 #module
 >Proto >Proto Collection #zClass
 Ds0 MastermindDialogProcess Big #zClass
 Ds0 RD #cInfo
 Ds0 #process
-Ds0 @TextInP .ui2RdDataAction .ui2RdDataAction #zField
-Ds0 @TextInP .rdData2UIAction .rdData2UIAction #zField
-Ds0 @TextInP .resExport .resExport #zField
 Ds0 @TextInP .type .type #zField
 Ds0 @TextInP .processKind .processKind #zField
 Ds0 @AnnotationInP-0n ai ai #zField
@@ -15,24 +11,24 @@ Ds0 @MessageFlowInP-0n messageIn messageIn #zField
 Ds0 @MessageFlowOutP-0n messageOut messageOut #zField
 Ds0 @TextInP .xml .xml #zField
 Ds0 @TextInP .responsibility .responsibility #zField
-Ds0 @RichDialogInitStart f0 '' #zField
-Ds0 @RichDialogProcessEnd f1 '' #zField
-Ds0 @RichDialogProcessStart f3 '' #zField
-Ds0 @RichDialogEnd f4 '' #zField
+Ds0 @UdInit f0 '' #zField
+Ds0 @UdProcessEnd f1 '' #zField
+Ds0 @UdEvent f3 '' #zField
+Ds0 @UdExitEnd f4 '' #zField
 Ds0 @PushWFArc f5 '' #zField
-Ds0 @RichDialogProcessEnd f7 '' #zField
-Ds0 @RichDialogMethodStart f9 '' #zField
+Ds0 @UdProcessEnd f7 '' #zField
+Ds0 @UdMethod f9 '' #zField
 Ds0 @PushWFArc f10 '' #zField
 Ds0 @GridStep f6 '' #zField
 Ds0 @PushWFArc f8 '' #zField
 Ds0 @PushWFArc f2 '' #zField
-Ds0 @RichDialogProcessEnd f12 '' #zField
+Ds0 @UdProcessEnd f12 '' #zField
 Ds0 @GridStep f14 '' #zField
-Ds0 @RichDialogProcessStart f11 '' #zField
+Ds0 @UdEvent f11 '' #zField
 Ds0 @GridStep f16 '' #zField
 Ds0 @PushWFArc f17 '' #zField
 Ds0 @PushWFArc f13 '' #zField
-Ds0 @RichDialogProcessStart f18 '' #zField
+Ds0 @UdEvent f18 '' #zField
 Ds0 @PushWFArc f19 '' #zField
 Ds0 @Alternative f23 '' #zField
 Ds0 @PushWFArc f24 '' #zField
@@ -42,9 +38,7 @@ Ds0 @PushWFArc f26 '' #zField
 Ds0 @PushWFArc f27 '' #zField
 >Proto Ds0 Ds0 MastermindDialogProcess #zField
 Ds0 f0 guid 1504CA82FD267531 #txt
-Ds0 f0 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f0 method start() #txt
-Ds0 f0 disableUIEvents true #txt
 Ds0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <> param = methodEvent.getInputArguments();
 ' #txt
@@ -60,14 +54,10 @@ Ds0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Ds0 f0 83 51 26 26 -16 15 #rect
-Ds0 f0 @|RichDialogInitStartIcon #fIcon
-Ds0 f1 type practiceJSF.MastermindDialog.MastermindDialogData #txt
+Ds0 f0 @|UdInitIcon #fIcon
 Ds0 f1 339 51 26 26 0 12 #rect
-Ds0 f1 @|RichDialogProcessEndIcon #fIcon
+Ds0 f1 @|UdProcessEndIcon #fIcon
 Ds0 f3 guid 1504CA82FDC57F38 #txt
-Ds0 f3 type practiceJSF.MastermindDialog.MastermindDialogData #txt
-Ds0 f3 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
 Ds0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -76,20 +66,15 @@ Ds0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Ds0 f3 83 147 26 26 -15 12 #rect
-Ds0 f3 @|RichDialogProcessStartIcon #fIcon
-Ds0 f4 type practiceJSF.MastermindDialog.MastermindDialogData #txt
-Ds0 f4 guid 1504CA82FDCA64D9 #txt
+Ds0 f3 @|UdEventIcon #fIcon
 Ds0 f4 211 147 26 26 0 12 #rect
-Ds0 f4 @|RichDialogEndIcon #fIcon
+Ds0 f4 @|UdExitEndIcon #fIcon
 Ds0 f5 expr out #txt
 Ds0 f5 109 160 211 160 #arcP
-Ds0 f7 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f7 211 243 26 26 0 12 #rect
-Ds0 f7 @|RichDialogProcessEndIcon #fIcon
+Ds0 f7 @|UdProcessEndIcon #fIcon
 Ds0 f9 guid 1504CCE0063427E0 #txt
-Ds0 f9 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f9 method myDrop(org.primefaces.event.DragDropEvent) #txt
-Ds0 f9 disableUIEvents false #txt
 Ds0 f9 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <org.primefaces.event.DragDropEvent DragDropEvent> param = methodEvent.getInputArguments();
 ' #txt
@@ -109,11 +94,9 @@ Ds0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Ds0 f9 83 243 26 26 -67 15 #rect
-Ds0 f9 @|RichDialogMethodStartIcon #fIcon
+Ds0 f9 @|UdMethodIcon #fIcon
 Ds0 f10 expr out #txt
 Ds0 f10 109 256 211 256 #arcP
-Ds0 f6 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
 Ds0 f6 actionTable 'out=in;
 ' #txt
 Ds0 f6 actionCode 'import java.util.Collections;
@@ -132,7 +115,6 @@ out.correctColors.add("green");
 
 
 Collections.shuffle(out.correctColors);' #txt
-Ds0 f6 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -148,11 +130,8 @@ Ds0 f8 expr out #txt
 Ds0 f8 109 64 168 64 #arcP
 Ds0 f2 expr out #txt
 Ds0 f2 280 64 339 64 #arcP
-Ds0 f12 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f12 483 403 26 26 0 12 #rect
-Ds0 f12 @|RichDialogProcessEndIcon #fIcon
-Ds0 f14 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
+Ds0 f12 @|UdProcessEndIcon #fIcon
 Ds0 f14 actionTable 'out=in;
 ' #txt
 Ds0 f14 actionCode 'in.correctAmount=0;
@@ -195,7 +174,6 @@ else
 	}
 }' #txt
 Ds0 f14 security system #txt
-Ds0 f14 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -208,9 +186,6 @@ Ds0 f14 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Ds0 f14 312 330 112 44 -52 -8 #rect
 Ds0 f14 @|StepIcon #fIcon
 Ds0 f11 guid 1506F92A226537B8 #txt
-Ds0 f11 type practiceJSF.MastermindDialog.MastermindDialogData #txt
-Ds0 f11 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
 Ds0 f11 actionTable 'out=in;
 ' #txt
 Ds0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -221,9 +196,7 @@ Ds0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Ds0 f11 83 339 26 26 -31 12 #rect
-Ds0 f11 @|RichDialogProcessStartIcon #fIcon
-Ds0 f16 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
+Ds0 f11 @|UdEventIcon #fIcon
 Ds0 f16 actionTable 'out=in;
 ' #txt
 Ds0 f16 actionCode 'out.selectedColors.clear();
@@ -234,7 +207,6 @@ out.colors.add("green");
 out.colors.add("orange");
 out.colors.add("blue");
 out.colors.add("purple");' #txt
-Ds0 f16 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -251,9 +223,6 @@ Ds0 f17 368 374 368 394 #arcP
 Ds0 f13 expr out #txt
 Ds0 f13 424 416 483 416 #arcP
 Ds0 f18 guid 150709EAD8E17143 #txt
-Ds0 f18 type practiceJSF.MastermindDialog.MastermindDialogData #txt
-Ds0 f18 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
 Ds0 f18 actionTable 'out=in;
 ' #txt
 Ds0 f18 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -264,12 +233,11 @@ Ds0 f18 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Ds0 f18 83 443 26 26 -15 12 #rect
-Ds0 f18 @|RichDialogProcessStartIcon #fIcon
+Ds0 f18 @|UdEventIcon #fIcon
 Ds0 f19 expr out #txt
 Ds0 f19 109 456 368 438 #arcP
 Ds0 f19 1 368 456 #addKink
 Ds0 f19 0 0.6240310650853516 0 0 #arcLabel
-Ds0 f23 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f23 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -297,8 +265,6 @@ Ds0 f15 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Ds0 f15 224 352 312 352 #arcP
-Ds0 f25 actionDecl 'practiceJSF.MastermindDialog.MastermindDialogData out;
-' #txt
 Ds0 f25 actionTable 'out=in;
 ' #txt
 Ds0 f25 actionCode 'import javax.faces.context.FacesContext;
@@ -308,7 +274,6 @@ FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
 "Missing elements", "Please choose " + out.colors.size() + " additional colors!");
 
 FacesContext.getCurrentInstance().addMessage(null, msg);' #txt
-Ds0 f25 type practiceJSF.MastermindDialog.MastermindDialogData #txt
 Ds0 f25 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
