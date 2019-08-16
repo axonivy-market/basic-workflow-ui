@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <richDialogDescriptor>
     <autoScreenshot>true</autoScreenshot>
-    <startMethod>
-        <name>start</name>
-        <description>Default dialog start method.</description>
-        <inputParameter>
-            <name>contacts</name>
-            <description></description>
-            <parameterType>Recordset</parameterType>
-            <nullPermitted>false</nullPermitted>
-        </inputParameter>
-    </startMethod>
     <property>
         <name>guid</name>
         <value>15023D1C491A5F59</value>

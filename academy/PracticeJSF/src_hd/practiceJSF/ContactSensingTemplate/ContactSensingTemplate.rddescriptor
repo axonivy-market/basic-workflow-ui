@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <richDialogDescriptor>
     <autoScreenshot>true</autoScreenshot>
-    <startMethod>
-        <name>start</name>
-        <description>Default dialog start method.</description>
-        <inputParameter>
-            <name>contact</name>
-            <description></description>
-            <parameterType>practiceJSF.Contact</parameterType>
-            <nullPermitted>false</nullPermitted>
-        </inputParameter>
-        <inputParameter>
-            <name>company</name>
-            <description></description>
-            <parameterType>practiceJSF.Company</parameterType>
-            <nullPermitted>false</nullPermitted>
-        </inputParameter>
-        <outputParameter>
-            <name>contact</name>
-            <description></description>
-            <parameterType>practiceJSF.Contact</parameterType>
-            <nullPermitted>false</nullPermitted>
-        </outputParameter>
-        <outputParameter>
-            <name>company</name>
-            <description></description>
-            <parameterType>practiceJSF.Company</parameterType>
-            <nullPermitted>false</nullPermitted>
-        </outputParameter>
-    </startMethod>
     <property>
         <name>guid</name>
         <value>150427832B92D516</value>
