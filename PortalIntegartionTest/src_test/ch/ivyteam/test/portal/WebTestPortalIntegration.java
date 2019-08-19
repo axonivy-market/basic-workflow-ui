@@ -20,7 +20,7 @@ public class WebTestPortalIntegration
   FirefoxOptions firefoxOptions = new FirefoxOptions();
   {
     FirefoxBinary binary = new FirefoxBinary();
-    //binary.addCommandLineOptions("--headless");
+    binary.addCommandLineOptions("--headless");
     firefoxOptions.setBinary(binary);
   }
   
