@@ -1,39 +1,36 @@
 package ch.ivyteam.test.portal;
 
-import java.io.File;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.GeckoDriverService;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
+import io.github.bonigarcia.seljup.Options;
+import io.github.bonigarcia.seljup.SeleniumExtension;
+
+@ExtendWith(SeleniumExtension.class)
 public class WebTestPortalIntegration
 {
-  private WebDriver driver;
+  @Options
+  FirefoxOptions firefoxOptions = new FirefoxOptions();
+  {
+    FirefoxBinary binary = new FirefoxBinary();
+    binary.addCommandLineOptions("--headless");
+    firefoxOptions.setBinary(binary);
+  }
+  
   private PortalNavigator navigator;
 
-  @Before
-  public void setUp()
+  @BeforeEach
+  public void setUp(FirefoxDriver driver)
   {
-    File gecko = new File("/usr/local/bin/geckodriver");
-    System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, gecko.getAbsolutePath());
-    driver = new FirefoxDriver();
     navigator = new PortalNavigator(driver);
     navigator.login();
-  }
-
-  @After
-  public void tearDown()
-  {
-    if (Boolean.parseBoolean(System.getProperty("firefox.close.skip", "false")))
-    { // no tear down - keep session running for memory analysis
-      return;
-    }
-    driver.close();
   }
 
   @Test
