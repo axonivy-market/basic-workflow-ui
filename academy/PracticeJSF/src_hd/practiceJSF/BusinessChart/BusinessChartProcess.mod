@@ -1,5 +1,5 @@
 [Ivy]
-15048256D741AFA5 3.28 #module
+15048256D741AFA5 7.5.0 #module
 >Proto >Proto Collection #zClass
 Bs0 BusinessChartProcess Big #zClass
 Bs0 RD #cInfo
@@ -28,13 +28,10 @@ Bs0 @PushWFArc f16 '' #zField
 >Proto Bs0 Bs0 BusinessChartProcess #zField
 Bs0 f0 guid 15048256D83C8042 #txt
 Bs0 f0 method start(practiceJSF.Data) #txt
-Bs0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<practiceJSF.Data data> param = methodEvent.getInputArguments();
-' #txt
+Bs0 f0 inParameterDecl '<practiceJSF.Data data> param;' #txt
 Bs0 f0 inParameterMapAction 'out.data=param.data;
 ' #txt
-Bs0 f0 outParameterDecl '<> result;
-' #txt
+Bs0 f0 outParameterDecl '<> result;' #txt
 Bs0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -113,9 +110,7 @@ Bs0 f2 expr out #txt
 Bs0 f2 280 64 339 64 #arcP
 Bs0 f8 guid 1506B55239675734 #txt
 Bs0 f8 method itemSelected(org.primefaces.event.ItemSelectEvent) #txt
-Bs0 f8 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<org.primefaces.event.ItemSelectEvent event> param = methodEvent.getInputArguments();
-' #txt
+Bs0 f8 inParameterDecl '<org.primefaces.event.ItemSelectEvent event> param;' #txt
 Bs0 f8 inActionCode 'import javax.faces.context.FacesContext;
 import javax.faces.application.FacesMessage;
 
@@ -124,8 +119,7 @@ FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
 ", Series Index:" + param.event.getSeriesIndex());
 
 FacesContext.getCurrentInstance().addMessage(null, msg);' #txt
-Bs0 f8 outParameterDecl '<> result;
-' #txt
+Bs0 f8 outParameterDecl '<> result;' #txt
 Bs0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -140,11 +134,8 @@ Bs0 f8 @|UdMethodIcon #fIcon
 Bs0 f8 -1|-1|-9671572 #nodeStyle
 Bs0 f9 guid 1506B55239461076 #txt
 Bs0 f9 method itemSelected(String) #txt
-Bs0 f9 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<java.lang.String growl> param = methodEvent.getInputArguments();
-' #txt
-Bs0 f9 outParameterDecl '<> result;
-' #txt
+Bs0 f9 inParameterDecl '<String growl> param;' #txt
+Bs0 f9 outParameterDecl '<> result;' #txt
 Bs0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>

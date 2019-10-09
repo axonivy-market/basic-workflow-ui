@@ -1,5 +1,5 @@
 [Ivy]
-1501D82D3237D168 3.28 #module
+1501D82D3237D168 7.5.0 #module
 >Proto >Proto Collection #zClass
 Kg0 ContactSensing Big #zClass
 Kg0 B #cInfo
@@ -56,7 +56,7 @@ Kg0 f1 337 49 30 30 -11 17 #rect
 Kg0 f1 @|EndIcon #fIcon
 Kg0 f3 dialogId practiceJSF.ContactSensing #txt
 Kg0 f3 startMethod start(practiceJSF.Contact,practiceJSF.Company) #txt
-Kg0 f3 requestActionDecl '<practiceJSF.Contact contact, practiceJSF.Company company> param;' #txt
+Kg0 f3 requestActionDecl '<practiceJSF.Contact contact,practiceJSF.Company company> param;' #txt
 Kg0 f3 requestMappingAction 'param.company=in.company;
 ' #txt
 Kg0 f3 responseActionDecl 'practiceJSF.ContactData out;

@@ -1,5 +1,5 @@
 [Ivy]
-150427832B963B5C 3.28 #module
+150427832B963B5C 7.5.0 #module
 >Proto >Proto Collection #zClass
 Ks0 ContactSensingTemplateProcess Big #zClass
 Ks0 RD #cInfo
@@ -20,14 +20,11 @@ Ks0 @PushWFArc f5 '' #zField
 >Proto Ks0 Ks0 ContactSensingTemplateProcess #zField
 Ks0 f0 guid 1501D90B9419EA34 #txt
 Ks0 f0 method start(practiceJSF.Contact,practiceJSF.Company) #txt
-Ks0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<practiceJSF.Contact contact,practiceJSF.Company company> param = methodEvent.getInputArguments();
-' #txt
+Ks0 f0 inParameterDecl '<practiceJSF.Contact contact,practiceJSF.Company company> param;' #txt
 Ks0 f0 inParameterMapAction 'out.company=param.company;
 out.contact=param.contact;
 ' #txt
-Ks0 f0 outParameterDecl '<practiceJSF.Contact contact,practiceJSF.Company company> result;
-' #txt
+Ks0 f0 outParameterDecl '<practiceJSF.Contact contact,practiceJSF.Company company> result;' #txt
 Ks0 f0 outParameterMapAction 'result.contact=in.contact;
 result.company=in.company;
 ' #txt

@@ -1,5 +1,5 @@
 [Ivy]
-15037E64D6B19F81 3.28 #module
+15037E64D6B19F81 7.5.0 #module
 >Proto >Proto Collection #zClass
 Us0 UIEventHandlingProcess Big #zClass
 Us0 RD #cInfo
@@ -42,13 +42,10 @@ Us0 @PushWFArc f21 '' #zField
 >Proto Us0 Us0 UIEventHandlingProcess #zField
 Us0 f0 guid 15037E64D87E95C3 #txt
 Us0 f0 method start(practiceJSF.EventListenerData) #txt
-Us0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<practiceJSF.EventListenerData eventListenerData> param = methodEvent.getInputArguments();
-' #txt
+Us0 f0 inParameterDecl '<practiceJSF.EventListenerData eventListenerData> param;' #txt
 Us0 f0 inParameterMapAction 'out.eventListenerData=param.eventListenerData;
 ' #txt
-Us0 f0 outParameterDecl '<practiceJSF.EventListenerData eventListenerData> result;
-' #txt
+Us0 f0 outParameterDecl '<practiceJSF.EventListenerData eventListenerData> result;' #txt
 Us0 f0 outParameterMapAction 'result.eventListenerData=in.eventListenerData;
 ' #txt
 Us0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

@@ -1,5 +1,5 @@
 [Ivy]
-15047A2F77713FB5 3.28 #module
+15047A2F77713FB5 7.5.0 #module
 >Proto >Proto Collection #zClass
 As0 AvancedInputFormProcess Big #zClass
 As0 RD #cInfo
@@ -25,11 +25,8 @@ As0 @PushWFArc f8 '' #zField
 >Proto As0 As0 AvancedInputFormProcess #zField
 As0 f0 guid 15047A2F78E117BE #txt
 As0 f0 method start() #txt
-As0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<> param = methodEvent.getInputArguments();
-' #txt
-As0 f0 outParameterDecl '<> result;
-' #txt
+As0 f0 inParameterDecl '<> param;' #txt
+As0 f0 outParameterDecl '<> result;' #txt
 As0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -61,11 +58,8 @@ As0 f5 expr out #txt
 As0 f5 109 160 211 160 #arcP
 As0 f6 guid 15047AA4FA55D799 #txt
 As0 f6 method completeCountry(String) #txt
-As0 f6 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<java.lang.String country> param = methodEvent.getInputArguments();
-' #txt
-As0 f6 outParameterDecl '<List<java.lang.String> matchingCountries> result;
-' #txt
+As0 f6 inParameterDecl '<String country> param;' #txt
+As0 f6 outParameterDecl '<List<String> matchingCountries> result;' #txt
 As0 f6 outParameterMapAction 'result.matchingCountries=in.matchingCountries;
 ' #txt
 As0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
