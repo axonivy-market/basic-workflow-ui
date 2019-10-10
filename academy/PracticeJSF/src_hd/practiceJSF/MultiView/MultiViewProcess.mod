@@ -1,5 +1,5 @@
 [Ivy]
-1504285BFBB58B9A 3.28 #module
+1504285BFBB58B9A 7.5.0 #module
 >Proto >Proto Collection #zClass
 Ms0 MultiViewProcess Big #zClass
 Ms0 RD #cInfo
@@ -20,13 +20,10 @@ Ms0 @PushWFArc f5 '' #zField
 >Proto Ms0 Ms0 MultiViewProcess #zField
 Ms0 f0 guid 1504285BFD34A3D5 #txt
 Ms0 f0 method start(practiceJSF.MultiViewDialogData) #txt
-Ms0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<practiceJSF.MultiViewDialogData multiViewDialogData> param = methodEvent.getInputArguments();
-' #txt
+Ms0 f0 inParameterDecl '<practiceJSF.MultiViewDialogData multiViewDialogData> param;' #txt
 Ms0 f0 inParameterMapAction 'out.multiViewDialogData=param.multiViewDialogData;
 ' #txt
-Ms0 f0 outParameterDecl '<practiceJSF.MultiViewDialogData multiViewDialogData> result;
-' #txt
+Ms0 f0 outParameterDecl '<practiceJSF.MultiViewDialogData multiViewDialogData> result;' #txt
 Ms0 f0 outParameterMapAction 'result.multiViewDialogData=in.multiViewDialogData;
 ' #txt
 Ms0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

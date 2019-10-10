@@ -1,5 +1,5 @@
 [Ivy]
-1504CA82FB437EC0 3.28 #module
+1504CA82FB437EC0 7.5.0 #module
 >Proto >Proto Collection #zClass
 Ds0 DragAndDropDialogProcess Big #zClass
 Ds0 RD #cInfo
@@ -25,11 +25,8 @@ Ds0 @PushWFArc f2 '' #zField
 >Proto Ds0 Ds0 DragAndDropDialogProcess #zField
 Ds0 f0 guid 1504CA82FD267531 #txt
 Ds0 f0 method start() #txt
-Ds0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<> param = methodEvent.getInputArguments();
-' #txt
-Ds0 f0 outParameterDecl '<> result;
-' #txt
+Ds0 f0 inParameterDecl '<> param;' #txt
+Ds0 f0 outParameterDecl '<> result;' #txt
 Ds0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -59,15 +56,12 @@ Ds0 f7 211 243 26 26 0 12 #rect
 Ds0 f7 @|UdProcessEndIcon #fIcon
 Ds0 f9 guid 1504CCE0063427E0 #txt
 Ds0 f9 method myDrop(org.primefaces.event.DragDropEvent) #txt
-Ds0 f9 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<org.primefaces.event.DragDropEvent DragDropEvent> param = methodEvent.getInputArguments();
-' #txt
+Ds0 f9 inParameterDecl '<org.primefaces.event.DragDropEvent DragDropEvent> param;' #txt
 Ds0 f9 inActionCode 'String col = param.DragDropEvent.getData().toString();
 out.selectedColors.add(col);
 out.colors.remove(col);
 ' #txt
-Ds0 f9 outParameterDecl '<> result;
-' #txt
+Ds0 f9 outParameterDecl '<> result;' #txt
 Ds0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
