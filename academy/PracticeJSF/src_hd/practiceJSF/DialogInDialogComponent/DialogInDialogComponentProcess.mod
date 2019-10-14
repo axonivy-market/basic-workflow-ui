@@ -1,5 +1,5 @@
 [Ivy]
-15042C3E2237F4B3 3.28 #module
+15042C3E2237F4B3 7.5.0 #module
 >Proto >Proto Collection #zClass
 Ds0 DialogInDialogComponentProcess Big #zClass
 Ds0 RD #cInfo
@@ -22,14 +22,11 @@ Ds0 @PushWFArc f2 '' #zField
 >Proto Ds0 Ds0 DialogInDialogComponentProcess #zField
 Ds0 f0 guid 15042C3E23CE2AED #txt
 Ds0 f0 method start(practiceJSF.Contact,practiceJSF.DialogInDialogData) #txt
-Ds0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<practiceJSF.Contact contact,practiceJSF.DialogInDialogData shared> param = methodEvent.getInputArguments();
-' #txt
+Ds0 f0 inParameterDecl '<practiceJSF.Contact contact,practiceJSF.DialogInDialogData shared> param;' #txt
 Ds0 f0 inParameterMapAction 'out.contact=param.contact;
 out.dialogInDialog=param.shared;
 ' #txt
-Ds0 f0 outParameterDecl '<> result;
-' #txt
+Ds0 f0 outParameterDecl '<> result;' #txt
 Ds0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>

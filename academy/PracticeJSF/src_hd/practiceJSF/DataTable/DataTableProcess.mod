@@ -1,5 +1,5 @@
 [Ivy]
-15023D1C473E361E 3.28 #module
+15023D1C473E361E 7.5.0 #module
 >Proto >Proto Collection #zClass
 Ds0 DataTableProcess Big #zClass
 Ds0 RD #cInfo
@@ -22,13 +22,10 @@ Ds0 @PushWFArc f2 '' #zField
 >Proto Ds0 Ds0 DataTableProcess #zField
 Ds0 f0 guid 15023D1C49B838C5 #txt
 Ds0 f0 method start(Recordset) #txt
-Ds0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<ch.ivyteam.ivy.scripting.objects.Recordset contacts> param = methodEvent.getInputArguments();
-' #txt
+Ds0 f0 inParameterDecl '<Recordset contacts> param;' #txt
 Ds0 f0 inParameterMapAction 'out.contacts=param.contacts;
 ' #txt
-Ds0 f0 outParameterDecl '<> result;
-' #txt
+Ds0 f0 outParameterDecl '<> result;' #txt
 Ds0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>

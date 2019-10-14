@@ -1,5 +1,5 @@
 [Ivy]
-150286006388E3B4 3.28 #module
+150286006388E3B4 7.5.0 #module
 >Proto >Proto Collection #zClass
 Ss0 RegistrationFormProcess Big #zClass
 Ss0 RD #cInfo
@@ -22,14 +22,11 @@ Ss0 @PushWFArc f6 '' #zField
 >Proto Ss0 Ss0 RegistrationFormProcess #zField
 Ss0 f0 guid 1502860064D2FBDF #txt
 Ss0 f0 method start(practiceJSF.ColorOrder) #txt
-Ss0 f0 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
-<practiceJSF.ColorOrder preSelection> param = methodEvent.getInputArguments();
-' #txt
+Ss0 f0 inParameterDecl '<practiceJSF.ColorOrder preSelection> param;' #txt
 Ss0 f0 inParameterMapAction 'out.colorOrder=param.preSelection;
 out.colorOrder.color=null;
 ' #txt
-Ss0 f0 outParameterDecl '<practiceJSF.ColorOrder colorOrder> result;
-' #txt
+Ss0 f0 outParameterDecl '<practiceJSF.ColorOrder colorOrder> result;' #txt
 Ss0 f0 outParameterMapAction 'result.colorOrder=in.colorOrder;
 ' #txt
 Ss0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
