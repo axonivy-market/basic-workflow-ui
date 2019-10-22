@@ -33,8 +33,11 @@
 	</dependencies>
 	
 	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<outputDirectory>${project.build.directory}/classes</outputDirectory>
 		<testSourceDirectory>src_test</testSourceDirectory>
-		<testOutputDirectory>classes</testOutputDirectory>
+		<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+		
 		<plugins>
 			<plugin>
 				<groupId>com.axonivy.ivy.ci</groupId>
