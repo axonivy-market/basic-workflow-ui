@@ -25,7 +25,8 @@
 	</dependencies>
 	
 	<build>
-		<testSourceDirectory>src_test</testSourceDirectory>
+		<sourceDirectory>src</sourceDirectory>
+		<outputDirectory>${project.build.directory}/classes</outputDirectory>
 		
 		<pluginManagement>
 			<plugins>
