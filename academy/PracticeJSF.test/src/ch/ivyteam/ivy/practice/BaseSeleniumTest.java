@@ -2,32 +2,53 @@ package ch.ivyteam.ivy.practice;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BaseSeleniumTest
-{
+import io.github.bonigarcia.seljup.Options;
+import io.github.bonigarcia.seljup.SeleniumExtension;
+
+@ExtendWith(SeleniumExtension.class)
+public abstract class BaseSeleniumTest
+{ 
+  @Options
+  FirefoxOptions firefoxOptions = new FirefoxOptions();
+  {
+    FirefoxBinary binary = new FirefoxBinary();
+    binary.addCommandLineOptions(System.getProperty("firefox.options","--headless"));
+    firefoxOptions.setBinary(binary);
+    firefoxOptions.setProfile(configureBrowserProfile());
+  }
+  
   protected WebDriver driver;
-  protected String baseUrl;
-  protected String ivyApplication;
   protected String baseUrlPracticeJSF;
 
-  @Before
-  public void setUp() throws Exception
+  @BeforeEach
+  public void setUp(FirefoxDriver driver) throws Exception
   {
-    driver = new org.openqa.selenium.firefox.FirefoxDriver();
-    driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-    baseUrl = "http://localhost:8081/ivy/pro/";
-    ivyApplication = "designer";
-    baseUrlPracticeJSF = baseUrl + ivyApplication + "/PracticeJSF/";
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    this.driver = driver;
+    baseUrlPracticeJSF = EngineUrl.process() + "/PracticeJSF/";
   }
 
-  @After
+  protected FirefoxProfile configureBrowserProfile() 
+  {
+    FirefoxProfile profile = new FirefoxProfile();
+    profile.setPreference("intl.accept_languages", "en"); 
+    return profile;
+  }
+
+  @AfterEach
   public void tearDown() throws Exception
   {
     driver.quit();

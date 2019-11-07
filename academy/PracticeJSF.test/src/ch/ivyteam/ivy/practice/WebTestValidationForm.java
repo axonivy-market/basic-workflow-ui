@@ -1,14 +1,17 @@
 package ch.ivyteam.ivy.practice;
 
-import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class TestValidationForm extends BaseSeleniumTest
+public class WebTestValidationForm extends BaseSeleniumTest
 {
   @Test
+  @Disabled
   public void testValidationForm() throws Exception
   {
       driver.get(baseUrlPracticeJSF + "1503D99612EE10F2/start.ivp");
