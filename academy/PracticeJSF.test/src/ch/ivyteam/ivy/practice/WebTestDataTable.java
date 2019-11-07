@@ -1,12 +1,12 @@
 package ch.ivyteam.ivy.practice;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestDataTable extends BaseSeleniumTest
+public class WebTestDataTable extends BaseSeleniumTest
 {
   @Test
   public void testDataTable() throws Exception

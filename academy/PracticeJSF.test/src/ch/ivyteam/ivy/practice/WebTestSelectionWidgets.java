@@ -1,16 +1,19 @@
 package ch.ivyteam.ivy.practice;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class TestSelectionWidgets extends BaseSeleniumTest
+public class WebTestSelectionWidgets extends BaseSeleniumTest
 {
   @Test
+  @Disabled()
   public void testSelectionWidgets() throws Exception
   {
     driver.get(baseUrlPracticeJSF + "150285E8A4FA463A/start.ivp");
