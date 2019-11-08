@@ -1,13 +1,13 @@
 package ch.ivyteam.ivy.practice;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class TestEventListener extends BaseSeleniumTest
+public class WebTestEventListener extends BaseSeleniumTest
 {
   @Test
   public void testEventListener() throws Exception
