@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.ivyteam.ivy.project.academy</groupId>
 	<artifactId>PracticeJSF.test</artifactId>
-	<version>7.4.1-SNAPSHOT</version>
+	<version>8.0.0-SNAPSHOT</version>
 
 	<parent>
 		<groupId>ch.ivyteam.ivy.project</groupId>
 		<artifactId>build.maven.iar.web.test</artifactId>
-		<version>7.4.1-SNAPSHOT</version>
+		<version>8.0.0-SNAPSHOT</version>
 		<relativePath>../../build.maven/iar/web.test</relativePath>
 	</parent>
 
