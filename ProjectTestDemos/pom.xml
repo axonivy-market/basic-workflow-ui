@@ -34,7 +34,6 @@
 	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
-		<outputDirectory>${project.build.directory}/classes</outputDirectory>
 		<testSourceDirectory>src_test</testSourceDirectory>
 		<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
 		
