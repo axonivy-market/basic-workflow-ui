@@ -7,7 +7,7 @@
     "processes" : [ {
       "id" : "test_process",
       "name" : "Test Process",
-      "processToExecute" : "ch.ivyteam.ivy.project:jsfworkflowui.testdata:15CF34492194250C/start.ivp"
+      "processToExecute" : "ch.ivyteam.ivy.project:basic-workflow-ui-testdata:15CF34492194250C/start.ivp"
     } ]
   } ]
 }

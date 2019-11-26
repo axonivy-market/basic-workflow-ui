@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>jsfworkflowui.test</artifactId>
+	<artifactId>basic-workflow-ui-test</artifactId>
 
 	<parent>
 		<groupId>ch.ivyteam.ivy.project</groupId>
@@ -23,13 +23,13 @@
 	<dependencies>
 		<dependency>
 			<groupId>ch.ivyteam.ivy.project.wf</groupId>
-			<artifactId>BasicWorkflowUi</artifactId>
+			<artifactId>basic-workflow-ui</artifactId>
 			<version>${project.version}</version>
 			<type>iar</type>
 		</dependency>
 		<dependency>
 			<groupId>ch.ivyteam.ivy.project</groupId>
-			<artifactId>jsfworkflowui.testdata</artifactId>
+			<artifactId>basic-workflow-ui-testdata</artifactId>
 			<version>${project.version}</version>
 			<type>iar</type>
 		</dependency>
@@ -84,7 +84,7 @@
 						</goals>
 						<phase>pre-integration-test</phase>
 						<configuration>
-							<deployFile>${ch.ivyteam.ivy.project.wf:BasicWorkflowUi:iar}</deployFile>
+							<deployFile>${ch.ivyteam.ivy.project.wf:basic-workflow-ui:iar}</deployFile>
 						</configuration>
 					</execution>
 					<execution>
@@ -94,7 +94,7 @@
 						</goals>
 						<phase>pre-integration-test</phase>
 						<configuration>
-							<deployFile>${ch.ivyteam.ivy.project:jsfworkflowui.testdata:iar}</deployFile>
+							<deployFile>${ch.ivyteam.ivy.project:basic-workflow-ui-testdata:iar}</deployFile>
 							<optionsFile>${basedir}/BasicWorkflowUi.options</optionsFile>
 						</configuration>
 					</execution>
