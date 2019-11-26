@@ -305,7 +305,7 @@ public class TestSettings extends BaseWorkflowUiTest
   private void setDefaultPageProcess()
   {
     WfNavigator.openProcessLink(driver,
-            "testWfUi/13FCD703133237C4/SetDefaultProcess.ivp?processName=ch.ivyteam.ivy.project.wf:BasicWorkflowUi");
+            "testWfUi/13FCD703133237C4/SetDefaultProcess.ivp?processName=ch.ivyteam.ivy.project.wf:basic-workflow-ui");
     IvyWebDriverHelper.waitForAjax(driver);
     awaitTextToBePresentIn(By.id("mainArea"), "Home");
   }
