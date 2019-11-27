@@ -2,31 +2,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.ivyteam.ivy.project</groupId>
-	<artifactId>ivyProject.modules</artifactId>
+	<artifactId>basic-workflow-ui-main</artifactId>
 	<version>8.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<description>Contains all ivyProjects as module dependency</description>
 
 	<modules>
-		<module>HtmlDialogDemos</module>
-		<module>ProjectTestDemos</module>
-		<module>ErrorHandlingDemos</module>
-		<module>QuickStartTutorial</module>
-		<module>WorkflowDemos</module>
-		<module>ConnectivityDemos</module>
-		<module>DemosApp</module>
-
-		<!-- workflow: -->
 		<module>BasicWorkflowUi</module>
-
-		<module>academy</module>
-
-		<!-- parent config poms: -->
-		<module>build.maven</module>
-		<module>build.maven/iar</module>
-		<module>build.maven/iar/web.test</module>
+		<module>BasicWorkflowUi.test/testRecources/testWfUi</module>
+		<module>BasicWorkflowUi.test</module>
 	</modules>
-
+	
 	<build>
 		<plugins>
 			<plugin>
