@@ -1,5 +1,9 @@
 # ivy projects
 
+## demos
+
+the demos are moved to GitHub: https://github.com/ivy-samples/ivy-project-demos
+
 ## test
 
 to run test, firefox in version 58 is required. if you don't want to install firefox in version 58. just run a container based on the `Dockerfile` and execute the tests.
