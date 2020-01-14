@@ -8,13 +8,7 @@
 	<description>Contains all ivyProjects as module dependency</description>
 
 	<modules>
-		<module>HtmlDialogDemos</module>
 		<module>ProjectTestDemos</module>
-		<module>ErrorHandlingDemos</module>
-		<module>QuickStartTutorial</module>
-		<module>WorkflowDemos</module>
-		<module>ConnectivityDemos</module>
-		<module>DemosApp</module>
 
 		<!-- workflow: -->
 		<module>BasicWorkflowUi</module>
