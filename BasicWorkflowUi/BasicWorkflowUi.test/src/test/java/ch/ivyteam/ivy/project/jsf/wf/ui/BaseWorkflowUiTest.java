@@ -1,46 +1,32 @@
 package ch.ivyteam.ivy.project.jsf.wf.ui;
 
+import static com.codeborne.selenide.Condition.empty;
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.not;
+import static com.codeborne.selenide.Condition.or;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.concurrent.TimeUnit;
-
-import org.awaitility.Awaitility;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.axonivy.ivy.supplements.primeui.tester.AjaxHelper;
+import com.axonivy.ivy.supplements.IvySelenide;
 import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi.Dialog;
+import com.axonivy.ivy.supplements.primeui.tester.widget.Dialog;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 
 import ch.ivyteam.ivy.server.test.ApplicationLogin;
 import ch.ivyteam.ivy.server.test.ServerControl;
 import ch.ivyteam.ivy.server.test.WfNavigator;
-import io.github.bonigarcia.seljup.Options;
-import io.github.bonigarcia.seljup.SeleniumExtension;
 
-@ExtendWith(SeleniumExtension.class)
+@IvySelenide
 public class BaseWorkflowUiTest
 {
-  @Options
-  FirefoxOptions firefoxOptions = new FirefoxOptions();
-  {
-    FirefoxBinary binary = new FirefoxBinary();
-    binary.addCommandLineOptions("--headless");
-    firefoxOptions.setBinary(binary);
-    FirefoxProfile profile = new FirefoxProfile();
-    profile.setPreference("intl.accept_languages", "en");
-    firefoxOptions.setProfile(profile);
-  }
   
   public static final String APP = ServerControl.isDesigner() ? "designer" : "Portal";
   public static final String WEB_TEST_SERVER_ADMIN_USER;
@@ -54,21 +40,17 @@ public class BaseWorkflowUiTest
     WEB_TEST_SERVER_ADMIN_USER = "Administrator";
     WEB_TEST_SERVER_ADMIN_PASSWORD = "administrator";
   }
-  protected WebDriver driver;
 
   @BeforeEach
-  public void setUp(FirefoxDriver driver) throws Exception
+  public void setUp() throws Exception
   {
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    this.driver = driver;
-    
-    WfNavigator.grantAdminRights(driver);
+    WfNavigator.grantAdminRights();
     login(WEB_TEST_SERVER_ADMIN_USER, WEB_TEST_SERVER_ADMIN_PASSWORD);
   }
 
   protected void login(String username, String password)
   {
-    new ApplicationLogin(driver).login(username, password);
+    ApplicationLogin.login(username, password);
   }
 
   protected void createTask(String title, String description, int priority)
@@ -78,12 +60,12 @@ public class BaseWorkflowUiTest
 
   protected void createTask(String title, String description, int priority, String expiryDate)
   {
-    WfNavigator.processList(driver);
+    WfNavigator.processList();
     awaitToBeClickable(WF_JSF_LINK_ID).click();
     switchToIFrame();
-    await(ExpectedConditions.visibilityOfElementLocated(By.id("formRequest:caption")));
+    $(By.id("formRequest:caption")).shouldBe(visible);
     awaitToBeClickable("formRequest:caption").sendKeys(title);
-    prime().selectOne(By.id("formRequest:taskPriority"))
+    PrimeUi.selectOne(By.id("formRequest:taskPriority"))
             .selectItemByLabel(PRIORITIES[priority]);
     awaitToBeClickable("formRequest:description").sendKeys(description);
     if (expiryDate != null)
@@ -97,7 +79,7 @@ public class BaseWorkflowUiTest
 
   protected void createHtmlTask(String title, String description)
   {
-    WfNavigator.processList(driver);
+    WfNavigator.processList();
     awaitToBeClickable(WF_HTML_LINK_ID).click();
     switchToIFrame();
     awaitToBeClickable("caption").sendKeys(title);
@@ -108,12 +90,12 @@ public class BaseWorkflowUiTest
 
   protected void createTaskWithCategory(String title, String description, int priority, String category)
   {
-    WfNavigator.processList(driver);
+    WfNavigator.processList();
     awaitToBeClickable(WF_JSF_LINK_ID).click();
     switchToIFrame();
     awaitToBePresent("formRequest:caption");
     awaitToBeClickable("formRequest:caption").sendKeys(title);
-    prime().selectOne(By.id("formRequest:taskPriority")).selectItemByLabel(PRIORITIES[priority]);
+    PrimeUi.selectOne(By.id("formRequest:taskPriority")).selectItemByLabel(PRIORITIES[priority]);
     awaitToBeClickable("formRequest:description").sendKeys(description);
     awaitToBeClickable("formRequest:category").sendKeys(category);
     awaitToBeClickable("formRequest:submitJsf").click();
@@ -122,7 +104,7 @@ public class BaseWorkflowUiTest
   
   protected void closeTask()
   {
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("taskLinkRow_0").click();
     switchToIFrame();
     awaitToBeClickable("formConfirmation:save").click();
@@ -131,7 +113,7 @@ public class BaseWorkflowUiTest
 
   protected void closeHtmlTask()
   {
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("taskLinkRow_0").click();
     switchToIFrame();
     awaitToBeClickable(By.name("ok")).click();
@@ -149,38 +131,26 @@ public class BaseWorkflowUiTest
 
   public void switchToDefaultContent()
   {
-    driver.switchTo().defaultContent();
+    Selenide.switchTo().defaultContent();
   }
 
   public void switchToIFrame()
   {
-    driver.switchTo().frame(((RemoteWebDriver) driver).findElement(By.id("iFrame")));
-  }
-
-  public PrimeUi prime()
-  {
-    return new PrimeUi(driver);
-  }
-
-  public AjaxHelper ajax()
-  {
-    return new AjaxHelper(driver);
+    Selenide.switchTo().frame($(By.id("iFrame")));
   }
 
   public void addAbsenceForMe(String startDate, String startTime, String endDate, String endTime,
           String description)
   {
-    WfNavigator.absence(driver);
+    WfNavigator.absence();
     addAbsence(startDate, startTime, endDate, endTime, description);
   }
 
   public void addAbsenceForUser(String startDate, String startTime, String endDate, String endTime,
           String description, String absenceForUser)
   {
-    WfNavigator.absence(driver);
-    prime().selectOne(By.id("formAbsence:userSelection"))
-            .selectItemByLabel(absenceForUser);
-
+    WfNavigator.absence();
+    PrimeUi.selectOne(By.id("formAbsence:userSelection")).selectItemByLabel(absenceForUser);
     addAbsence(startDate, startTime, endDate, endTime, description);
   }
 
@@ -188,7 +158,7 @@ public class BaseWorkflowUiTest
           String description)
   {
     awaitToBeClickable("formAbsence:addAbsence").click();
-    Dialog absenceDialog = prime().dialog(By.id("dialogAddAbsence"));
+    Dialog absenceDialog = PrimeUi.dialog(By.id("dialogAddAbsence"));
     absenceDialog.waitForVisibility(true);
     clickAndSendKeys("absenceStartTime_input", startTime);
     clickAndSendKeys("absenceStartDate_input", startDate);
@@ -196,7 +166,7 @@ public class BaseWorkflowUiTest
     clickAndSendKeys("absenceEndDate_input", endDate);
     clickAndSendKeys("absenceDescription", description);
     awaitToBeClickable("formAddAbsence:saveNewAbsence").click();
-    absenceDialog.waitToBeClosedOrError();
+    $(".ui-messages").shouldBe(or("hidden or error", not(visible), not(empty)));
   }
 
   private void clickAndSendKeys(String inputId, String inputValue)
@@ -206,39 +176,33 @@ public class BaseWorkflowUiTest
     awaitToBeClickable("formAddAbsence:" + inputId).sendKeys(inputValue);
   }
 
-  protected Boolean awaitTextToBePresentIn(By locator, String text)
+  protected void awaitTextToBePresentIn(By locator, String text)
   {
-    return ajax().await(ExpectedConditions.textToBePresentInElementLocated(locator, text));
+    $(locator).shouldHave(text(text));
   }
 
-  protected WebElement awaitToBePresent(String id)
+  protected SelenideElement awaitToBePresent(String id)
   {
     return awaitToBePresent(By.id(id));
   }
 
-  protected WebElement awaitToBePresent(By locator)
+  protected SelenideElement awaitToBePresent(By locator)
   {
-    return ajax().await(ExpectedConditions.presenceOfElementLocated(locator));
+    return $(locator).shouldBe(exist, visible);
   }
 
-  protected WebElement awaitToBeClickable(String id)
+  protected SelenideElement awaitToBeClickable(String id)
   {
-    Awaitility.await().until(() -> driver.findElement(By.id(id)).isDisplayed());
     return awaitToBeClickable(By.id(id));
   }
 
-  protected WebElement awaitToBeClickable(By locator)
+  protected SelenideElement awaitToBeClickable(By locator)
   {
-    return ajax().await(ExpectedConditions.elementToBeClickable(locator));
-  }
-
-  protected <T> T await(ExpectedCondition<T> condition)
-  {
-    return ajax().await(condition);
+    return $(locator).shouldBe(visible, enabled);
   }
 
   protected void searchDataTable(String searchId, String filterText)
   {
-    driver.findElement(By.id(searchId)).sendKeys(filterText);
+    $(By.id(searchId)).shouldBe(visible).sendKeys(filterText);
   }
 }

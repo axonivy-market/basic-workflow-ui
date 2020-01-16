@@ -1,40 +1,40 @@
 package ch.ivyteam.ivy.project.jsf.wf.ui;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi.SelectOneMenu;
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi.Table;
+import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
+import com.axonivy.ivy.supplements.primeui.tester.widget.Table;
 
-import ch.ivyteam.ivy.server.test.IvyWebDriverHelper;
 import ch.ivyteam.ivy.server.test.WfNavigator;
 
 public class TestWorkflow extends BaseWorkflowUiTest
 {
-
   private static final String TEST_USER_1 = "Test User 1 (user1)";
   private static final String TEST_USER_2 = "Test User 2 (user2)";
 
   @Test
   public void testHome() throws Exception
   {
-    WfNavigator.home(driver);
-    assertThat(awaitToBeClickable("mainArea").getText()).contains("Home");
+    WfNavigator.home();
+    $(By.id("mainArea")).shouldHave(text("Home"));
     
     awaitToBeClickable("ProcessListLink").click();
-    IvyWebDriverHelper.assertAjaxElementContains(driver, By.id("mainArea"), "Process List");
+    $(By.id("mainArea")).shouldHave(text("Process List"));
     
-    WfNavigator.home(driver);
+    WfNavigator.home();
     awaitToBeClickable("TaskListLink").click();
-    IvyWebDriverHelper.assertAjaxElementContains(driver, By.id("mainArea"), "Task List");
+    $(By.id("mainArea")).shouldHave(text("Task List"));
   }
   
   @Test
   public void testProcesslist() throws Exception
   {
-    WfNavigator.processList(driver);
+    WfNavigator.processList();
     //Start home process
     awaitToBeClickable(WF_JSF_LINK_ID).click();
     switchToIFrame();
@@ -42,17 +42,17 @@ public class TestWorkflow extends BaseWorkflowUiTest
     switchToDefaultContent();
     
     // Test processlist searchbar with process name
-    WfNavigator.processList(driver);
+    WfNavigator.processList();
     
-    Table dataTable = prime().table(By.id("processlistform:datatable"));
+    Table dataTable = PrimeUi.table(By.id("processlistform:datatable"));
     dataTable.contains("TestCaseMap");
     
     searchDataTable("processlistform:SearchTxt", "test workflow js");
-    dataTable = prime().table(By.id("processlistform:datatable"));
+    dataTable = PrimeUi.table(By.id("processlistform:datatable"));
     dataTable.firstRowContains("Test Workflow Jsf");
     
     // Test processlist searchbar with process description
-    WfNavigator.processList(driver);
+    WfNavigator.processList();
     searchDataTable("processlistform:SearchTxt", "Web pages");
     dataTable.firstRowContains("Test Workflow Html");
   }
@@ -78,8 +78,8 @@ public class TestWorkflow extends BaseWorkflowUiTest
     addSubstitutionForUserPersonalTasks(TEST_USER_2);
     
     login("user1", "user1");
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains("JSF taskForUser2");
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text("JSF taskForUser2"));
   }
 
   @Test
@@ -92,83 +92,77 @@ public class TestWorkflow extends BaseWorkflowUiTest
     addSubstitutionForAllRolesOfUser(TEST_USER_2);
     
     login("user1", "user1");
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains("JSF taskForRole3");
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text("JSF taskForRole3"));
   }
 
   private void checkIsTaskCreated()
   {
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains("JSF titel");
-    assertThat(driver.getPageSource()).contains("Priority EXCEPTION");
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text("JSF titel"))
+            .find("span.priority-exception").should(exist);
   }
 
   private void checkIsTaskClosed()
   {
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).doesNotContain("JSF titel");
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldNotHave(text("JSF titel"));
   }
 
   private void delegateTaskToUser(String taskName, String user)
   {
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains(taskName);
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text(taskName));
     awaitToBeClickable("buttonTaskDetail").click();
     awaitToBeClickable("formTaskDetails:openDelegateTask").click();
-    prime().dialog(By.id("modalDialogDelegateTask")).waitForVisibility(true);
-    SelectOneMenu menu = prime().selectOne(By.id("formDelegateTask:selectionOfUser"));
-    menu.selectItemByLabel(user);
+    PrimeUi.dialog(By.id("modalDialogDelegateTask")).waitForVisibility(true);
+    PrimeUi.selectOne(By.id("formDelegateTask:selectionOfUser")).selectItemByLabel(user);
     awaitToBeClickable("formDelegateTask:saveDelegateTask").click();
-    prime().dialog(By.id("modalDialogDelegateTask")).waitToBeClosedOrError();
+    PrimeUi.dialog(By.id("modalDialogDelegateTask")).waitHidden();
   }
   
   private void delegateTaskToRole(String taskName, String role)
   {
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains(taskName);
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text(taskName));
     awaitToBeClickable("buttonTaskDetail").click();
     awaitToBeClickable("formTaskDetails:openDelegateTask").click();
-    prime().dialog(By.id("modalDialogDelegateTask")).waitForVisibility(true);
-    prime().selectOneRadio(By.id("formDelegateTask")).selectItemById("formDelegateTask:delegateOptions:1_clone");
-    SelectOneMenu menu = prime().selectOne(By.id("formDelegateTask:selectionOfRole"));
-    menu.selectItemByLabel(role);
+    PrimeUi.dialog(By.id("modalDialogDelegateTask")).waitForVisibility(true);
+    PrimeUi.selectOneRadio(By.id("formDelegateTask")).selectItemById("formDelegateTask:delegateOptions:1_clone");
+    PrimeUi.selectOne(By.id("formDelegateTask:selectionOfRole")).selectItemByLabel(role);
     awaitToBeClickable("formDelegateTask:saveDelegateTask").click();
-    prime().dialog(By.id("modalDialogDelegateTask")).waitToBeClosedOrError();
+    PrimeUi.dialog(By.id("modalDialogDelegateTask")).waitHidden();
   }
 
   private void addSubstitutionForUserPersonalTasks(String user)
   {
-    WfNavigator.substitution(driver);
-    SelectOneMenu menu = prime().selectOne(By.id("formSubstitute:userSelection"));
-    menu.selectItemByLabel(user);
+    WfNavigator.substitution();
+    PrimeUi.selectOne(By.id("formSubstitute:userSelection")).selectItemByLabel(user);
     awaitToBeClickable("formSubstitute:addSubstitute").click();
-    prime().dialog(By.id("dialogAddSubstitute")).waitForVisibility(true);
-    menu = prime().selectOne(By.id("formAddSubstitute:substituteUser"));
-    menu.selectItemByLabel(TEST_USER_1);
+    PrimeUi.dialog(By.id("dialogAddSubstitute")).waitForVisibility(true);
+    PrimeUi.selectOne(By.id("formAddSubstitute:substituteUser")).selectItemByLabel(TEST_USER_1);
     awaitToBeClickable("formAddSubstitute:substituteDescription").click();
     awaitToBeClickable("formAddSubstitute:substituteDescription").clear();
     awaitToBeClickable("formAddSubstitute:substituteDescription").sendKeys("Add substitution test");
     awaitToBeClickable("formAddSubstitute:saveSubstitution").click();
-    prime().dialog(By.id("dialogAddSubstitute")).waitToBeClosedOrError();
+    PrimeUi.dialog(By.id("dialogAddSubstitute")).waitHidden();
   }
 
   private void addSubstitutionForAllRolesOfUser(String user)
   {
-    WfNavigator.substitution(driver);
-    SelectOneMenu menu = prime().selectOne(By.id("formSubstitute:userSelection"));
-    menu.selectItemByLabel(user);
+    WfNavigator.substitution();
+    PrimeUi.selectOne(By.id("formSubstitute:userSelection")).selectItemByLabel(user);
     awaitToBePresent("formSubstitute:addSubstitute");
     awaitToBeClickable("formSubstitute:addSubstitute").click();
-    prime().dialog(By.id("dialogAddSubstitute")).waitForVisibility(true);
-    menu = prime().selectOne(By.id("formAddSubstitute:substituteUser"));
-    menu.selectItemByLabel(TEST_USER_1);
-    prime().selectOneRadio(By.id("formAddSubstitute")).selectItemById("formAddSubstitute:options:1_clone");
+    PrimeUi.dialog(By.id("dialogAddSubstitute")).waitForVisibility(true);
+    PrimeUi.selectOne(By.id("formAddSubstitute:substituteUser")).selectItemByLabel(TEST_USER_1);
+    PrimeUi.selectOneRadio(By.id("formAddSubstitute")).selectItemById("formAddSubstitute:options:1_clone");
     
-    prime().selectCheckboxMenu(By.id("formAddSubstitute:roleSelection")).selectAllItems();
+    PrimeUi.selectCheckboxMenu(By.id("formAddSubstitute:roleSelection")).selectAllItems();
     awaitToBeClickable("formAddSubstitute:substituteDescription").click();
     awaitToBeClickable("formAddSubstitute:substituteDescription").clear();
     awaitToBeClickable("formAddSubstitute:substituteDescription").sendKeys("Add substitution test");
     awaitToBeClickable("formAddSubstitute:saveSubstitution").click();
-    prime().dialog(By.id("dialogAddSubstitute")).waitToBeClosedOrError();
+    PrimeUi.dialog(By.id("dialogAddSubstitute")).waitHidden();
   }
 }

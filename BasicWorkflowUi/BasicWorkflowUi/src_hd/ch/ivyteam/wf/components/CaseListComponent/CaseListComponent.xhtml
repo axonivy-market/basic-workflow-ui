@@ -17,7 +17,7 @@
 			<c:if test="#{data.caseListMode == 'my_cases'}">
 				<p:toolbarGroup align="left">
 					<h:panelGrid columns="1">
-						<p:selectOneButton id="caseOption" value="#{data.cases.caseUserMode}">
+						<p:selectOneRadio id="caseOption" value="#{data.cases.caseUserMode}">
 							<f:selectItem
 								itemLabel="#{ivy.cms.co('/labels/history/workflowHistory/startedCase')}"
 								itemValue="startedCases" />
@@ -25,7 +25,7 @@
 								itemLabel="#{ivy.cms.co('/labels/history/workflowHistory/involvedCase')}"
 								itemValue="involvedCases" />
 							<p:ajax update="caseListForm" listener="#{logic.update}" />
-						</p:selectOneButton>
+						</p:selectOneRadio>
 					</h:panelGrid>
 				</p:toolbarGroup>
 			</c:if>

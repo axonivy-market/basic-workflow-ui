@@ -1,84 +1,102 @@
 package ch.ivyteam.ivy.server.test;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
 
 public class WfNavigator
 {
 
-  public static void openProcessLink(WebDriver driver, String processLink)
+  public static void openProcessLink(String processLink)
   {
-    driver.get(ServerControl.getProcessStartLink(processLink));
+    open(ServerControl.getProcessStartLink(processLink));
   }
 
-  public static void home(WebDriver driver)
+  public static void home()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13EACA2A989BCC3D/DefaultApplicationHomePage.ivp");
+    openProcessLink("BasicWorkflowUi/13EACA2A989BCC3D/DefaultApplicationHomePage.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void processList(WebDriver driver)
+  public static void processList()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13EACA2A989BCC3D/DefaultProcessStartListPage.ivp");
+    openProcessLink("BasicWorkflowUi/13EACA2A989BCC3D/DefaultProcessStartListPage.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void taskList(WebDriver driver)
+  public static void taskList()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13EACA2A989BCC3D/DefaultTaskListPage.ivp");
+    openProcessLink("BasicWorkflowUi/13EACA2A989BCC3D/DefaultTaskListPage.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void caseList(WebDriver driver)
+  public static void caseList()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13F1D890C62823FF/CaseListUser.ivp");
+    openProcessLink("BasicWorkflowUi/13F1D890C62823FF/CaseListUser.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void taskHistory(WebDriver driver)
+  public static void taskHistory()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13F2E007FE178DD4/TaskHistory.ivp");
+    openProcessLink("BasicWorkflowUi/13F2E007FE178DD4/TaskHistory.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void absence(WebDriver driver)
+  public static void absence()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13F3C911395912D4/Absence.ivp");
+    openProcessLink("BasicWorkflowUi/13F3C911395912D4/Absence.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void substitution(WebDriver driver)
+  public static void substitution()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13F5720218D18BA2/Substitution.ivp");
+    openProcessLink("BasicWorkflowUi/13F5720218D18BA2/Substitution.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void mailNotificationSettings(WebDriver driver)
+  public static void mailNotificationSettings()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13F51835BF0FECEF/MailNotificationSettings.ivp");
+    openProcessLink("BasicWorkflowUi/13F51835BF0FECEF/MailNotificationSettings.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void caseAdmin(WebDriver driver)
+  public static void caseAdmin()
   {
-    openProcessLink(driver, "BasicWorkflowUi/1518C1BDAE6D978C/CaseListAdmin.ivp");
+    openProcessLink("BasicWorkflowUi/1518C1BDAE6D978C/CaseListAdmin.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void taskAdmin(WebDriver driver)
+  public static void taskAdmin()
   {
-    openProcessLink(driver, "BasicWorkflowUi/1518C6953618322C/TaskListAdmin.ivp");
-
-    PrimeUi prime = new PrimeUi(driver);
-    prime.selectOne(By.id("taskListComponent:taskListForm:responsibleFilter")).waitForLabel("All");
-    prime.selectOne(By.id("taskListComponent:taskListForm:stateFilter")).waitForLabel("All");
+    openProcessLink("BasicWorkflowUi/1518C6953618322C/TaskListAdmin.ivp");
+    basicWfUiShouldBeVisible();
+    PrimeUi.selectOne(By.id("taskListComponent:taskListForm:responsibleFilter"));
+    PrimeUi.selectOne(By.id("taskListComponent:taskListForm:stateFilter"));
   }
 
-  public static void logout(WebDriver driver)
+  public static void logout()
   {
-    openProcessLink(driver, "BasicWorkflowUi/13EACA2A989BCC3D/Logout.ivp");
+    openProcessLink("BasicWorkflowUi/13EACA2A989BCC3D/Logout.ivp");
+    $(By.id("loginForm")).shouldBe(visible);
   }
 
-  public static void loggedInUser(WebDriver driver)
+  public static void loggedInUser()
   {
-    openProcessLink(driver, "BasicWorkflowUi/1477BA1CD7421F55/LoggedInUser.ivp");
+    openProcessLink("BasicWorkflowUi/1477BA1CD7421F55/LoggedInUser.ivp");
+    basicWfUiShouldBeVisible();
   }
 
-  public static void grantAdminRights(WebDriver driver)
+  public static void grantAdminRights()
   {
-    openProcessLink(driver, "testWfUi/143F856F4E029A48/SetAdminUser.ivp");
+    openProcessLink("testWfUi/143F856F4E029A48/SetAdminUser.ivp");
+  }
+  
+  private static void basicWfUiShouldBeVisible()
+  {
+    $(By.id("menuform")).shouldBe(visible);
   }
 }

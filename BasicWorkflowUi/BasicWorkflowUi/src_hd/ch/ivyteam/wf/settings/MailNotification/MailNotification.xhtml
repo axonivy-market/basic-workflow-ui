@@ -25,11 +25,11 @@
        		#{ivy.cms.co('/labels/settings/mailNotification/whatSettingsUse')}
        		<h:panelGrid columns="2">
        			<p:spacer width="10" />
-       			<p:selectOneButton id="appDefault" value="#{data.isUseApplicationDefault}">
+       			<p:selectOneRadio id="appDefault" value="#{data.isUseApplicationDefault}">
         			<f:selectItem itemLabel="#{ivy.cms.co('/labels/settings/mailNotification/appDefault')}" itemValue="true" />
         			<f:selectItem itemLabel="#{ivy.cms.co('/labels/settings/mailNotification/useCustom')}" itemValue="false" />
         			<f:ajax render="formMailNotification" listener="#{logic.setApplicationDefault}" />
-    			</p:selectOneButton>
+    			</p:selectOneRadio>
        		</h:panelGrid>
        		<br />
        		#{ivy.cms.co('/labels/settings/mailNotification/mailSettingDescription')}

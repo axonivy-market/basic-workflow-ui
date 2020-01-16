@@ -2,34 +2,23 @@ package ch.ivyteam.test.portal;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
-import io.github.bonigarcia.seljup.Options;
-import io.github.bonigarcia.seljup.SeleniumExtension;
+import com.axonivy.ivy.supplements.IvySelenide;
+import com.codeborne.selenide.WebDriverRunner;
 
-@ExtendWith(SeleniumExtension.class)
+@IvySelenide
 public class WebTestPortalIntegration
 {
-  @Options
-  FirefoxOptions firefoxOptions = new FirefoxOptions();
-  {
-    FirefoxBinary binary = new FirefoxBinary();
-    binary.addCommandLineOptions("--headless");
-    firefoxOptions.setBinary(binary);
-  }
   
   private PortalNavigator navigator;
 
   @BeforeEach
-  public void setUp(FirefoxDriver driver)
+  public void setUp()
   {
-    navigator = new PortalNavigator(driver);
+    navigator = new PortalNavigator(WebDriverRunner.getWebDriver());
     navigator.login();
   }
 

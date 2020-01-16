@@ -1,27 +1,28 @@
 package ch.ivyteam.ivy.project.jsf.wf.ui;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.selected;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi.Dialog;
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi.SelectOneMenu;
+import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
+import com.axonivy.ivy.supplements.primeui.tester.widget.Dialog;
+import com.axonivy.ivy.supplements.primeui.tester.widget.SelectOneMenu;
 
-import ch.ivyteam.ivy.server.test.IvyWebDriverHelper;
 import ch.ivyteam.ivy.server.test.WfNavigator;
 
 public class TestSettings extends BaseWorkflowUiTest
 {
-
   @Test
   public void testAddAbsence() throws Exception
   {
     addAbsenceForMe("31.31.2030", "32:32", "31.31.2031", "40:40", "Add absence test");
-    IvyWebDriverHelper.waitUntilEnabled(driver, By.id("formAddAbsence:saveNewAbsence"));
-    IvyWebDriverHelper.assertAjaxElementContains(driver, By.id("formAddAbsence:absenceMessage"),
-            "could not be understood as a date");
+    $(By.id("formAddAbsence:saveNewAbsence")).shouldBe(visible, enabled);
+    $(By.id("formAddAbsence:absenceMessage")).shouldHave(text("could not be understood as a date"));
     checkIfAbsenceContains("No absences");
     addAbsenceForMe("30.04.2030", "09:10", "30.04.2031", "10:10", "Add absence test");
     checkIfAbsenceContains("Add absence test");
@@ -45,9 +46,8 @@ public class TestSettings extends BaseWorkflowUiTest
     addAbsenceForMe("30.04.2030", "09:10", "30.04.2031", "10:10", "Add absence test");
     checkIfAbsenceContains("Add absence test");
     editAbsence("31.31.2030", "32:32", "31.31.2031", "40:40", "Edit absence test", "me");
-    IvyWebDriverHelper.waitUntilEnabled(driver, By.id("formEditAbsence:saveEditAbsence"));
-    IvyWebDriverHelper.assertAjaxElementContains(driver, By.id("formEditAbsence:absenceMessage"),
-            "could not be understood as a date");
+    $(By.id("formEditAbsence:saveEditAbsence")).shouldBe(visible, enabled);
+    $(By.id("formEditAbsence:absenceMessage")).shouldHave(text("could not be understood as a date"));
     checkIfAbsenceContains("Add absence test");
     editAbsence("15.04.2030", "11:11", "16.04.2031", "09:09", "Edit absence test", "me");
     checkIfAbsenceContains("Edit absence test");
@@ -72,11 +72,11 @@ public class TestSettings extends BaseWorkflowUiTest
     addAbsenceForUser("30.07.2012", "09:10", "30.08.2031", "10:10", "Add absence for other test",
             "Test User 2 (user2)");
     awaitToBeClickable("showAbsentUsers").click();
-    assertThat(driver.findElement(By.id("formAbsentUsers")).getText()).contains("Test User 2 (user2)");
+    $(By.id("formAbsentUsers")).shouldHave(text("Test User 2 (user2)"));
 
     // Trick to close the popup window with the absent users table.
-    driver.findElement(By.id("formAbsentUsers")).submit();
-    await(ExpectedConditions.invisibilityOf(driver.findElement(By.id("formAbsentUsers"))));
+    $(By.id("formAbsentUsers")).shouldBe(visible).submit();
+    $(By.id("formAbsentUsers")).shouldNotBe(visible);
 
     deleteAbsence();
     checkIfAbsenceContains("No absences");
@@ -85,10 +85,10 @@ public class TestSettings extends BaseWorkflowUiTest
   private void editAbsence(String startDate, String startTime, String endDate, String endTime,
           String description, String absenceFor)
   {
-    WfNavigator.absence(driver);
+    WfNavigator.absence();
     if (absenceFor == "other")
     {
-      prime().selectOne(By.id("formAbsence:userSelection")).selectItemByLabel("Test User 2 (user2)");
+      PrimeUi.selectOne(By.id("formAbsence:userSelection")).selectItemByLabel("Test User 2 (user2)");
     }    
     awaitToBeClickable("formAbsence:tableAbsence:0:editButton").click();
 
@@ -117,21 +117,20 @@ public class TestSettings extends BaseWorkflowUiTest
 
   private void checkIfAbsenceContains(String description)
   {
-    WfNavigator.absence(driver);
-    assertThat(driver.getPageSource()).contains(description);
+    WfNavigator.absence();
+    PrimeUi.table(By.id("formAbsence:tableAbsence")).contains(description);
   }
 
   private void deleteAbsence()
   {
     awaitToBeClickable("formAbsence:tableAbsence:0:removeButton").click();
-    IvyWebDriverHelper.waitForAjax(driver);
   }
 
   @Test
   public void testSubstitution() throws Exception
   {
     addSubstituteForTasks("me");
-    checkIsSubstituteForTasksAdded();
+    PrimeUi.table(By.id("formSubstitute:tableSubstitute")).contains("user2");
     login("user2", "user2");
     checkIsMySubstitutionAdded();
     addSubstitutesForRoles("me");
@@ -144,58 +143,52 @@ public class TestSettings extends BaseWorkflowUiTest
   public void testSubstitutionOther() throws Exception
   {
     addSubstituteForTasks("other");
-    SelectOneMenu selectOneMenu = prime().selectOne(By.id("formSubstitute:userSelection"));
+    SelectOneMenu selectOneMenu = PrimeUi.selectOne(By.id("formSubstitute:userSelection"));
     selectOneMenu.selectItemByLabel("Test User 2 (user2)");
-    assertThat(driver.getPageSource()).contains("user1");
+    PrimeUi.table(By.id("formMySubstitutions:tableMySubstitutions")).contains("user1");
     addSubstitutesForRoles("other");
     checkIsSubstituteForRolesAdded();
-    WfNavigator.substitution(driver);
+    WfNavigator.substitution();
     selectOneMenu.selectItemByLabel("Test User 1 (user1)");
     awaitToBeClickable("formSubstitute:tableSubstitute:0:removeButton").click();
   }
 
   private void addSubstituteForTasks(String substituteFor)
   {
-    WfNavigator.substitution(driver);
+    WfNavigator.substitution();
     if (substituteFor == "other")
     {
-      SelectOneMenu selectOneMenu = prime().selectOne(By.id("formSubstitute:userSelection"));
-      selectOneMenu.selectItemByLabel("Test User 1 (user1)");
+      PrimeUi.selectOne(By.id("formSubstitute:userSelection")).selectItemByLabel("Test User 1 (user1)");
     }
-    Dialog dialogSubstitute = prime().dialog(By.id("dialogAddSubstitute"));
+    Dialog dialogSubstitute = PrimeUi.dialog(By.id("dialogAddSubstitute"));
     dialogSubstitute.waitForVisibility(false);
     awaitToBePresent("formSubstitute:addSubstitute").click();
     dialogSubstitute.waitForVisibility(true);
-    SelectOneMenu selectOneMenu = prime().selectOne(By.id("formAddSubstitute:substituteUser"));
+    SelectOneMenu selectOneMenu = PrimeUi.selectOne(By.id("formAddSubstitute:substituteUser"));
     selectOneMenu.selectItemByLabel("Test User 2 (user2)");
     awaitToBeClickable("formAddSubstitute:substituteDescription").click();
     awaitToBeClickable("formAddSubstitute:substituteDescription").sendKeys("Add substitution test");
     awaitToBeClickable("formAddSubstitute:saveSubstitution").click();
-    dialogSubstitute.waitToBeClosedOrError();
-  }
-
-  private void checkIsSubstituteForTasksAdded()
-  {
-    assertThat(driver.getPageSource()).contains("user2");
+    dialogSubstitute.waitHidden();
   }
 
   private void checkIsMySubstitutionAdded()
   {
-    WfNavigator.substitution(driver);
-    assertThat(driver.getPageSource()).contains(WEB_TEST_SERVER_ADMIN_USER);
+    WfNavigator.substitution();
+    PrimeUi.table(By.id("formMySubstitutions:tableMySubstitutions"))
+            .contains(WEB_TEST_SERVER_ADMIN_USER);
   }
 
   private void addSubstitutesForRoles(String substituteFor)
   {
     if (substituteFor.equals("other"))
     {
-      SelectOneMenu menu = prime().selectOne(By.id("formSubstitute:userSelection"));
-      menu.selectItemByLabel("Test User 2 (user2)");
+      PrimeUi.selectOne(By.id("formSubstitute:userSelection")).selectItemByLabel("Test User 2 (user2)");
     }
     awaitToBeClickable("formSubstitute:addSubstitute").click();
-    prime().selectOneRadio(By.id("formAddSubstitute")).selectItemById("formAddSubstitute:options:1_clone");
+    PrimeUi.selectOneRadio(By.id("formAddSubstitute")).selectItemById("formAddSubstitute:options:1_clone");
 
-    prime().selectCheckboxMenu(By.id("formAddSubstitute:roleSelection")).selectAllItems();
+    PrimeUi.selectCheckboxMenu(By.id("formAddSubstitute:roleSelection")).selectAllItems();
     awaitToBeClickable("formAddSubstitute:substituteDescription").click();
     awaitToBeClickable("formAddSubstitute:substituteDescription").clear();
     awaitToBeClickable("formAddSubstitute:substituteDescription").sendKeys("Add substitution test");
@@ -204,27 +197,27 @@ public class TestSettings extends BaseWorkflowUiTest
 
   private void checkIsSubstituteForRolesAdded()
   {
-    assertThat(driver.getPageSource()).contains("Role 1");
-    assertThat(driver.getPageSource()).contains("Role 2");
+    PrimeUi.table(By.id("formSubstitute:tableSubstitute")).contains("Role 1");
+    PrimeUi.table(By.id("formSubstitute:tableSubstitute")).contains("Role 2");
     awaitToBeClickable("formSubstitute:tableSubstitute:0:removeButton").click();
     awaitToBeClickable("formSubstitute:tableSubstitute:0:removeButton").click();
   }
 
   private void deleteSubstitute()
   {
-    WfNavigator.substitution(driver);
+    WfNavigator.substitution();
     awaitToBeClickable("formSubstitute:tableSubstitute:0:removeButton").click();
   }
 
   @Test
   public void testMailNotification() throws Exception
   {
-    WfNavigator.mailNotificationSettings(driver);
+    WfNavigator.mailNotificationSettings();
     // set User specific
-    By oneRadioBy = By.id("formMailNotification:appDefault");
-    prime().selectOneRadio(oneRadioBy).selectItemById("formMailNotification:appDefault:1");
+    PrimeUi.selectOneRadio(By.id("formMailNotification:appDefault"))
+            .selectItemById("formMailNotification:appDefault:1");
     setMailNotification();
-    WfNavigator.mailNotificationSettings(driver);
+    WfNavigator.mailNotificationSettings();
     checkSetMailNotification();
     // set default
     awaitToBeClickable(By.cssSelector("span.ui-button-text.ui-c")).click();
@@ -246,33 +239,26 @@ public class TestSettings extends BaseWorkflowUiTest
 
   private void checkBooleanBox(String id)
   {
-    prime().selectBooleanCheckbox(By.id(id)).setChecked();
+    PrimeUi.selectBooleanCheckbox(By.id(id)).setChecked();
   }
 
   private void checkSetMailNotification()
   {
-    assertThat(driver.findElement(By.id("formMailNotification:onTask_input")).isSelected()).isTrue();
-    assertThat(driver.findElement(By.id("formMailNotification:checkMonday_input")).isSelected())
-            .isTrue();
-    assertThat(driver.findElement(By.id("formMailNotification:checkTuesday_input")).isSelected())
-            .isTrue();
-    assertThat(driver.findElement(By.id("formMailNotification:checkWednesday_input")).isSelected())
-            .isTrue();
-    assertThat(driver.findElement(By.id("formMailNotification:checkThursday_input")).isSelected())
-            .isTrue();
-    assertThat(driver.findElement(By.id("formMailNotification:checkFriday_input")).isSelected())
-            .isTrue();
-    assertThat(driver.findElement(By.id("formMailNotification:checkSaturday_input")).isSelected())
-            .isTrue();
-    assertThat(driver.findElement(By.id("formMailNotification:checkSunday_input")).isSelected())
-            .isTrue();
+    $(By.id("formMailNotification:onTask_input")).shouldBe(selected);
+    $(By.id("formMailNotification:checkMonday_input")).shouldBe(selected);
+    $(By.id("formMailNotification:checkTuesday_input")).shouldBe(selected);
+    $(By.id("formMailNotification:checkWednesday_input")).shouldBe(selected);
+    $(By.id("formMailNotification:checkThursday_input")).shouldBe(selected);
+    $(By.id("formMailNotification:checkFriday_input")).shouldBe(selected);
+    $(By.id("formMailNotification:checkSaturday_input")).shouldBe(selected);
+    $(By.id("formMailNotification:checkSunday_input")).shouldBe(selected);
   }
 
   @Test
   public void testDefaultHome() throws Exception
   {
     setDefaultPageProcess();
-    WfNavigator.openProcessLink(driver, "testWfUi/13FCD703133237C4/testDefaultHome.ivp");
+    WfNavigator.openProcessLink("testWfUi/13FCD703133237C4/testDefaultHome.ivp");
     awaitTextToBePresentIn(By.id("mainArea"), "Home");
   }
 
@@ -280,7 +266,7 @@ public class TestSettings extends BaseWorkflowUiTest
   public void testDefaultProcessList() throws Exception
   {
     setDefaultPageProcess();
-    WfNavigator.openProcessLink(driver, "testWfUi/13FCD703133237C4/testDefaultProcesslist.ivp");
+    WfNavigator.openProcessLink("testWfUi/13FCD703133237C4/testDefaultProcesslist.ivp");
     awaitTextToBePresentIn(By.id("mainArea"), "Process List");
   }
 
@@ -288,7 +274,7 @@ public class TestSettings extends BaseWorkflowUiTest
   public void testDefaultTaskList() throws Exception
   {
     setDefaultPageProcess();
-    WfNavigator.openProcessLink(driver, "testWfUi/13FCD703133237C4/testDefaultTaskList.ivp");
+    WfNavigator.openProcessLink("testWfUi/13FCD703133237C4/testDefaultTaskList.ivp");
     awaitTextToBePresentIn(By.id("mainArea"), "Task List");
   }
 
@@ -297,45 +283,38 @@ public class TestSettings extends BaseWorkflowUiTest
   {
     setDefaultPageProcess();
     createTask("titel", "beschreibung", 0);
-    WfNavigator.processList(driver);
+    WfNavigator.processList();
     awaitTextToBePresentIn(By.id("mainArea"), "Process List");
     callDefaultLogin();
   }
 
   private void setDefaultPageProcess()
   {
-    WfNavigator.openProcessLink(driver,
-            "testWfUi/13FCD703133237C4/SetDefaultProcess.ivp?processName=ch.ivyteam.ivy.project.wf:basic-workflow-ui");
-    IvyWebDriverHelper.waitForAjax(driver);
+    WfNavigator.openProcessLink("testWfUi/13FCD703133237C4/SetDefaultProcess.ivp?processName=ch.ivyteam.ivy.project.wf:basic-workflow-ui");
     awaitTextToBePresentIn(By.id("mainArea"), "Home");
   }
 
   private void callDefaultLogin()
   {
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     // get task id
     String taskIdPart = "detailTaskId=";
-    String taskId = driver.findElement(By.id("taskLinkRow_0"))
-            .getAttribute("href")
-            .substring(
-                    awaitToBeClickable("taskLinkRow_0").getAttribute("href").indexOf(taskIdPart)
-                            + taskIdPart.length());
-    WfNavigator.logout(driver);
-    System.out.println("taskId: " + taskId);
-    WfNavigator.openProcessLink(driver, "testWfUi/13F3D94E5C99F06F/13F3D94E5C99F06F-f1/TaskA.ivp?taskId=" + taskId);
-    System.out.println("link: " + driver.getCurrentUrl());
+    String href = awaitToBeClickable("taskLinkRow_0").getAttribute("href");
+    String taskId = href.substring(href.indexOf(taskIdPart) + taskIdPart.length());
+    WfNavigator.logout();
+    WfNavigator.openProcessLink("testWfUi/13F3D94E5C99F06F/13F3D94E5C99F06F-f1/TaskA.ivp?taskId=" + taskId);
     awaitTextToBePresentIn(By.id("loginForm"), "Sign-in to BasicWorkflowUI");
     // Login
     By usernameLocator = By.id("loginForm:userName");
-    driver.findElement(usernameLocator).clear();
-    driver.findElement(usernameLocator).sendKeys(WEB_TEST_SERVER_ADMIN_USER);
+    $(usernameLocator).clear();
+    $(usernameLocator).sendKeys(WEB_TEST_SERVER_ADMIN_USER);
     By passwordLocator = By.id("loginForm:password");
-    driver.findElement(passwordLocator).clear();
-    driver.findElement(passwordLocator).sendKeys(WEB_TEST_SERVER_ADMIN_PASSWORD);
+    $(passwordLocator).clear();
+    $(passwordLocator).sendKeys(WEB_TEST_SERVER_ADMIN_PASSWORD);
     awaitToBeClickable("loginForm:login").click();
     awaitTextToBePresentIn(By.id("mainArea"), "Logged in");
     closeTask();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitTextToBePresentIn(By.id("mainArea"), "Task List");
   }
 }

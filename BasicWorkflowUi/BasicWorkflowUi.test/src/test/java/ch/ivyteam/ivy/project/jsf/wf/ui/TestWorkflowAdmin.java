@@ -1,13 +1,13 @@
 package ch.ivyteam.ivy.project.jsf.wf.ui;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi.SelectOneMenu;
+import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
 
-import ch.ivyteam.ivy.server.test.IvyWebDriverHelper;
 import ch.ivyteam.ivy.server.test.WfNavigator;
 
 
@@ -17,10 +17,10 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
   public void testWorkflowStatistic() throws Exception
   {
     createTaskWithCategory("caseForFilter1", "case list1", 1, "category1");
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     checkIfCaseIsInList("category1");
     createTaskWithCategory("caseForFilter2", "case list2", 2, "category2");
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     checkIfCaseIsInList("category2");
     closeTask();
     closeTask();
@@ -59,15 +59,15 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
   public void testStatisticFilter() throws Exception
   {
     createTaskWithCategory("caseForFilter1", "case list1", 1, "category1");
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     checkIfCaseIsInList("category1");
     
     createTaskWithCategory("caseForFilter2", "case list2", 2, "category2");
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     checkIfCaseIsInList("category2");
     
     createTaskWithCategory("caseForFilter3", "case list3", 3, "category3");
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     checkIfCaseIsInList("category3");
     closeTask();
     closeTask();
@@ -85,8 +85,8 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
   @Test
   public void testloggedInUser() throws Exception
   {
-    WfNavigator.loggedInUser(driver);
-    assertThat(driver.findElement(By.id("LoggedInUserForm:userTable")).getText().contains("Administrator"));
+    WfNavigator.loggedInUser();
+    $(By.id("LoggedInUserForm:userTable")).shouldHave(text("Administrator"));
   }
 
   @Test
@@ -96,7 +96,7 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
     createTaskWithCategory("caseForFilter4", "case list4", 1, "category4");
    
     login(WEB_TEST_SERVER_ADMIN_USER, WEB_TEST_SERVER_ADMIN_PASSWORD);
-    WfNavigator.caseAdmin(driver);
+    WfNavigator.caseAdmin();
     checkIfCaseIsInList("category4");
     
     login("user1", "user1");
@@ -110,20 +110,20 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
     createTaskWithCategory("taskAdmin", "task list5", 1, "category5");
    
     login(WEB_TEST_SERVER_ADMIN_USER, WEB_TEST_SERVER_ADMIN_PASSWORD);
-    WfNavigator.taskAdmin(driver);
+    WfNavigator.taskAdmin();
     checkIfTaskIsInList("taskAdmin");
     
     login("user1", "user1");
     closeTask();
     
     login(WEB_TEST_SERVER_ADMIN_USER, WEB_TEST_SERVER_ADMIN_PASSWORD);
-    WfNavigator.taskAdmin(driver);
+    WfNavigator.taskAdmin();
     checkIfTaskIsInList("taskAdmin");
   }
   
   private void openStatistics()
   {
-    WfNavigator.home(driver);
+    WfNavigator.home();
     awaitToBeClickable("menuform:workflowAdminDropDown").click();
     awaitToBeClickable("menuform:workflowStatistic").click();
   }
@@ -131,9 +131,8 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
   private void checkIfCategoryFilterIsApplied(String filterForCategory)
   {
     openStatistics();
-    SelectOneMenu menu = prime().selectOne(By.id("caseStatisticForm:categoryFilter"));
-    menu.selectItemByLabel(filterForCategory);
-    assertThat(driver.getPageSource()).contains(filterForCategory);
+    PrimeUi.selectOne(By.id("caseStatisticForm:categoryFilter")).selectItemByLabel(filterForCategory);
+    PrimeUi.table(By.id("caseStatisticForm:caseStatisticTable")).contains(filterForCategory);
   }
   
   private void checkIfDateFilterIsApplied()
@@ -143,15 +142,12 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
     awaitToBeClickable("caseStatisticForm:dateToFilter_input").clear();
     awaitToBeClickable("caseStatisticForm:dateToFilter_input").sendKeys("15.04.2000");
     awaitToBeClickable(By.linkText("1")).click();
-    IvyWebDriverHelper.waitForAjax(driver);
   }
 
   private void doesNotContain(String category, String process)
   {
-    assertThat(driver.findElement(By.id("caseStatisticForm:caseStatisticTable_data")).getText())
-            .doesNotContain(category);
-    assertThat(driver.findElement(By.id("caseStatisticForm:caseStatisticTable_data")).getText())
-            .doesNotContain(process);
+    $(By.id("caseStatisticForm:caseStatisticTable_data")).shouldNotHave(text(category));
+    $(By.id("caseStatisticForm:caseStatisticTable_data")).shouldNotHave(text(process));
   }
 
   private void checkIfCaseIsInList(String category)
@@ -164,6 +160,6 @@ public class TestWorkflowAdmin extends BaseWorkflowUiTest
 
   private void checkIfTaskIsInList(String name)
   {
-    assertThat(driver.getPageSource()).contains("JSF " + name);
+    PrimeUi.table(By.id("taskListComponent:taskListForm:taskTable")).contains("JSF " + name);
   }
 }

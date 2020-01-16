@@ -1,14 +1,15 @@
 package ch.ivyteam.ivy.project.jsf.wf.ui;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi.SelectOneMenu;
+import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
+import com.axonivy.ivy.supplements.primeui.tester.widget.SelectOneMenu;
 
-import ch.ivyteam.ivy.server.test.IvyWebDriverHelper;
 import ch.ivyteam.ivy.server.test.WfNavigator;
 
 public class TestDetails extends BaseWorkflowUiTest
@@ -17,12 +18,12 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testTaskDetails() throws Exception
   {
     createTask("task", "Test if shows details", 2);
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("task");
-    assertThat(driver.getPageSource()).contains("Test if shows details");
-    assertThat(driver.getPageSource()).contains("NORMAL");
-    assertThat(driver.getPageSource()).contains("SUSPENDED");
+    $(By.id("taskDetailsList")).shouldHave(text("task"),
+            text("Test if shows details"),
+            text("NORMAL"),
+            text("SUSPENDED"));
     closeTask();
   }
 
@@ -30,11 +31,11 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testCaseDetails() throws Exception
   {
     createTask("case", "Test if shows details", 2);
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     awaitToBeClickable("buttonCaseDetail").click();
-    assertThat(driver.getPageSource()).contains("Test Workflow Jsf");
-    assertThat(driver.getPageSource()).contains("Sample WF using Html Dialogs");
-    assertThat(driver.getPageSource()).contains("JSF case");
+    $(By.id("caseDetailsList")).shouldHave(text("Test Workflow Jsf"),
+            text("Sample WF using Html Dialogs"));
+    $(By.id("formTaskList:taskTable")).shouldHave(text("JSF case"));
     closeTask();
   }
 
@@ -42,18 +43,17 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testAddNoteToTask() throws Exception
   {
     createTask("taskForAddNote", "Test add note", 2);
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    IvyWebDriverHelper.assertAjaxModifiedPageSourceContains(driver, "taskForAddNote");
+    $(By.id("taskDetailsList")).shouldHave(text("taskForAddNote"));
     awaitToBeClickable("formTaskDetails:openAddNote").click();
     addNote();
 
     login("user1", "user1");
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
     awaitTextToBePresentIn(By.className("messageNotes"), "This is the description of the new note");
-    await(ExpectedConditions.not(ExpectedConditions.presenceOfAllElementsLocatedBy(By
-            .xpath("//*[@id='formTaskDetails:j_id_q_2_3_2a:0:openDeleteCaseNote']"))));
+    $(By.xpath("//*[@id='formTaskDetails:j_id_q_2_3_2a:0:openDeleteCaseNote']")).shouldNot(exist);
     closeTask();
   }
 
@@ -61,22 +61,18 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testAddNoteToCase() throws Exception
   {
     createTask("taskForAddNoteToCase", "Test add note", 2);
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     awaitToBeClickable("buttonCaseDetail").click();
-    IvyWebDriverHelper.assertAjaxModifiedPageSourceContains(driver, "taskForAddNoteToCase");
+    $(By.id("formTaskList:taskTable")).shouldHave(text("taskForAddNoteToCase"));
     awaitToBeClickable("formCaseDetails:openAddNoteCase").click();
     addNote();
 
     login("user1", "user1");
-    WfNavigator.caseList(driver);
-    awaitToBePresent(By
-            .xpath("//div[@id='caseListComponent:caseListForm:caseOption']/div[2]/span"));
-    awaitToBeClickable(By.xpath("//div[@id='caseListComponent:caseListForm:caseOption']/div[2]/span"))
-            .click();
+    WfNavigator.caseList();
+    PrimeUi.selectOneRadio(By.id("caseListComponent:caseListForm:caseOption")).selectItemByValue("Involved");
     awaitToBeClickable("buttonCaseDetail").click();
     awaitTextToBePresentIn(By.className("messageNotes"), "This is the description of the new note");
-    await(ExpectedConditions.not(ExpectedConditions.presenceOfAllElementsLocatedBy(By
-            .xpath("//*[@id='formTaskDetails:j_id_q_2_3_2a:0:openDeleteCaseNote']"))));
+    $(By.xpath("//*[@id='formTaskDetails:j_id_q_2_3_2a:0:openDeleteCaseNote']")).shouldNot(exist);
     closeTask();
   }
 
@@ -91,9 +87,9 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testChangeExpiryToFuture() throws Exception
   {
     createTask("taskForChangeExpiry", "Test change expiry", 2, "30.4.2030");
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("taskForChangeExpiry");
+    $(By.id("taskDetailsList")).shouldHave(text("taskForChangeExpiry"));
     awaitToBeClickable("formTaskDetails:openChangeExpiry").click();
     awaitToBeClickable("formDetailsChangeExpiry:expiryDate_input").click();
     awaitToBeClickable("formDetailsChangeExpiry:expiryDate_input").clear();
@@ -102,9 +98,9 @@ public class TestDetails extends BaseWorkflowUiTest
     awaitToBeClickable("formDetailsChangeExpiry:expiryTime_input").clear();
     awaitToBeClickable("formDetailsChangeExpiry:expiryTime_input").sendKeys("10:10");
     awaitToBeClickable("formDetailsChangeExpiry:saveChangeExpiry").click();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("4/30/30, 10:10 AM");
+    $(By.id("taskDetailsList")).shouldHave(text("4/30/30, 10:10 AM"));
     closeTask();
   }
 
@@ -112,9 +108,9 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testChangeExpiryToPast() throws Exception
   {
     createTask("taskForChangeExpiryOlderDate", "Test change expiry", 2, "30.4.2030");
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("taskForChangeExpiry");
+    $(By.id("taskDetailsList")).shouldHave(text("taskForChangeExpiry"));
     awaitToBeClickable("formTaskDetails:openChangeExpiry").click();
     awaitToBeClickable("formDetailsChangeExpiry:expiryDate_input").click();
     awaitToBeClickable("formDetailsChangeExpiry:expiryDate_input").clear();
@@ -123,12 +119,10 @@ public class TestDetails extends BaseWorkflowUiTest
     awaitToBeClickable("formDetailsChangeExpiry:expiryTime_input").clear();
     awaitToBeClickable("formDetailsChangeExpiry:expiryTime_input").sendKeys("11:11");
     awaitToBeClickable("formDetailsChangeExpiry:saveChangeExpiry").click();
-    WfNavigator.taskList(driver);
-    // assertThat(driver.getPageSource()).doesNotContain("JSF
-    // taskForChangeExpiryOlderDate");
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("7/15/13, 11:11 AM");
-    assertThat(driver.getPageSource()).contains("Responsible after expiry");
+    $(By.id("taskDetailsList")).shouldHave(text("7/15/13, 11:11 AM"),
+            text("Responsible after expiry"));
   }
 
   @Test
@@ -136,31 +130,31 @@ public class TestDetails extends BaseWorkflowUiTest
   {
     createTask("taskDelegateTask", "Test change expiry", 2);
 
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains("taskDelegateTask");
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text("taskDelegateTask"));
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("taskDelegateTask");
+    
+    $(By.id("taskDetailsList")).shouldHave(text("taskDelegateTask"));
     awaitToBeClickable("formTaskDetails:openDelegateTask").click();
-    SelectOneMenu menu = prime().selectOne(By.id("formDelegateTask:selectionOfUser"));
+    SelectOneMenu menu = PrimeUi.selectOne(By.id("formDelegateTask:selectionOfUser"));
     menu.selectItemByLabel("Test User 1 (user1)");
     awaitToBeClickable("formDelegateTask:saveDelegateTask").click();
 
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).doesNotContain("taskDelegateTask");
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldNotHave(text("taskDelegateTask"));
     createTask("taskDelegateTaskToRole", "Test delegate to role", 2);
 
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains("taskDelegateTaskToRole");
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text("taskDelegateTaskToRole"));
     awaitToBeClickable("buttonTaskDetail").click();
     awaitToBeClickable("formTaskDetails:openDelegateTask").click();
-    awaitToBePresent(By.id("formDelegateTask:delegateOptions:1_clone"));
-    prime().selectOneRadio(By.id("formDelegateTask"))
+    PrimeUi.selectOneRadio(By.id("formDelegateTask"))
             .selectItemById("formDelegateTask:delegateOptions:1_clone");
     awaitToBeClickable("formDelegateTask:saveDelegateTask").click();
 
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("Everybody");
+    $(By.id("taskDetailsList")).shouldHave(text("Everybody"));
     closeTask();
   }
 
@@ -168,27 +162,27 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testDestroyWorkflow() throws Exception
   {
     createTask("caseDestroyWorkflow", "Test destroy workflow", 2);
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     awaitToBeClickable("buttonCaseDetail").click();
-    assertThat(driver.getPageSource()).contains("caseDestroyWorkflow");
+    $(By.id("formTaskList:taskTable")).shouldHave(text("caseDestroyWorkflow"));
     awaitToBeClickable("formCaseDetails:openDeleteCase").click();
     awaitToBeClickable("formConfirmDeleteReset:confirmAction").click();
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).doesNotContain("JSF caseDestroyWorkflow");
+    WfNavigator.taskList();
+    $(".ui-datatable").shouldNotHave(text("JSF caseDestroyWorkflow"));
   }
 
   @Test
   public void testCancelDestroyWorkflow() throws Exception
   {
     createTask("caseCancelDestroyWorkflow", "Test destroy workflow", 2);
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     awaitToBeClickable("buttonCaseDetail").click();
-    assertThat(driver.getPageSource()).contains("caseCancelDestroyWorkflow");
+    $(By.id("formTaskList:taskTable")).shouldHave(text("caseCancelDestroyWorkflow"));
     awaitToBeClickable("formCaseDetails:openDeleteCase").click();
     awaitToBeClickable("formConfirmDeleteReset:notConfirmAction").click();
-    assertThat(driver.getPageSource()).contains("SUSPENDED");
-    WfNavigator.taskList(driver);
-    assertThat(driver.getPageSource()).contains("JSF caseCancelDestroyWorkflow");
+    $(By.id("formTaskList:taskTable")).find(".task-state-suspended").should(exist);
+    WfNavigator.taskList();
+    $(By.id("taskListComponent:taskListForm:taskTable")).shouldHave(text("JSF caseCancelDestroyWorkflow"));
     closeTask();
   }
 
@@ -196,17 +190,16 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testResetTask() throws Exception
   {
     createTask("resetTask", "Test reset task", 2);
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("taskLinkRow_0").click();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("resetTask");
-    assertThat(driver.getPageSource()).contains("RESUMED");
+    $(By.id("taskDetailsList")).shouldHave(text("resetTask"), text("RESUMED"));
     awaitToBeClickable("formTaskDetails:openResetTask").click();
     awaitToBeClickable("formConfirmDeleteReset:confirmAction").click();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("SUSPENDED");
+    $(By.id("taskDetailsList")).shouldHave(text("SUSPENDED"));
     closeTask();
   }
 
@@ -214,16 +207,15 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testParkTask() throws Exception
   {
     createTask("parkTask", "Test park task", 2);
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("taskLinkRow_0").click();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("parkTask");
-    assertThat(driver.getPageSource()).contains("RESUMED");
+    $(By.id("taskDetailsList")).shouldHave(text("parkTask"), text("RESUMED"));
     awaitToBeClickable("formTaskDetails:openParkTask").click();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("PARKED");
+    $(By.id("taskDetailsList")).shouldHave(text("PARKED"));
     closeTask();
   }
 
@@ -231,16 +223,16 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testPageArchive() throws Exception
   {
     createHtmlTask("pageArchive", "Test page archive");
-    WfNavigator.caseList(driver);
+    WfNavigator.caseList();
     awaitToBeClickable("buttonCaseDetail").click();
-    assertThat(driver.getPageSource()).contains("A Html Case");
+    $(By.id("caseDetailsList")).shouldHave(text("A Html Case"));
     awaitToBeClickable("formCaseDetails:openPageArchive").click();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("taskLinkRow_0").click();
     switchToIFrame();
     awaitToBeClickable("submit").click();
     switchToDefaultContent();
-    WfNavigator.taskHistory(driver);
+    WfNavigator.taskHistory();
     awaitToBeClickable("buttonTaskHistoryDetail_0").click();
     awaitToBeClickable("formTaskDetails:openPageArchive").click();
   }
@@ -249,17 +241,16 @@ public class TestDetails extends BaseWorkflowUiTest
   public void testChangePriority() throws Exception
   {
     createTask("changePriorityTask", "Test change priority", 2);
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("changePriorityTask");
-    assertThat(driver.getPageSource()).contains("NORMAL");
+    $(By.id("taskDetailsList")).shouldHave(text("changePriorityTask"), text("NORMAL"));
     awaitToBeClickable("formTaskDetails:openChangePriority").click();
-    prime().selectOneRadio(By.id("formDetailsChangePriority"))
+    PrimeUi.selectOneRadio(By.id("formDetailsChangePriority"))
             .selectItemById("formDetailsChangePriority:priorityOptions:2_clone");
     awaitToBeClickable("formDetailsChangePriority:saveChangePriority").click();
-    WfNavigator.taskList(driver);
+    WfNavigator.taskList();
     awaitToBeClickable("buttonTaskDetail").click();
-    assertThat(driver.getPageSource()).contains("HIGH");
+    $(By.id("taskDetailsList")).shouldHave(text("HIGH"));
     closeTask();
   }
 }
