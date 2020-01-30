@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import com.axonivy.ivy.supplements.IvySelenide;
+import com.axonivy.ivy.supplements.engine.EngineUrl;
 import com.codeborne.selenide.WebDriverRunner;
 
 @IvySelenide
