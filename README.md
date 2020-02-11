@@ -1,8 +1,4 @@
-# ivy projects
-
-## demos
-
-the demos are moved to GitHub: https://github.com/ivy-samples/ivy-project-demos
+# basic-workflow-ui
 
 ## test
 

@@ -1,6 +1,0 @@
-BusinessChartData #class
-practiceJSF.BusinessChart #namespace
-data practiceJSF.Data #field
-data PERSISTENT #fieldModifier
-chart org.primefaces.model.chart.BarChartModel #field
-chart PERSISTENT #fieldModifier

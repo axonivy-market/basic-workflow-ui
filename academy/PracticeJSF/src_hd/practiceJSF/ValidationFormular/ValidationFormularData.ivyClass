@@ -1,4 +1,0 @@
-ValidationFormularData #class
-practiceJSF.ValidationFormular #namespace
-validationFormData practiceJSF.ValidationFormData #field
-validationFormData PERSISTENT #fieldModifier

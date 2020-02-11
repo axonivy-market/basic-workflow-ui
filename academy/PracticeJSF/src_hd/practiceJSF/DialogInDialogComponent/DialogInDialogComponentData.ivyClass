@@ -1,8 +1,0 @@
-DialogInDialogComponentData #class
-practiceJSF.DialogInDialogComponent #namespace
-contact practiceJSF.Contact #field
-contact PERSISTENT #fieldModifier
-contacts java.util.List<practiceJSF.Contact> #field
-contacts PERSISTENT #fieldModifier
-dialogInDialog practiceJSF.DialogInDialogData #field
-dialogInDialog PERSISTENT #fieldModifier
