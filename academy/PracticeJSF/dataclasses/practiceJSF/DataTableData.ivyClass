@@ -1,6 +1,0 @@
-DataTableData #class
-practiceJSF #namespace
-contacts Recordset #field
-contacts PERSISTENT #fieldModifier
-cities List<javax.faces.model.SelectItem> #field
-cities PERSISTENT #fieldModifier

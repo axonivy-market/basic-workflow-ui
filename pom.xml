@@ -5,11 +5,9 @@
 	<artifactId>ivyProject.modules</artifactId>
 	<version>8.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<description>Contains all ivyProjects as module dependency</description>
 
 	<modules>
 		<module>BasicWorkflowUi</module>
-		<module>academy</module>
 		<module>build.maven</module>
 		<module>build.maven/iar</module>
 		<module>build.maven/iar/web.test</module>

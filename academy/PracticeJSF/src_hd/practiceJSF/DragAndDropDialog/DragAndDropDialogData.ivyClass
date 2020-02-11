@@ -1,6 +1,0 @@
-DragAndDropDialogData #class
-practiceJSF.DragAndDropDialog #namespace
-selectedColors java.util.List<String> #field
-selectedColors PERSISTENT #fieldModifier
-colors java.util.List<String> #field
-colors PERSISTENT #fieldModifier
