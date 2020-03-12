@@ -18,7 +18,7 @@ pipeline {
     string(
        name: 'engineListUrl',
        description: 'Engine to use for build',
-       defaultValue: 'https://jenkins.ivyteam.io/job/ivy-core_product/job/master/lastSuccessfulBuild/'
+       defaultValue: 'https://jenkins.ivyteam.io/job/ivy-core_product/job/release%252F8.0/lastSuccessfulBuild/'
     )
   }
 
@@ -29,7 +29,6 @@ pipeline {
           def workspace = pwd()
           def phase = env.BRANCH_NAME == 'master' ? 'deploy' : 'verify'
           maven cmd: "-P repo.axonivy.com clean ${phase} -Dmaven.test.failure.ignore=true  " + 
-                     "-Dengine.directory=${workspace}/HtmlDialogDemos/HtmlDialogDemos/target/ivyEngine " +
                      "-Divy.engine.list.url=${params.engineListUrl} "
         }
         archiveArtifacts '**/target/*.iar,**/target/*.zip'
