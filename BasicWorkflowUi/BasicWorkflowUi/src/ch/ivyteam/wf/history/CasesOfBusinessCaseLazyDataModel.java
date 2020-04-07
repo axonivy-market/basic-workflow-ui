@@ -10,6 +10,7 @@ import ch.ivyteam.ivy.workflow.PropertyOrder;
 import ch.ivyteam.ivy.workflow.query.CaseQuery;
 import ch.ivyteam.logicalexpression.RelationalOperator;
 
+@SuppressWarnings("serial")
 public class CasesOfBusinessCaseLazyDataModel extends AbstractCaseLazyDataModel
 {
   private long caseId;

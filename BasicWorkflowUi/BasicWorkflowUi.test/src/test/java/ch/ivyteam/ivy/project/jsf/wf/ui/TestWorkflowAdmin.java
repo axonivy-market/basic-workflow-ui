@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
+import com.axonivy.ivy.webtest.primeui.PrimeUi;
 
 import ch.ivyteam.ivy.server.test.WfNavigator;
 

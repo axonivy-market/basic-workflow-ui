@@ -13,9 +13,6 @@
 
 	<properties>
 		<ant.version>1.7</ant.version>
-		<project.jsfWorkflowUi.dir>${engine.directory}/applications/System/BasicWorkflowUi/1</project.jsfWorkflowUi.dir>
-		<project.testWfUi.dir>${engine.directory}/applications/System/testWfUi/1</project.testWfUi.dir>
-
 		<application>Portal</application>
 		<skipDeploy>${maven.test.skip}</skipDeploy>
 	</properties>
@@ -60,9 +57,8 @@
 				</executions>
 				<configuration>
 					<argLine>
-						-Dserver.test.testApplication=${application}
-						-Dserver.test.isDesigner=false
-						-Dserver.test.baseUrl=${test.engine.url}
+						-Dtest.engine.url=${test.engine.url}
+						-Dtest.engine.app=${application}
 					</argLine>
 				</configuration>
 			</plugin>
@@ -107,7 +103,6 @@
 					</execution>
 				</executions>
 				<configuration>
-					<engineDirectory>${engine.directory}</engineDirectory>
 					<deployToEngineApplication>${application}</deployToEngineApplication>
 					<skipDeploy>${skipDeploy}</skipDeploy>
 				</configuration>
@@ -124,7 +119,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${engine.directory}/configuration</outputDirectory>
+							<outputDirectory>${project.build.directory}/ivyEngine/configuration</outputDirectory>
 							<resources>
 								<resource>
 									<directory>engine-configuration</directory>

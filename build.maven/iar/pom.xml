@@ -14,7 +14,7 @@
 
 	<properties>
 		<antrun.version>1.7</antrun.version>
-		<project.build.plugin.version>8.0.1</project.build.plugin.version>
+		<project.build.plugin.version>8.0.5-SNAPSHOT</project.build.plugin.version>
 		<maven.dependency.plugin.version>3.0.2</maven.dependency.plugin.version>
 	</properties>
 
@@ -42,7 +42,6 @@
 					<configuration>
 						<skipScriptValidation>true</skipScriptValidation>
 						<ivyVersion>[8.0.0,]</ivyVersion>
-						<engineDirectory>${engine.directory}</engineDirectory>
 						<iarFileSets>
 							<iarFileSet>
 								<directory>target/ivy</directory>
