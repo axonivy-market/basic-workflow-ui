@@ -10,13 +10,11 @@
 		<name>AXON.IVY</name>
 		<url>http://www.axonivy.com</url>
 	</organization>
-	
 	<pluginRepositories>
 		<!-- Used to install project-build-plugin -->
 		<pluginRepository>
-			<id>zugpronexus.snapshots</id>
-			<name>Internal Plugin Build Integration Repository</name>
-			<url>http://zugpronexus:8081/nexus/content/groups/build-plugins/</url>
+			<id>sonatype</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
@@ -62,7 +60,6 @@
 	</distributionManagement>
 
 	<properties>
-		<engine.directory>${java.io.tmpdir}/ivyEngine</engine.directory>
 		<deploy.skip>false</deploy.skip>
 	</properties>
 

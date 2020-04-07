@@ -43,7 +43,7 @@ Fe0 f13 inParamDecl '<String relativeUrl,Number runningTaskId> param;' #txt
 Fe0 f13 inParamTable 'out.taskId=param.runningTaskId;
 ' #txt
 Fe0 f13 actionCode 'import ch.ivyteam.ivy.bpm.error.BpmError;
-if (param.relativeUrl.startsWith("/ivy/"))
+if (param.relativeUrl.startsWith("/"))
 {
   out.url = param.relativeUrl;
 }

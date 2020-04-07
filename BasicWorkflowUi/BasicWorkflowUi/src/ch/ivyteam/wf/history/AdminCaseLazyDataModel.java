@@ -9,6 +9,7 @@ import ch.ivyteam.ivy.workflow.IPropertyFilter;
 import ch.ivyteam.ivy.workflow.PropertyOrder;
 import ch.ivyteam.ivy.workflow.query.CaseQuery;
 
+@SuppressWarnings("serial")
 public class AdminCaseLazyDataModel extends AbstractCaseLazyDataModel
 {
 
