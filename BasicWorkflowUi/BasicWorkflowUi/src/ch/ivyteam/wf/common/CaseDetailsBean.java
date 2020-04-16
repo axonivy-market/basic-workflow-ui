@@ -20,7 +20,7 @@ public class CaseDetailsBean {
     if (wfCase == null) {
       return Collections.emptyList();
     }
-    ICaseMap caseMap = getCaseMapService(wfCase.getBusinessCase()).findCaseMap();
+    ICaseMap caseMap = getCaseMapService(wfCase.getBusinessCase()).find().current();
     if (caseMap == null) {
       return Collections.emptyList();
     }
@@ -43,7 +43,7 @@ public class CaseDetailsBean {
     if (wfCase == null) {
       return Collections.emptyList();
     }
-    ICaseMap caseMap = getCaseMapService(wfCase.getBusinessCase()).findCaseMap();
+    ICaseMap caseMap = getCaseMapService(wfCase.getBusinessCase()).find().current();
     if (caseMap == null) {
       return Collections.emptyList();
     }

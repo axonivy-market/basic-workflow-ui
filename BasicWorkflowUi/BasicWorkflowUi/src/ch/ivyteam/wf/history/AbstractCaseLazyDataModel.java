@@ -27,6 +27,7 @@ import ch.ivyteam.ivy.workflow.category.CategoryTree;
 import ch.ivyteam.ivy.workflow.query.CaseQuery;
 import ch.ivyteam.logicalexpression.RelationalOperator;
 
+@SuppressWarnings("serial")
 public abstract class AbstractCaseLazyDataModel extends LazyDataModel<ICase>
 {
   protected final Ivy ivy = Ivy.getInstance();

@@ -77,8 +77,8 @@ public class ChartBean implements Serializable {
         for(int count = 0; count < chartSeries.size(); count++)
         {
             String barName;
-        	Number workingtime = (Number) chartSeries.getAt(count).getField("MINWORKINGTIME");
-        	Number businessRuntime = (Number) chartSeries.getAt(count).getField("MINBUSINESSRUNTIME");
+        	Number minWorkingTime = (Number) chartSeries.getAt(count).getField("MINWORKINGTIME");
+        	Number minBusinessRuntime = (Number) chartSeries.getAt(count).getField("MINBUSINESSRUNTIME");
         	if(chartFor.equals("case"))
 			{
 				barName = chartSeries.getAt(count).getField("NAME").toString() + " (CaseId: " + chartSeries.getAt(count).getField("CASEID").toString() + ")";
@@ -89,8 +89,8 @@ public class ChartBean implements Serializable {
 				barName = chartSeries.getAt(count).getField("MAXNAME").toString() + " (TaskId: " + chartSeries.getAt(count).getField("TASKID").toString() + ")";
 				ChartBean.barId[count] = chartSeries.getAt(count).getField("TASKID").toString();
 			}
-			this.businessRuntime.set(barName, businessRuntime.floatValue() / divisor - workingtime.floatValue() / divisor);
-        	this.workingtime.set(barName, workingtime.floatValue() / divisor);
+			this.businessRuntime.set(barName, minBusinessRuntime.floatValue() / divisor - minWorkingTime.floatValue() / divisor);
+        	this.workingtime.set(barName, minWorkingTime.floatValue() / divisor);
 			this.average.set(barName, averageTime.floatValue() / divisor);
         }
 	}
@@ -98,7 +98,7 @@ public class ChartBean implements Serializable {
     public void itemSelectCase(ItemSelectEvent event) {
         int index = event.getItemIndex();
         String caseId = ChartBean.barId[index];
-        String statisticDetailsUri = Ivy.html().startref("144697C904B165C8/StatisticDetailsAvg.ivp");
+        String statisticDetailsUri = Ivy.html().startRef("144697C904B165C8/StatisticDetailsAvg.ivp");
         
         PrimeFaces.current().executeScript("window.open('" + statisticDetailsUri + "?caseId=" + caseId + "','_self')");
     }
@@ -106,7 +106,7 @@ public class ChartBean implements Serializable {
     public void itemSelectTask(ItemSelectEvent event) {
         int index = event.getItemIndex();
         String taskId = ChartBean.barId[index];
-        String taskHistoryUri = Ivy.html().startref("13FE81AF3A82F57F/TaskHistoryDetails.ivp");
+        String taskHistoryUri = Ivy.html().startRef("13FE81AF3A82F57F/TaskHistoryDetails.ivp");
         
         PrimeFaces.current().executeScript("window.open('" + taskHistoryUri + "?detailTaskId=" + taskId + "','_self')");
     }

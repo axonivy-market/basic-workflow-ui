@@ -7,8 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
-import com.axonivy.ivy.supplements.primeui.tester.widget.SelectOneMenu;
+import com.axonivy.ivy.webtest.primeui.PrimeUi;
+import com.axonivy.ivy.webtest.primeui.widget.SelectOneMenu;
 
 import ch.ivyteam.ivy.server.test.WfNavigator;
 

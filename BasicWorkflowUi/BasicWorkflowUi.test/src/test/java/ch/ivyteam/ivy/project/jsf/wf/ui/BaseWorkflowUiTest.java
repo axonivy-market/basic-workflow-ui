@@ -1,5 +1,7 @@
 package ch.ivyteam.ivy.project.jsf.wf.ui;
 
+import static com.axonivy.ivy.webtest.engine.EngineUrl.DESIGNER;
+import static com.axonivy.ivy.webtest.engine.EngineUrl.isDesigner;
 import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.exist;
@@ -14,21 +16,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.axonivy.ivy.supplements.IvySelenide;
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
-import com.axonivy.ivy.supplements.primeui.tester.widget.Dialog;
+import com.axonivy.ivy.webtest.IvyWebTest;
+import com.axonivy.ivy.webtest.primeui.PrimeUi;
+import com.axonivy.ivy.webtest.primeui.widget.Dialog;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import ch.ivyteam.ivy.server.test.ApplicationLogin;
-import ch.ivyteam.ivy.server.test.ServerControl;
 import ch.ivyteam.ivy.server.test.WfNavigator;
 
-@IvySelenide
+@IvyWebTest
 public class BaseWorkflowUiTest
 {
   
-  public static final String APP = ServerControl.isDesigner() ? "designer" : "Portal";
+  public static final String APP = isDesigner() ? DESIGNER : "Portal";
   public static final String WEB_TEST_SERVER_ADMIN_USER;
   public static final String WEB_TEST_SERVER_ADMIN_PASSWORD;
   public static final String WF_JSF_LINK_ID = "/ivy/pro/" + APP + "/testWfUi/13F3D94E5C99F06F/WfJsf.ivp";

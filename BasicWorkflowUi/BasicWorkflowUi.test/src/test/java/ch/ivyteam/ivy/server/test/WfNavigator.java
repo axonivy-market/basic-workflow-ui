@@ -1,19 +1,21 @@
 package ch.ivyteam.ivy.server.test;
 
+import static com.axonivy.ivy.webtest.engine.EngineUrl.createProcessUrl;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 import org.openqa.selenium.By;
 
-import com.axonivy.ivy.supplements.primeui.tester.PrimeUi;
+import com.axonivy.ivy.webtest.primeui.PrimeUi;
+
 
 public class WfNavigator
 {
 
   public static void openProcessLink(String processLink)
   {
-    open(ServerControl.getProcessStartLink(processLink));
+    open(createProcessUrl(processLink));
   }
 
   public static void home()
