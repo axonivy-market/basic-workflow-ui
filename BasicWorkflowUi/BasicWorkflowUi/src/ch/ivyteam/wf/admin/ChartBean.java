@@ -15,6 +15,7 @@ import org.primefaces.model.chart.LineChartSeries;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.scripting.objects.Recordset;
+import ch.ivyteam.wf.UrlUtil;
   
 @SuppressWarnings("serial")
 @ManagedBean
@@ -97,17 +98,19 @@ public class ChartBean implements Serializable {
     
     public void itemSelectCase(ItemSelectEvent event) {
         int index = event.getItemIndex();
-        String caseId = ChartBean.barId[index];
-        String statisticDetailsUri = Ivy.html().startRef("144697C904B165C8/StatisticDetailsAvg.ivp");
-        
-        PrimeFaces.current().executeScript("window.open('" + statisticDetailsUri + "?caseId=" + caseId + "','_self')");
+        var caseId = ChartBean.barId[index];
+        var statisticDetailsUri = UrlUtil.getProcessStartUrl("Processes/Admin/StatisticDetails/StatisticDetailsAvg.ivp")
+        		.queryParam("caseId", caseId)
+        		.getRelative();
+        PrimeFaces.current().executeScript("window.open('" + statisticDetailsUri + "','_self')");
     }
     
     public void itemSelectTask(ItemSelectEvent event) {
         int index = event.getItemIndex();
-        String taskId = ChartBean.barId[index];
-        String taskHistoryUri = Ivy.html().startRef("13FE81AF3A82F57F/TaskHistoryDetails.ivp");
-        
-        PrimeFaces.current().executeScript("window.open('" + taskHistoryUri + "?detailTaskId=" + taskId + "','_self')");
+        var taskId = ChartBean.barId[index];
+        var taskHistoryUri = UrlUtil.getProcessStartUrl("Processes/History/TaskDetails/TaskHistoryDetails.ivp")
+        		.queryParam("detailTaskId", taskId)
+        		.getRelative();
+        PrimeFaces.current().executeScript("window.open('" + taskHistoryUri + "','_self')");
     }
-}  
+}

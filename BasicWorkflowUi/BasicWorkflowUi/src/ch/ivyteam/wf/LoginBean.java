@@ -7,15 +7,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.security.ISession;
 
 @ManagedBean
 @SessionScoped
 public class LoginBean
 {
-  private static final String HOME_REF = Ivy.html().startRef("Workflow/Home/DefaultApplicationHomePage.ivp");
-  private static final String LOGIN_REF = Ivy.html().startRef("Login/Login/DefaultLoginPage.ivp");
   private String userName;
   private String password;
 
@@ -23,7 +20,7 @@ public class LoginBean
   {
     if (ISession.get().isSessionUserUnknown())
     {
-      redirect(LOGIN_REF);
+      redirect(getLoginUrl());
     }
   }
 
@@ -31,7 +28,7 @@ public class LoginBean
   {
     if (ISession.get().loginSessionUser(userName, password))
     {
-      redirect(HOME_REF);
+      redirect(getAppHomeUrl());
       return;
     }
     FacesContext.getCurrentInstance().addMessage(null,
@@ -41,7 +38,7 @@ public class LoginBean
   public void logout()
   {
     ISession.get().logoutSessionUser();
-    redirect(LOGIN_REF);
+    redirect(getLoginUrl());
   }
 
   private void redirect(String url)
@@ -80,5 +77,15 @@ public class LoginBean
   public void setPassword(String password)
   {
     this.password = password;
+  }
+  
+  private String getLoginUrl()
+  {
+    return UrlUtil.getProcessStartUrl("Login/Login/DefaultLoginPage.ivp").getRelative();
+  }
+
+  private String getAppHomeUrl()
+  {
+    return UrlUtil.getProcessStartUrl("Workflow/Home/DefaultApplicationHomePage.ivp").getRelative();
   }
 }
