@@ -8,7 +8,7 @@ public final class UrlUtil
 {
   public static WebLink getProcessStartUrl(String userFriendlyRequestPath)
   {
-    var pmv = IProcessModelVersion.get().getAdapter(IWorkflowProcessModelVersion.class);
+    var pmv = IProcessModelVersion.current().getAdapter(IWorkflowProcessModelVersion.class);
     return pmv.findStartElementByUserFriendlyRequestPath(userFriendlyRequestPath).getLink();
   }
   
