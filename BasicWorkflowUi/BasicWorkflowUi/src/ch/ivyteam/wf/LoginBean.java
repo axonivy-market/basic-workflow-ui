@@ -18,7 +18,7 @@ public class LoginBean
 
   public void checkLogin()
   {
-    if (ISession.get().isSessionUserUnknown())
+    if (ISession.current().isSessionUserUnknown())
     {
       redirect(getLoginUrl());
     }
@@ -26,7 +26,7 @@ public class LoginBean
 
   public void login()
   {
-    if (ISession.get().loginSessionUser(userName, password))
+    if (ISession.current().loginSessionUser(userName, password))
     {
       redirect(getAppHomeUrl());
       return;
@@ -37,7 +37,7 @@ public class LoginBean
 
   public void logout()
   {
-    ISession.get().logoutSessionUser();
+    ISession.current().logoutSessionUser();
     redirect(getLoginUrl());
   }
 
@@ -56,7 +56,7 @@ public class LoginBean
 
   public String getSessionUserName()
   {
-    return ISession.get().getSessionUserName();
+    return ISession.current().getSessionUserName();
   }
 
   public String getUserName()
