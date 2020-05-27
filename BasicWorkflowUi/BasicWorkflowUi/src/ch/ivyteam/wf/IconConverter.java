@@ -40,7 +40,7 @@ public class IconConverter
 		return "";
 	}
 
-
+	@SuppressWarnings("removal")
 	public String getTaskIcon(TaskState state) 
 	{
 		switch (state) 
@@ -68,7 +68,7 @@ public class IconConverter
 		case SUSPENDED:
 			return "cog task-state-suspended";
 		case UNASSIGNED:
-			return "exclamation-triangle task-state-unassigned";
+			return "";
 		case WAITING_FOR_INTERMEDIATE_EVENT:
 			return "spinner task-state-waiting-for-intermediate-event";
 		case ZOMBIE:
