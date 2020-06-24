@@ -12,7 +12,6 @@
 	</parent>
 
 	<properties>
-		<ant.version>1.7</ant.version>
 		<application>Portal</application>
 		<skipDeploy>${maven.test.skip}</skipDeploy>
 	</properties>
@@ -146,32 +145,11 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>${ant.version}</version>
-				<executions>
-					<execution>
-						<id>HACK:fake.provide.engine.classpath</id>
-						<phase>package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<copy
-									file="${basedir}/../BasicWorkflowUi/target/ivy.engine.classpath.jar"
-									todir="${project.build.directory}" />
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 			<plugin>

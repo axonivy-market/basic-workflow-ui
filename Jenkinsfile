@@ -28,7 +28,7 @@ pipeline {
         script {
           def workspace = pwd()
           def phase = env.BRANCH_NAME == 'master' ? 'deploy' : 'verify'
-          maven cmd: "-P repo.axonivy.com clean ${phase} -Dmaven.test.failure.ignore=true  " + 
+          maven cmd: "clean ${phase} -Dmaven.test.failure.ignore=true  " + 
                      "-Divy.engine.list.url=${params.engineListUrl} "
         }
         archiveArtifacts '**/target/*.iar,**/target/*.zip'
