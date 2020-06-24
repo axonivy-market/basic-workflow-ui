@@ -13,7 +13,7 @@
 	</parent>
 
 	<properties>
-		<flatten.plugin.version>1.2.3</flatten.plugin.version>
+		<antrun.version>1.7</antrun.version>
 		<project.build.plugin.version>8.0.5-SNAPSHOT</project.build.plugin.version>
 		<maven.dependency.plugin.version>3.0.2</maven.dependency.plugin.version>
 	</properties>
@@ -27,25 +27,9 @@
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>flatten-maven-plugin</artifactId>
-				<version>${flatten.plugin.version}</version>
-				<executions>
-					<execution>
-					  <id>flatten</id>
-					  <phase>process-resources</phase>
-					  <goals>
-						<goal>flatten</goal>
-					  </goals>
-					</execution>
-					<execution>
-					  <id>flatten.clean</id>
-					  <phase>clean</phase>
-					  <goals>
-						<goal>clean</goal>
-					  </goals>
-					</execution>
-				</executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${antrun.version}</version>
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -58,11 +42,68 @@
 					<configuration>
 						<skipScriptValidation>true</skipScriptValidation>
 						<ivyVersion>[8.0.0,]</ivyVersion>
+						<iarFileSets>
+							<iarFileSet>
+								<directory>target/ivy</directory>
+								<includes>
+									<include>pom.xml</include><!-- include modified pom.xml (see antrun below) -->
+								</includes>
+							</iarFileSet>
+						</iarFileSets>
 						<iarIncludesEmptyDirs>false</iarIncludesEmptyDirs>
 						<compilerWarnings>true</compilerWarnings>
 						<skipDeploy>${maven.test.skip}</skipDeploy>
 						<skipScriptValidation>false</skipScriptValidation><!-- ivyScripts in processes -->
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>[1.7,)</version>
+					<dependencies>
+						<dependency>
+							<!-- This dependency is not available in a public maven repository: it was manually installed to repository build.integration@zugprobld.
+							     download-location: http://www.oopsconsultancy.com/software/xmltask/
+							     build.integration-installation: use the archiva web interface to add the artifact. [login] -> [upload artifact]
+							       - repositoryId = build.integration
+							       - groupId = com.oopsconsultancy
+							       - artifactId = xmltask
+							       - version = 1.16
+							       - packaging = jar
+							       - generate Maven Pom = true
+							       - choose File -> attach downlaoded JAR from http://www.oopsconsultancy.com/software/xmltask/
+							     local-installation-command : mvn install:install-file -Dfile=xmltask.jar -DgroupId=com.oopsconsultancy -DartifactId=xmltask -Dversion=1.16 -->
+							<groupId>com.oopsconsultancy</groupId>
+							<artifactId>xmltask</artifactId>
+							<version>1.16</version>
+							<type>jar</type>
+							<scope>compile</scope>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<id>hide.build.details.at.pom.xml</id>
+							<goals><goal>run</goal></goals>
+							<phase>prepare-package</phase>
+							<configuration>
+								<target>
+									<echo message="Modifying POM.xml: remove &lt;build&gt; &amp; &lt;parent&gt; config entry." />
+									<mkdir dir="${project.build.directory}/ivy" />
+									<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"
+										classpathref="maven.plugin.classpath" />
+									<xmltask source="${project.basedir}/pom.xml" dest="${project.build.directory}/ivy/pom.xml"
+										preserveType="true" indent="false">
+										<remove path="/:project/:parent" />
+										<insert path="/:project/:build/:plugins/:plugin[:artifactId/text()='project-build-plugin']" >
+											<![CDATA[
+												<version>${project.build.plugin.version}</version>
+											]]>
+										</insert>
+									</xmltask>
+								</target>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
