@@ -196,7 +196,7 @@
 			</p:dataTable>
 			<h:panelGrid columns="2">
 				<p:selectBooleanCheckbox value="#{data.showSystemTasks}" id="showSystemTasks">
-					<p:ajax update="taskTable" listener="#{logic.update}" />
+					<p:ajax update="taskTable" listener="#{logic.updateShowSystemTasks}" />
 				</p:selectBooleanCheckbox>
 				<h:outputLabel for="showSystemTasks" value="#{ivy.cms.co('/labels/history/caseDetails/showSYSTEMtasks')}" />
 			</h:panelGrid>
