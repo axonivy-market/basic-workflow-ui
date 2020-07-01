@@ -40,6 +40,8 @@ Cs0 @PushWFArc f31 '' #zField
 Cs0 @PushWFArc f6 '' #zField
 Cs0 @PushWFArc f14 '' #zField
 Cs0 @PushWFArc f16 '' #zField
+Cs0 @UdEvent f11 '' #zField
+Cs0 @PushWFArc f17 '' #zField
 >Proto Cs0 Cs0 CaseDetailsProcess #zField
 Cs0 f0 guid 13FE66625592A530 #txt
 Cs0 f0 method start(Number) #txt
@@ -60,7 +62,7 @@ Cs0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Cs0 f0 83 51 26 26 -38 15 #rect
 Cs0 f0 @|UdInitIcon #fIcon
 Cs0 f0 -1|-1|-9671572 #nodeStyle
-Cs0 f1 515 51 26 26 0 12 #rect
+Cs0 f1 531 51 26 26 0 12 #rect
 Cs0 f1 @|UdProcessEndIcon #fIcon
 Cs0 f1 -1|-1|-9671572 #nodeStyle
 Cs0 f3 actionTable 'out=in;
@@ -146,7 +148,7 @@ links</name>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f7 168 138 112 44 -40 -16 #rect
+Cs0 f7 168 202 112 44 -40 -16 #rect
 Cs0 f7 @|StepIcon #fIcon
 Cs0 f7 -1|-1|-9671572 #nodeStyle
 Cs0 f9 actionTable 'out=in;
@@ -166,12 +168,12 @@ Cs0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f9 336 138 112 44 -25 -8 #rect
+Cs0 f9 336 202 112 44 -25 -8 #rect
 Cs0 f9 @|StepIcon #fIcon
 Cs0 f9 -1|-1|-9671572 #nodeStyle
 Cs0 f10 expr out #txt
-Cs0 f10 280 160 336 160 #arcP
-Cs0 f15 339 275 26 26 0 12 #rect
+Cs0 f10 280 224 336 224 #arcP
+Cs0 f15 339 339 26 26 0 12 #rect
 Cs0 f15 @|UdProcessEndIcon #fIcon
 Cs0 f15 -1|-1|-9671572 #nodeStyle
 Cs0 f5 actionTable 'out=in;
@@ -186,7 +188,7 @@ Cs0 f5 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f5 168 330 112 44 -30 -8 #rect
+Cs0 f5 168 394 112 44 -30 -8 #rect
 Cs0 f5 @|StepIcon #fIcon
 Cs0 f5 -1|-1|-9671572 #nodeStyle
 Cs0 f12 guid 13FF05ADA3C442A3 #txt
@@ -200,7 +202,7 @@ Cs0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f12 83 147 26 26 -23 12 #rect
+Cs0 f12 83 211 26 26 -23 12 #rect
 Cs0 f12 @|UdMethodIcon #fIcon
 Cs0 f12 -1|-1|-9671572 #nodeStyle
 Cs0 f4 guid 13FF07A3BF7D12B4 #txt
@@ -215,7 +217,7 @@ Cs0 f4 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f4 83 275 26 26 -23 12 #rect
+Cs0 f4 83 339 26 26 -23 12 #rect
 Cs0 f4 @|UdEventIcon #fIcon
 Cs0 f4 -1|-1|-9671572 #nodeStyle
 Cs0 f18 actionTable 'out=in;
@@ -233,14 +235,14 @@ Cs0 f18 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f18 168 266 112 44 -24 -8 #rect
+Cs0 f18 168 330 112 44 -24 -8 #rect
 Cs0 f18 @|StepIcon #fIcon
 Cs0 f18 -1|-1|-9671572 #nodeStyle
 Cs0 f19 expr out #txt
-Cs0 f19 280 288 339 288 #arcP
+Cs0 f19 280 352 339 352 #arcP
 Cs0 f19 0 0.47750611241354257 0 0 #arcLabel
 Cs0 f20 expr out #txt
-Cs0 f20 109 288 168 288 #arcP
+Cs0 f20 109 352 168 352 #arcP
 Cs0 f20 0 0.8922639160053057 0 0 #arcLabel
 Cs0 f13 actionTable 'out=in;
 out.showNoteSelection=false;
@@ -271,7 +273,7 @@ Cs0 f22 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f22 83 211 26 26 -37 12 #rect
+Cs0 f22 83 275 26 26 -37 12 #rect
 Cs0 f22 @|UdEventIcon #fIcon
 Cs0 f22 -1|-1|-9671572 #nodeStyle
 Cs0 f23 actionTable 'out=in;
@@ -290,11 +292,11 @@ Cs0 f23 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f23 168 202 112 44 -52 -7 #rect
+Cs0 f23 168 266 112 44 -52 -7 #rect
 Cs0 f23 @|StepIcon #fIcon
 Cs0 f23 -1|-1|-9671572 #nodeStyle
 Cs0 f24 expr out #txt
-Cs0 f24 109 224 168 224 #arcP
+Cs0 f24 109 288 168 288 #arcP
 Cs0 f26 actionTable 'out=in;
 ' #txt
 Cs0 f26 actionCode 'import ch.ivyteam.ivy.workflow.IPageArchive;
@@ -330,29 +332,29 @@ Cs0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f26 496 138 112 44 -48 -8 #rect
+Cs0 f26 496 202 112 44 -48 -8 #rect
 Cs0 f26 @|StepIcon #fIcon
 Cs0 f26 -1|-1|-9671572 #nodeStyle
 Cs0 f27 expr out #txt
-Cs0 f27 448 160 496 160 #arcP
+Cs0 f27 448 224 496 224 #arcP
 Cs0 f27 0 0.18806928460277236 0 0 #arcLabel
-Cs0 f28 667 147 26 26 0 12 #rect
+Cs0 f28 667 211 26 26 0 12 #rect
 Cs0 f28 @|UdProcessEndIcon #fIcon
 Cs0 f28 -1|-1|-9671572 #nodeStyle
 Cs0 f29 expr out #txt
-Cs0 f29 608 160 667 160 #arcP
+Cs0 f29 608 224 667 224 #arcP
 Cs0 f29 0 0.08304032259233607 0 0 #arcLabel
-Cs0 f2 339 211 26 26 0 12 #rect
+Cs0 f2 339 275 26 26 0 12 #rect
 Cs0 f2 @|UdProcessEndIcon #fIcon
 Cs0 f2 -1|-1|-9671572 #nodeStyle
 Cs0 f30 expr out #txt
-Cs0 f30 280 224 339 224 #arcP
+Cs0 f30 280 288 339 288 #arcP
 Cs0 f30 0 0.7461382242081771 0 0 #arcLabel
-Cs0 f25 339 339 26 26 0 12 #rect
+Cs0 f25 339 403 26 26 0 12 #rect
 Cs0 f25 @|UdProcessEndIcon #fIcon
 Cs0 f25 -1|-1|-9671572 #nodeStyle
 Cs0 f38 expr out #txt
-Cs0 f38 280 352 339 352 #arcP
+Cs0 f38 280 416 339 416 #arcP
 Cs0 f38 0 0.5053612370219435 0 0 #arcLabel
 Cs0 f8 guid 147D3806D8237F2B #txt
 Cs0 f8 actionTable 'out=in;
@@ -366,17 +368,32 @@ Cs0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Cs0 f8 83 339 26 26 -30 15 #rect
+Cs0 f8 83 403 26 26 -30 15 #rect
 Cs0 f8 @|UdEventIcon #fIcon
 Cs0 f31 expr out #txt
-Cs0 f31 109 352 168 352 #arcP
+Cs0 f31 109 416 168 416 #arcP
 Cs0 f6 expr out #txt
 Cs0 f6 280 64 336 64 #arcP
 Cs0 f14 expr out #txt
-Cs0 f14 109 160 168 160 #arcP
+Cs0 f14 109 224 168 224 #arcP
 Cs0 f14 0 0.5000000000000001 0 0 #arcLabel
 Cs0 f16 expr out #txt
-Cs0 f16 448 64 515 64 #arcP
+Cs0 f16 448 64 531 64 #arcP
+Cs0 f11 guid 1730A8D1135D1024 #txt
+Cs0 f11 actionTable 'out=in;
+' #txt
+Cs0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>updateShowSystemTasks</name>
+    </language>
+</elementInfo>
+' #txt
+Cs0 f11 83 131 26 26 -68 15 #rect
+Cs0 f11 @|UdEventIcon #fIcon
+Cs0 f17 109 144 392 86 #arcP
+Cs0 f17 1 392 144 #addKink
+Cs0 f17 0 0.6690245656743146 0 0 #arcLabel
 >Proto Cs0 .type ch.ivyteam.wf.history.CaseDetails.CaseDetailsData #txt
 >Proto Cs0 .processKind HTML_DIALOG #txt
 >Proto Cs0 -8 -8 16 16 16 26 #rect
@@ -407,3 +424,5 @@ Cs0 f12 mainOut f14 tail #connect
 Cs0 f14 head f7 mainIn #connect
 Cs0 f3 mainOut f16 tail #connect
 Cs0 f16 head f1 mainIn #connect
+Cs0 f11 mainOut f17 tail #connect
+Cs0 f17 head f3 mainIn #connect
