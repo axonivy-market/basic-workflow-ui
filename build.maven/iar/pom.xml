@@ -37,6 +37,10 @@
 					  <goals>
 						<goal>flatten</goal>
 					  </goals>
+					  <configuration>
+						<outputDirectory>${project.build.directory}</outputDirectory>
+						<flattenedPomFilename>pom.xml</flattenedPomFilename>
+					  </configuration>
 					</execution>
 					<execution>
 					  <id>flatten.clean</id>
@@ -62,6 +66,13 @@
 						<compilerWarnings>true</compilerWarnings>
 						<skipDeploy>${maven.test.skip}</skipDeploy>
 						<skipScriptValidation>false</skipScriptValidation><!-- ivyScripts in processes -->
+						<!-- favour flattened pom.xml over default -->
+						<iarFileSets>
+							<iarFileSet>
+								<directory>target</directory>
+								<include>pom.xml</include>
+							</iarFileSet>
+						</iarFileSets>
 					</configuration>
 				</plugin>
 				<plugin>
