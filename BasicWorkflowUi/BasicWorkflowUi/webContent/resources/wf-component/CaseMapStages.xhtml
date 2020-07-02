@@ -22,7 +22,7 @@
 		  <c:if test="#{cc.attrs.stages.size() gt counter.index+1}">
 		  	<div
 		    	class="process-flow">
-		    	<span class="flow-txt"><hr class="#{stage.isTerminating()  ? 'none' : 'visible'}"/></span>
+		    	<div class="flow-txt"><hr class="#{stage.isTerminating()  ? 'none' : 'visible'}"/></div>
 		  	</div>              
 		  </c:if>
 		</c:forEach>
