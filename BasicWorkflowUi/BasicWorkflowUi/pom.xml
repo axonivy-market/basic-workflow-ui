@@ -14,7 +14,7 @@
 	  <relativePath>../../build.maven/iar</relativePath>
   </parent>
   
-  <description>A sample implemenation of a jsf based workflow ui</description>
+  <description>A sample implementation of a jsf based workflow ui</description>
   <organization>
     <name>ivyTeam</name>
   </organization>
