@@ -213,7 +213,6 @@
 								</p:outputPanel>
 								<p:commandButton id="openDeleteTaskNote" icon="fa fa-trash"
 									title="#{ivy.cms.co('/labels/dialogs/confirmDialog/deleteNoteTitle')}"
-									style="background-color:#ffffff; border:0px; width:20px;"
 									onclick="PF('confirmDeleteNote').show();"
 									rendered="#{taskNote.writterName == ivy.session.sessionUserName}">
 									<f:setPropertyActionListener value="#{taskNote}"
