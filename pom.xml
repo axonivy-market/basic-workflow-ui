@@ -8,8 +8,11 @@
 
 	<modules>
 		<module>BasicWorkflowUi</module>
+
+		<!-- config -->
 		<module>build.maven</module>
 		<module>build.maven/iar</module>
+		<module>build.maven/iar/web.test</module>
 	</modules>
 
 	<build>
