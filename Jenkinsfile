@@ -11,7 +11,7 @@ pipeline {
   }
 
   options {
-    buildDiscarder(logRotator(numToKeepStr: '60', artifactNumToKeepStr: '2'))
+    buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '2'))
   }
 
   parameters {
@@ -26,15 +26,17 @@ pipeline {
     stage('build') {
       steps {
         script {
-          def workspace = pwd()
           def phase = env.BRANCH_NAME == 'master' ? 'deploy' : 'verify'
-          maven cmd: "clean ${phase} -Dmaven.test.failure.ignore=true  " + 
-                     "-Divy.engine.list.url=${params.engineListUrl} "
+          maven cmd: "clean ${phase} -Dmaven.test.failure.ignore=true -Divy.engine.list.url=${params.engineListUrl}"
         }
-        archiveArtifacts '**/target/*.iar,**/target/*.zip'
+
+        archiveArtifacts '**/target/*.iar'
         archiveArtifacts artifacts: '**/target/selenide/reports/**/*', allowEmptyArchive: true
-        recordIssues tools: [eclipse()], unstableTotalAll: 1
+
         junit testDataPublishers: [[$class: 'StabilityTestDataPublisher']], testResults: '**/target/surefire-reports/**/*.xml'          
+
+        recordIssues tools: [eclipse()], unstableTotalAll: 1
+        recordIssues tools: [mavenConsole()], unstableTotalAll: 1
       }
     }
   }

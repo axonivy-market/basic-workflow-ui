@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.ivyteam.ivy.project</groupId>
 	<artifactId>build.maven.iar</artifactId>
@@ -16,14 +15,14 @@
 		<flatten.plugin.version>1.2.3</flatten.plugin.version>
 		<project.build.plugin.version>9.1.0</project.build.plugin.version>
 		<maven.dependency.plugin.version>3.0.2</maven.dependency.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>		
 	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.axonivy.ivy.ci</groupId>
-				<artifactId>project-build-plugin</artifactId>
-				<version>${project.build.plugin.version}</version>
+				<artifactId>project-build-plugin</artifactId>				
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
@@ -61,7 +60,7 @@
 				<plugin>
 					<groupId>com.axonivy.ivy.ci</groupId>
 					<artifactId>project-build-plugin</artifactId>
-					<version>[8.0.0,)</version>
+					<version>${project.build.plugin.version}</version>
 					<extensions>true</extensions>
 					<configuration>
 						<skipScriptValidation>true</skipScriptValidation>
