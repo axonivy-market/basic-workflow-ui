@@ -27,7 +27,6 @@
 		<repository>
 			<id>repo.axonivy.works</id>
 			<layout>default</layout>
-			<name>Public Build Integration Repository</name>
 			<url>https://repo.axonivy.works/</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
@@ -39,7 +38,6 @@
 		<repository>
 			<id>repo.axonivy.com</id>
 			<layout>default</layout>
-			<name>Public Build Integration Repository</name>
 			<url>https://repo.axonivy.com/artifactory/libs-snapshot-local</url>
 		</repository>
 	</distributionManagement>
@@ -63,5 +61,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	
 </project>
