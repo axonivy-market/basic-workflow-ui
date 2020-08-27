@@ -1,5 +1,5 @@
 [Ivy]
-1447289CE234B167 7.5.0 #module
+1447289CE234B167 9.2.0 #module
 >Proto >Proto Collection #zClass
 Se0 StatisticAverage Big #zClass
 Se0 B #cInfo

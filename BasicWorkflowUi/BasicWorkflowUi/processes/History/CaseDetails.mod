@@ -1,5 +1,5 @@
 [Ivy]
-13FE81B1A4AD784C 7.5.0 #module
+13FE81B1A4AD784C 9.2.0 #module
 >Proto >Proto Collection #zClass
 Cs0 CaseDetails Big #zClass
 Cs0 B #cInfo

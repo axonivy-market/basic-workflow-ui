@@ -1,5 +1,5 @@
 [Ivy]
-144697C904B165C8 7.5.0 #module
+144697C904B165C8 9.2.0 #module
 >Proto >Proto Collection #zClass
 Ss0 StatisticDetails Big #zClass
 Ss0 B #cInfo
