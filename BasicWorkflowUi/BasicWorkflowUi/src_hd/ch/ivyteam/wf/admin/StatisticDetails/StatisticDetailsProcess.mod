@@ -1,5 +1,5 @@
 [Ivy]
-1446978B0F659AB0 7.5.0 #module
+1446978B0F659AB0 9.2.0 #module
 >Proto >Proto Collection #zClass
 Ss0 StatisticDetailsProcess Big #zClass
 Ss0 RD #cInfo
