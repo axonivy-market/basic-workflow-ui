@@ -35,6 +35,7 @@ public class SignalService
     return receiver;
   }
 
+  @SuppressWarnings("removal")
   public List<IStartSignalEventElement> getStarts()
   {
     if (starts == null)
