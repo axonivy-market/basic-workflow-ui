@@ -22,26 +22,32 @@ pipeline {
     stage('build') {
       steps {
         script {
-          // build can not run in parallel on same node, because they need the network of the host, why?
-          // because the maven container talks to the selenium container and the selenium container
-          // want to talk to the axon.ivy which is running in the maven container
-          // here we need to find a way that they can act in the same docker network and the axon ivy engine needs a stable url (port)
-          // we may need to pass selenide.baseUrl as system property (which will point to the axon.ivy engine)          
-          docker.image("selenium/standalone-firefox:3.141.59").withRun('--network host -e START_XVFB=false --shm-size=2g') { container ->
-            docker.build('maven').inside("--network host") {
-              def phase = env.BRANCH_NAME == 'master' ? 'deploy' : 'verify'
-              maven cmd: "clean ${phase} -Dmaven.test.failure.ignore=true -Divy.engine.list.url=${params.engineListUrl} -Dselenide.remote=http://localhost:4444/wd/hub"
+          def random = (new Random()).nextInt(10000000)
+          def networkName = "build-" + random
+          def seleniumName = "selenium-" + random
+          def ivyName = "ivy-" + random
+          sh "docker network create ${networkName}"
+          try {
+            docker.image("selenium/standalone-firefox:3").withRun("-e START_XVFB=false --shm-size=2g --name ${seleniumName} --network ${networkName}") {
+              docker.build('maven').inside("--name ${ivyName} --network ${networkName}") {
+                def phase = env.BRANCH_NAME == 'master' ? 'deploy' : 'verify'
+                maven cmd: "clean ${phase} -Dmaven.test.failure.ignore=true -Divy.engine.list.url=${params.engineListUrl} -Dtest.engine.url=http://${ivyName}:8080 -Dselenide.remote=http://${seleniumName}:4444/wd/hub"
+              }
             }
+          } finally {
+            sh "docker network rm ${networkName}"
           }
         }
 
         archiveArtifacts '**/target/*.iar'
         archiveArtifacts artifacts: '**/target/selenide/reports/**/*', allowEmptyArchive: true
 
-        junit testDataPublishers: [[$class: 'StabilityTestDataPublisher']], testResults: '**/target/*-reports/**/*.xml'          
+        junit testDataPublishers: [[$class: 'StabilityTestDataPublisher']], testResults: '**/target/*-reports/**/*.xml'
 
         recordIssues tools: [eclipse()], unstableTotalAll: 1
-        recordIssues tools: [mavenConsole()], unstableTotalAll: 1
+        recordIssues tools: [mavenConsole()], unstableTotalAll: 1, filters: [
+          excludeMessage('The system property test.engine.url is configured twice!.*')          
+        ]
       }
     }
   }
