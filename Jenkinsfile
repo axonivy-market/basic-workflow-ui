@@ -38,7 +38,7 @@ pipeline {
         archiveArtifacts '**/target/*.iar'
         archiveArtifacts artifacts: '**/target/selenide/reports/**/*', allowEmptyArchive: true
 
-        junit testDataPublishers: [[$class: 'StabilityTestDataPublisher']], testResults: '**/target/surefire-reports/**/*.xml'          
+        junit testDataPublishers: [[$class: 'StabilityTestDataPublisher']], testResults: '**/target/*-reports/**/*.xml'          
 
         recordIssues tools: [eclipse()], unstableTotalAll: 1
         recordIssues tools: [mavenConsole()], unstableTotalAll: 1
