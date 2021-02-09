@@ -1,15 +1,10 @@
-# basic-workflow-ui
+# Basic Workflow UI
 
-## test
+Workflow End User Interface for the Axon.ivy Engine with basic
+features.
 
-to run test, firefox in version 58 is required. if you don't want to install firefox in version 58. just run a container based on the `Dockerfile` and execute the tests.
+## Deprecated
 
-## increase version
-0. Use Java 1.8 (11 does not run): 
-`export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64`
-1. Execute the command to define the new version. Be aware the `-SNAPSHOT` is not required. So just use a version like `8.0.0` with the following command in the root folder:
-`mvn clean process-resources -Dnew.ivy.version=<NEW-VERSION> -f build.maven/job/update-version/pom.xml
-`
-2. Commit Changes
-3. Start the build
-4. Increase the `ivy.projects.version` in the trunk: `build.maven/config/dependencies/pom.xml`
+Axon.ivy 8.0 is the last supported version for the Basic Workflow UI.
+In newer versions use the built-in workflow ui or a the full featured
+Portal.

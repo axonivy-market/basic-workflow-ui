@@ -9,3 +9,4 @@
 **/src_ws/*
 **/build/*
 .flattened-pom.xml
+logs
