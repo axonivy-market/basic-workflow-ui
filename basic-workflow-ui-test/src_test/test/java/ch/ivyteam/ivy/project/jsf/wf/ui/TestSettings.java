@@ -75,8 +75,8 @@ public class TestSettings extends BaseWorkflowUiTest
     $(By.id("formAbsentUsers")).shouldHave(text("Test User 2 (user2)"));
 
     // Trick to close the popup window with the absent users table.
-    $(By.id("formAbsentUsers")).shouldBe(visible).submit();
-    $(By.id("formAbsentUsers")).shouldNotBe(visible);
+    $("#dialogAbsentUsers .ui-dialog-titlebar-close").shouldBe(visible).click();
+    $("#dialogAbsentUsers").shouldNotBe(visible);
 
     deleteAbsence();
     checkIfAbsenceContains("No absences");
