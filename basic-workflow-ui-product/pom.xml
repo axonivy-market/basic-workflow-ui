@@ -41,9 +41,9 @@
 
   <distributionManagement>
     <repository>
-      <id>repo.axonivy.com</id>
+      <id>nexus.axonivy.com</id>
       <layout>default</layout>
-      <url>https://repo.axonivy.com/artifactory/libs-snapshot-local</url>
+      <url>https://nexus.axonivy.com/artifactory/libs-snapshot-local</url>
     </repository>
   </distributionManagement>
 </project>
