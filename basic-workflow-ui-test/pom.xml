@@ -1,7 +1,7 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ch.ivyteam.ivy.project.wf</groupId>
+	<groupId>com.axonivy.utils.wf</groupId>
 	<artifactId>basic-workflow-ui-test</artifactId>
 	<version>8.0.14-SNAPSHOT</version>
 	<packaging>iar</packaging>
@@ -14,7 +14,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>ch.ivyteam.ivy.project.wf</groupId>
+			<groupId>com.axonivy.utils.wf</groupId>
 			<artifactId>basic-workflow-ui</artifactId>
 			<version>${project.version}</version>
 			<type>iar</type>
@@ -51,7 +51,7 @@
 						</goals>
 						<phase>pre-integration-test</phase>
 						<configuration>
-							<deployFile>${ch.ivyteam.ivy.project.wf:basic-workflow-ui:iar}</deployFile>
+							<deployFile>${com.axonivy.utils.wf:basic-workflow-ui:iar}</deployFile>
 						</configuration>
 					</execution>
 					<execution>
@@ -75,7 +75,7 @@
 				<configuration>
 					<ivyVersion>[8.0.0,8.1.0)</ivyVersion>
 					<deployToEngineApplication>${test.application}</deployToEngineApplication>
-					<additionalVmOptions>-Divy.Applications.basic-workflow-ui-test.StandardProcess.DefaultPages=ch.ivyteam.ivy.project.wf:basic-workflow-ui</additionalVmOptions>
+					<additionalVmOptions>-Divy.Applications.basic-workflow-ui-test.StandardProcess.DefaultPages=com.axonivy.utils.wf:basic-workflow-ui</additionalVmOptions>
 				</configuration>
 			</plugin>
 
