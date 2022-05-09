@@ -5,7 +5,7 @@
             "data": {
                 "projects": [
                     {
-                        "groupId": "ch.ivyteam.ivy.project.wf",
+                        "groupId": "com.axonivy.utils.wf",
                         "artifactId": "basic-workflow-ui",
                         "version": "${version}",
                         "type": "iar"
