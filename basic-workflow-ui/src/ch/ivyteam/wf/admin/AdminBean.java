@@ -62,6 +62,7 @@ public class AdminBean implements Serializable {
 				IPermission.USER_READ_OWN_SUBSTITUTIONS);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public Boolean hasSessionReadAllPermission() {
 		return hasPermission(
 				IPermission.SESSION_READ_ALL, 
