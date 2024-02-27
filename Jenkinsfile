@@ -45,8 +45,8 @@ pipeline {
         archiveArtifacts '**/target/*.iar,**/target/*.zip'
         archiveArtifacts artifacts: '**/target/selenide/reports/**/*', allowEmptyArchive: true
 
-        recordIssues tools: [eclipse()], unstableTotalAll: 1
-        recordIssues tools: [mavenConsole()], unstableTotalAll: 1, filters: [
+        recordIssues tools: [eclipse()], qualityGates: [[threshold: 1, type: 'TOTAL']]
+        recordIssues tools: [mavenConsole()], qualityGates: [[threshold: 1, type: 'TOTAL']], filters: [
           excludeMessage('The system property test.engine.url is configured twice!.*')          
         ]
 
